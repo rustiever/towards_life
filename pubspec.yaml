@@ -54,6 +54,10 @@ flutter:
         - asset: assets/fonts/NotoSansTamil-Regular.ttf
         - asset: assets/fonts/NotoSansTamil-Bold.ttf
           weight: 700
+    - family: ArimaMadurai
+      fonts:
+        - asset: assets/fonts/ArimaMadurai-Regular.ttf
+        - asset: assets/fonts/ArimaMadurai-Medium.ttf
   # example:
   # fonts:
   #   - family: Schyler

@@ -27,11 +27,6 @@ class _HomeState extends State<Home> {
   }
 
   static List<dynamic> parseAssets(List<String> assets) {
-    // final Map<String, dynamic> details = ;
-    // final Map<String, dynamic> kurals = ;
-    // collection = Collection.fromJson(details);
-    // kural = Kural.fromJson(kurals);
-    // print(kural.kural.length);
     return [jsonDecode(assets[0]), jsonDecode(assets[1])];
   }
 
@@ -43,90 +38,60 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 5),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(
-                    Colors.blueAccent.withOpacity(0.9), BlendMode.colorDodge),
-                image: AssetImage(
-                  'assets/images/Tamil.jpeg',
-                ),
-              ),
-            ),
-          ),
-          Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Column(
-              children: <Widget>[
-                FutureBuilder<List<dynamic>>(
-                    future: fetchAssets(),
-                    builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-                      // if (snapshot.connectionState == ConnectionState.done) {
-                      //   // var fg = json.decode(snapshot.data.toString());
-                      //   // print(fg['tamil']);
-                      //   return Stack(
-                      //     children: [
-                      //       Container(
-                      //         height: 300,
-                      //         width: double.maxFinite,
-                      //         child: Image.asset(
-                      //           'assets/portrait.jpg',
-                      //           fit: BoxFit.contain,
-                      //           frameBuilder: (BuildContext context, Widget child,
-                      //               int frame, bool wasSynchronouslyLoaded) {
-                      //             if (wasSynchronouslyLoaded) {
-                      //               return child;
-                      //             }
-                      //             return AnimatedOpacity(
-                      //               child: child,
-                      //               opacity: frame == null ? 0 : 1,
-                      //               duration: const Duration(seconds: 1),
-                      //               curve: Curves.easeOut,
-                      //             );
-                      //           },
-                      //         ),
-                      //       ),
-                      //       Positioned(
-                      //         top: 170,
-                      //         left: 50,
-                      //         child: Text(
-                      //           'gone',
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   );
-                      // }
-                      // return CircularProgressIndicator();
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        kural = Kural.fromJson(snapshot.data[1]);
-                        collection = Collection.fromJson(snapshot.data[0]);
-                        return Center(
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  collection?.tamil,
-                                  // style: TextStyle(fontFamily: 'NotoSansTamil'),
-                                ),
+      child: Scaffold(
+        // backgroundColor: Colors.white70,
+        appBar: AppBar(),
+        body: FutureBuilder<List<dynamic>>(
+          future: fetchAssets(),
+          builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              collection = Collection.fromJson(snapshot.data[0]);
+              kural = Kural.fromJson(snapshot.data[1]);
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: ListView.separated(
+                  itemBuilder: (BuildContext context, int index) {
+                    print('hello');
+                    return Card(
+                      child: ListTile(
+                        leading: Text(kural.kural[index].number.toString()),
+                        title: Text(kural.kural[index].line1 +
+                            '\n' +
+                            kural.kural[index].line2),
+                        subtitle: Row(
+                          children: <Widget>[
+                            Text(collection.section.detail[2].name),
+                            Container(
+                              height: 20,
+                              child: VerticalDivider(
+                                color: Colors.blueAccent,
                               ),
-                            ],
-                          ),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text('Error');
-                        //Todo handle error
-                      }
-                      return Center(child: Text('Loading'));
-                    }),
-              ],
-            ),
-          ),
-        ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  // itemCount: kural.kural.length,
+                  itemCount: 20,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Divider(
+                      indent: 20,
+                      endIndent: 20,
+                      thickness: 1,
+                    );
+                  },
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Text('Error');
+              //Todo handle error
+            }
+            return Center(
+              child: Text('Loading'),
+            );
+          },
+        ),
       ),
     );
   }
