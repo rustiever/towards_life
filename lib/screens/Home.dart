@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:ffi';
+import 'dart:math';
+import 'dart:ui';
 
-import 'package:TowardsLife/Models/Details.dart';
 import 'package:TowardsLife/Models/Kurals.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,85 +15,127 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  static Collection collection;
-  static Kural kural;
+  Kural kural;
+  var kurals;
+  bool shuffle = false;
+  bool loading = true;
 
-  Future<List<dynamic>> fetchAssets() async {
-    String details = await rootBundle.loadString('assets/kurals/detail.json');
-    String kurals =
-        await rootBundle.loadString('assets/kurals/thirukkural.json');
-    List<String> assets = List();
-    assets.addAll([details, kurals]);
+  Future<void> fetchAssets() async {
+    String thirukurals =
+        await rootBundle.loadString('assets/kurals/kuralData.json');
+    kural = await compute(parseAssets, thirukurals);
 
-    return compute(parseAssets, assets);
+    setState(() {
+      loading = false;
+    });
   }
 
-  static List<dynamic> parseAssets(List<String> assets) {
-    return [jsonDecode(assets[0]), jsonDecode(assets[1])];
+  static Kural parseAssets(String assets) {
+    return Kural.fromJson(jsonDecode(assets));
   }
 
   @override
   void initState() {
     super.initState();
+    fetchAssets();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.white70,
-        appBar: AppBar(),
-        body: FutureBuilder<List<dynamic>>(
-          future: fetchAssets(),
-          builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              collection = Collection.fromJson(snapshot.data[0]);
-              kural = Kural.fromJson(snapshot.data[1]);
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: ListView.separated(
-                  itemBuilder: (BuildContext context, int index) {
-                    print('hello');
-                    return Card(
-                      child: ListTile(
-                        leading: Text(kural.kural[index].number.toString()),
-                        title: Text(kural.kural[index].line1 +
-                            '\n' +
-                            kural.kural[index].line2),
-                        subtitle: Row(
-                          children: <Widget>[
-                            Text(collection.section.detail[2].name),
-                            Container(
-                              height: 20,
-                              child: VerticalDivider(
-                                color: Colors.blueAccent,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  // itemCount: kural.kural.length,
-                  itemCount: 20,
-                  separatorBuilder: (BuildContext context, int index) {
-                    return Divider(
-                      indent: 20,
-                      endIndent: 20,
-                      thickness: 1,
-                    );
-                  },
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Text('Error');
-              //Todo handle error
-            }
-            return Center(
-              child: Text('Loading'),
-            );
-          },
+        // backgroundColor: Colors.cyanAccent,
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.search), onPressed: null),
+            IconButton(
+              icon: Icon(Icons.shuffle),
+              onPressed: () => setState(() => shuffle = !shuffle),
+            )
+          ],
         ),
+        body: loading == true
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.separated(
+                padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                itemBuilder: (BuildContext context, int index) {
+                  kurals = kural.kurals;
+                  if (shuffle) kurals.shuffle(); //else
+                  return Card(
+                    // margin: EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: BorderSide(
+                        width: 2,
+                        color: Colors.primaries[Random().nextInt(18)]
+                            .withOpacity(Random().nextDouble()),
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Column(
+                        children: <Widget>[
+                          ListTile(
+                            // leading: Container(
+                            //   height: 80,
+                            //   width: 80,
+                            //   color: Colors.amberAccent,
+                            //   // margin: EdgeInsets.only(left: 15, top: 10),
+                            //   child: Center(
+                            //     child: Text(
+                            //       kural.kurals[index].number.toString(),
+                            //       style: TextStyle(fontSize: 25),
+                            //     ),
+                            //   ),
+                            // ),
+                            title: Text(kural.kurals[index].kural[0]),
+                            subtitle: Text(kural.kurals[index].kural[1] +
+                                '[' +
+                                kural.kurals[index].number.toString() +
+                                ']'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                kural.kurals[index].chapter,
+                                style: TextStyle(fontSize: 13),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(bottom: 5),
+                                height: 20,
+                                child: VerticalDivider(
+                                  thickness: 2,
+                                ),
+                              ),
+                              Text(
+                                kural.kurals[index].section,
+                                style: TextStyle(fontSize: 13),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                itemCount: kural.kurals.length,
+                // itemCount: 20,
+                separatorBuilder: (BuildContext context, int index) {
+                  // return Divider(
+                  //   indent: 20,
+                  //   endIndent: 20,
+                  //   thickness: 1,
+                  // );
+                  return Container();
+                },
+              ),
       ),
     );
   }

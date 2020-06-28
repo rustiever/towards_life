@@ -14,13 +14,13 @@ class _ThirukkuralState extends State<Thirukkural> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: ListView.separated(
-            itemBuilder: (_, index) => ListTile(
-                  title: Text(widget.kurals.kural[index].line1),
-                ),
-            separatorBuilder: (_, index) => Divider(),
-            itemCount: widget.kurals.kural.length),
-      ),
+          //   child: ListView.separated(
+          //       itemBuilder: (_, index) => ListTile(
+          //             title: Text(widget.kurals.kural[index].line1),
+          //           ),
+          //       separatorBuilder: (_, index) => Divider(),
+          //       itemCount: widget.kurals.kural.length),
+          ),
     );
   }
 }

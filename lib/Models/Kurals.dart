@@ -1,57 +1,81 @@
 class Kural {
-  List<ThirukKural> kural;
-  String repo;
+  List<String> chapters;
+  List<Kurals> kurals;
+  List<String> sections;
 
-  Kural({this.kural, this.repo});
+  Kural({this.chapters, this.kurals, this.sections});
 
   Kural.fromJson(Map<String, dynamic> json) {
-    if (json['kural'] != null) {
-      kural = List<ThirukKural>();
-      json['kural'].forEach((v) {
-        kural.add(ThirukKural.fromJson(v));
+    chapters = json['chapters'].cast<String>();
+    if (json['kurals'] != null) {
+      kurals = new List<Kurals>();
+      json['kurals'].forEach((v) {
+        kurals.add(new Kurals.fromJson(v));
       });
     }
-    repo = json['repo'];
+    sections = json['sections'].cast<String>();
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['chapters'] = this.chapters;
+    if (this.kurals != null) {
+      data['kurals'] = this.kurals.map((v) => v.toJson()).toList();
+    }
+    data['sections'] = this.sections;
+    return data;
   }
 }
 
-class ThirukKural {
+class Kurals {
+  String chapter;
+  List<String> kural;
   int number;
-  String line1;
-  String line2;
-  String translation;
-  String mv;
-  String sp;
-  String mk;
-  String explanation;
-  String couplet;
-  String transliteration1;
-  String transliteration2;
+  String section;
+  Meaning meaning;
 
-  ThirukKural(
-      {this.number,
-      this.line1,
-      this.line2,
-      this.translation,
-      this.mv,
-      this.sp,
-      this.mk,
-      this.explanation,
-      this.couplet,
-      this.transliteration1,
-      this.transliteration2});
+  Kurals({this.chapter, this.kural, this.number, this.section, this.meaning});
 
-  ThirukKural.fromJson(Map<String, dynamic> json) {
-    number = json['Number'];
-    line1 = json['Line1'];
-    line2 = json['Line2'];
-    translation = json['Translation'];
-    mv = json['mv'];
-    sp = json['sp'];
-    mk = json['mk'];
-    explanation = json['explanation'];
-    couplet = json['couplet'];
-    transliteration1 = json['transliteration1'];
-    transliteration2 = json['transliteration2'];
+  Kurals.fromJson(Map<String, dynamic> json) {
+    chapter = json['chapter'];
+    kural = json['kural'].cast<String>();
+    number = json['number'];
+    section = json['section'];
+    meaning =
+        json['meaning'] != null ? new Meaning.fromJson(json['meaning']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['chapter'] = this.chapter;
+    data['kural'] = this.kural;
+    data['number'] = this.number;
+    data['section'] = this.section;
+    if (this.meaning != null) {
+      data['meaning'] = this.meaning.toJson();
+    }
+    return data;
+  }
+}
+
+class Meaning {
+  String taMuVa;
+  String taSalamon;
+  String en;
+
+  Meaning({this.taMuVa, this.taSalamon, this.en});
+
+  Meaning.fromJson(Map<String, dynamic> json) {
+    taMuVa = json['ta_mu_va'];
+    taSalamon = json['ta_salamon'];
+    en = json['en'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['ta_mu_va'] = this.taMuVa;
+    data['ta_salamon'] = this.taSalamon;
+    data['en'] = this.en;
+    return data;
   }
 }
