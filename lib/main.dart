@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'NotoSansTamil',
+        // fontFamily: 'ArimaMadurai',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );
