@@ -1,29 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Kural {
-  List<String> chapters;
   List<Kurals> kurals;
-  List<String> sections;
 
-  Kural({this.chapters, this.kurals, this.sections});
+  Kural({
+    this.kurals,
+  });
 
-  Kural.fromJson(Map<String, dynamic> json) {
-    chapters = json['chapters'].cast<String>();
-    if (json['kurals'] != null) {
+  Kural.fromJson(List<DocumentSnapshot> json) {
+    if (json != null) {
       kurals = new List<Kurals>();
-      json['kurals'].forEach((v) {
-        kurals.add(new Kurals.fromJson(v));
+      json.forEach((v) {
+        kurals.add(new Kurals.fromJson(v.data));
       });
     }
-    sections = json['sections'].cast<String>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['chapters'] = this.chapters;
-    if (this.kurals != null) {
-      data['kurals'] = this.kurals.map((v) => v.toJson()).toList();
-    }
-    data['sections'] = this.sections;
-    return data;
   }
 }
 
@@ -44,18 +34,6 @@ class Kurals {
     meaning =
         json['meaning'] != null ? new Meaning.fromJson(json['meaning']) : null;
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['chapter'] = this.chapter;
-    data['kural'] = this.kural;
-    data['number'] = this.number;
-    data['section'] = this.section;
-    if (this.meaning != null) {
-      data['meaning'] = this.meaning.toJson();
-    }
-    return data;
-  }
 }
 
 class Meaning {
@@ -69,13 +47,5 @@ class Meaning {
     taMuVa = json['ta_mu_va'];
     taSalamon = json['ta_salamon'];
     en = json['en'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ta_mu_va'] = this.taMuVa;
-    data['ta_salamon'] = this.taSalamon;
-    data['en'] = this.en;
-    return data;
   }
 }
