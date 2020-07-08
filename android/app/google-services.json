@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "919789814332",
+    "firebase_url": "https://towardslife-5b0d6.firebaseio.com",
+    "project_id": "towardslife-5b0d6",
+    "storage_bucket": "towardslife-5b0d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919789814332:android:47599fd8dcd8a0e586f939",
+        "android_client_info": {
+          "package_name": "com.swaprusts.TowardsLife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919789814332-mjvlnefgsh0neignbsktisuv60t7k5so.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTrimWfLdFA7PhnzFdnL3Vvj3sFtj26pY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919789814332-mjvlnefgsh0neignbsktisuv60t7k5so.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

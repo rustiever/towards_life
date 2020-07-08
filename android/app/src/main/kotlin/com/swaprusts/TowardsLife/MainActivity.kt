@@ -1,4 +1,4 @@
-package com.example.TowardsLife
+package com.swaprusts.TowardsLife
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -16,7 +16,7 @@ dependencies:
   share: ^0.5.3
   html_unescape: ^1.0.1+2
   # flutter_tts:
-
+  cloud_firestore:
 dev_dependencies:
   flutter_test:
     sdk: flutter

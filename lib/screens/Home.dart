@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:TowardsLife/Models/Kurals.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final CollectionReference t = Firestore.instance.collection('Thirukural');
   Kural kural;
   var kurals;
   bool shuffle = false, loading = true, isPlaying = false;
@@ -24,6 +26,40 @@ class _HomeState extends State<Home> {
     setState(() {
       loading = false;
     });
+
+    // var v = jsonDecode(thirukurals);
+    // var f = v['kurals'];
+    // var dd =
+    //     Map.fromIterable(f, key: (element) => f.indexOf(element).toString());
+    // // print(dd);
+    // await Firestore.instance
+    //     .collection('Thirukural')
+    //     .document('kurals')
+    //     .setData(dd);
+
+    // List d = kural.chapters;
+    // var f = Map.fromIterable(
+    //   d,
+    //   key: (element) => d.indexOf(element).toString(),
+    // );
+    // print(f);
+    // await t.document('chapters').setData(f);
+
+    // d = kural.sections;
+    // f = Map.fromIterable(
+    //   d,
+    //   key: (element) => d.indexOf(element).toString(),
+    // );
+    // await t.document('sections').setData(f);
+
+    // var d = kural.kurals;
+    // Map<String, dynamic> f = Map.fromIterable(
+    //   d,
+    //   key: (element) => d.indexOf(element).toString(),
+    //   value: (element) => element,
+    // );
+    // print(f.runtimeType);
+    // await t.document('kurals').setData(f);
   }
 
   static Kural parseAssets(String assets) {
@@ -34,7 +70,20 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     fetchAssets();
+    // df();
   }
+
+  // df() async {
+  //   Future<QuerySnapshot> er =
+  //       Firestore.instance.collection('chaps').getDocuments();
+  //   //   // .document('document-name')
+  //   //   .get()
+  //   //   .then((DocumentSnapshot ds) {
+  //   // // use ds as a snapshot
+  //   // });
+
+  //   // print(er.);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -131,13 +180,10 @@ class _HomeState extends State<Home> {
                               bottom: 20,
                               left: 15,
                             ),
-                            title: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Text(
-                                kural.kurals[index].kural[0],
-                                style: TextStyle(
-                                    fontSize: 25, color: Colors.indigoAccent),
-                              ),
+                            title: Text(
+                              kural.kurals[index].kural[0],
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.indigoAccent),
                             ),
                             subtitle: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -147,7 +193,7 @@ class _HomeState extends State<Home> {
                                     kural.kurals[index].number.toString() +
                                     ']',
                                 style: TextStyle(
-                                    fontSize: 18, color: Colors.indigo),
+                                    fontSize: 14, color: Colors.indigo),
                               ),
                             ),
                           ),
