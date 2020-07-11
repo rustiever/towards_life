@@ -1,22 +1,43 @@
 import 'package:TowardsLife/Models/Kurals.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
+enum TtsState { playing, stopped, paused, continued }
+
 class _HomeState extends State<Home> {
+  // TODO for web check flutter-tts implementation
   ScrollController _controller = ScrollController();
+  FlutterTts flutterTts;
+  dynamic languages;
+  String language;
+  double volume = 0.5;
+  double pitch = 1.0;
+  double rate = 0.5;
   final CollectionReference t = Firestore.instance.collection('ThirukKural');
   Kural kural;
-  var kurals;
-  bool shuffle = false, isLoading = true, isPlaying = false;
+  List<Kurals> kurals;
+  bool shuffle = false, isLoading = true, isTtsPlaying = false;
   int limit = 10;
 
   bool moreAvail = true, isMoreLoading = false;
 
+  TtsState ttsState = TtsState.stopped;
+  get isPlaying => ttsState == TtsState.playing;
+
+  get isStopped => ttsState == TtsState.stopped;
+
+  get isPaused => ttsState == TtsState.paused;
+
+  get isContinued => ttsState == TtsState.continued;
   @override
   void initState() {
     _controller.addListener(
@@ -29,12 +50,121 @@ class _HomeState extends State<Home> {
       },
     );
     super.initState();
+    ttsInit();
     fetchKurals();
+  }
+
+  ttsInit() {
+    flutterTts = FlutterTts();
+    _getLanguages();
+
+    if (!kIsWeb) {
+      if (Platform.isAndroid) {
+        _getEngines();
+      }
+    }
+
+    flutterTts.setStartHandler(() {
+      setState(() {
+        print("Playing");
+        ttsState = TtsState.playing;
+      });
+    });
+
+    flutterTts.setCompletionHandler(() {
+      setState(() {
+        print("Complete");
+        ttsState = TtsState.stopped;
+      });
+    });
+
+    flutterTts.setCancelHandler(() {
+      setState(() {
+        print("Cancel");
+        ttsState = TtsState.stopped;
+      });
+    });
+
+    if (kIsWeb || Platform.isIOS) {
+      flutterTts.setPauseHandler(() {
+        setState(() {
+          print("Paused");
+          ttsState = TtsState.paused;
+        });
+      });
+
+      flutterTts.setContinueHandler(() {
+        setState(() {
+          print("Continued");
+          ttsState = TtsState.continued;
+        });
+      });
+    }
+
+    flutterTts.setErrorHandler((msg) {
+      setState(() {
+        print("error: $msg");
+        ttsState = TtsState.stopped;
+      });
+    });
+  }
+
+  Future _getLanguages() async {
+    languages = await flutterTts.getLanguages;
+    var f = await flutterTts.getVoices;
+    // flutterTts.
+    print(f);
+    print(languages);
+    if (languages != null) setState(() => languages);
+  }
+
+  Future _getEngines() async {
+    var engines = await flutterTts.getEngines;
+    if (engines != null) {
+      for (dynamic engine in engines) {
+        print(engine);
+      }
+    }
+  }
+
+  Future _speak(String text) async {
+    await flutterTts.setVolume(volume);
+    await flutterTts.setSpeechRate(rate);
+    await flutterTts.setPitch(pitch);
+
+    await flutterTts.setLanguage(
+        await flutterTts.isLanguageAvailable('ta-IN') ? 'ta-IN' : 'en-IN');
+
+    if (text != null) {
+      if (text.isNotEmpty) {
+        var result = await flutterTts.speak(text);
+        if (result == 1) setState(() => ttsState = TtsState.playing);
+      }
+    }
+  }
+
+  Future _stop() async {
+    var result = await flutterTts.stop();
+    if (result == 1) setState(() => ttsState = TtsState.stopped);
+  }
+
+  Future _pause() async {
+    var result = await flutterTts.pause();
+    if (result == 1) setState(() => ttsState = TtsState.paused);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    flutterTts.stop();
   }
 
   List<DocumentSnapshot> krls = [];
   DocumentSnapshot last;
   fetchKurals() async {
+    setState(() {
+      isLoading = true;
+    });
     Query query = t.orderBy('number').limit(limit);
 
     QuerySnapshot snapshot = await query.getDocuments();
@@ -95,10 +225,16 @@ class _HomeState extends State<Home> {
           title: Text('Towards Life'),
           // centerTitle: true,
           actions: <Widget>[
-            IconButton(icon: Icon(Icons.search), onPressed: null),
             IconButton(
-              icon: Icon(Icons.shuffle),
-              onPressed: () => setState(() => shuffle = true),
+              icon: Icon(Icons.search),
+              onPressed: () => _speak('less done'),
+            ),
+            InkWell(
+              onDoubleTap: fetchKurals,
+              child: IconButton(
+                icon: Icon(Icons.shuffle),
+                onPressed: () => setState(() => shuffle = true),
+              ),
             )
           ],
         ),
@@ -165,13 +301,33 @@ class _HomeState extends State<Home> {
                                 color: Colors.orange,
                               ),
                               ListTile(
-                                trailing: IconButton(
-                                  alignment: Alignment.center,
-                                  icon: isPlaying == false
-                                      ? Icon(Icons.play_circle_filled)
-                                      : Icon(Icons.stop),
-                                  onPressed: () =>
-                                      setState(() => isPlaying = !isPlaying),
+                                trailing: InkWell(
+                                  onDoubleTap: _stop,
+                                  child: IconButton(
+                                    alignment: Alignment.center,
+                                    icon: kural.kurals[index].isPlaying == false
+                                        ? Icon(Icons.play_circle_filled)
+                                        : Icon(Icons.stop),
+                                    onPressed: () => setState(
+                                      () {
+                                        print(kural.kurals[index].kural
+                                            .join(' '));
+                                        if (kural.kurals[index].isPlaying ==
+                                            false) {
+                                          _speak(kural.kurals[index].kural
+                                              .join(' '));
+                                          // isTtsPlaying
+                                        } else {
+                                          if (Platform.isIOS)
+                                            _pause();
+                                          else
+                                            _stop();
+                                        }
+                                        kural.kurals[index].isPlaying =
+                                            !kural.kurals[index].isPlaying;
+                                      },
+                                    ),
+                                  ),
                                 ),
                                 // isThreeLine: true,
                                 contentPadding: EdgeInsets.only(
@@ -208,14 +364,6 @@ class _HomeState extends State<Home> {
                         );
                       },
                       itemCount: kural.kurals.length,
-                      // separatorBuilder: (BuildContext context, int index) {
-                      //   // return Divider(
-                      //   //   indent: 20,
-                      //   //   endIndent: 20,
-                      //   //   thickness: 1,
-                      //   // );
-                      //   return Container();
-                      // },
                     ),
                   ),
                   isMoreLoading ? CircularProgressIndicator() : Container()

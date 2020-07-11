@@ -23,8 +23,15 @@ class Kurals {
   int number;
   String section;
   Meaning meaning;
+  bool isPlaying;
 
-  Kurals({this.chapter, this.kural, this.number, this.section, this.meaning});
+  Kurals(
+      {this.chapter,
+      this.kural,
+      this.number,
+      this.section,
+      this.meaning,
+      this.isPlaying});
 
   Kurals.fromJson(Map<String, dynamic> json) {
     chapter = json['chapter'];
@@ -33,6 +40,7 @@ class Kurals {
     section = json['section'];
     meaning =
         json['meaning'] != null ? new Meaning.fromJson(json['meaning']) : null;
+    isPlaying = false;
   }
 }
 
