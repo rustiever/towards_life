@@ -1,4 +1,6 @@
 import 'package:TowardsLife/Models/Kurals.dart';
+import 'package:TowardsLife/SizeHelper.dart';
+import 'package:TowardsLife/widgets/ShimmerAnimation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io' show Platform;
 import 'package:flutter_tts/flutter_tts.dart';
@@ -168,6 +170,7 @@ class _HomeState extends State<Home> {
   List<DocumentSnapshot> krls = [];
   DocumentSnapshot last;
   fetchKurals() async {
+    // await Future.delayed(const Duration(seconds: 2));
     setState(() {
       isLoading = true;
     });
@@ -218,6 +221,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    // isLoading = true;
     // print('call pls');
     return SafeArea(
       child: Scaffold(
@@ -247,8 +251,15 @@ class _HomeState extends State<Home> {
           ],
         ),
         body: isLoading == true
-            ? Center(
-                child: CircularProgressIndicator(),
+            ? ListView(
+                children: [
+                  ShimmerContainer(),
+                  ShimmerContainer(),
+                  ShimmerContainer(),
+                  ShimmerContainer(),
+                  ShimmerContainer(),
+                  ShimmerContainer(),
+                ],
               )
             : Column(
                 children: <Widget>[
@@ -383,6 +394,83 @@ class _HomeState extends State<Home> {
                   isMoreLoading ? CircularProgressIndicator() : Container()
                 ],
               ),
+      ),
+    );
+  }
+}
+
+class ShimmerContainer extends StatelessWidget {
+  const ShimmerContainer({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.maxFinite,
+      height: displayHeightExcludingToolbar(context) * 0.2,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          side: BorderSide(
+            width: 2,
+            color: Colors.cyan.withOpacity(0.8),
+            style: BorderStyle.solid,
+          ),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Shimmer(
+                  child: Container(
+                    color: Colors.blueGrey[50],
+                    width: 170,
+                    height: 20,
+                  ),
+                ),
+                VerticalDivider(
+                  color: Colors.black,
+                  thickness: 20,
+                ),
+                Shimmer(
+                  child: Container(
+                    color: Colors.blueGrey[50],
+                    width: 170,
+                    height: 20,
+                  ),
+                ),
+              ],
+            ),
+            Divider(
+              color: Colors.orange,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              title: Shimmer(
+                child: Container(
+                  color: Colors.blueGrey[50],
+                  width: double.infinity,
+                  height: 20,
+                ),
+              ),
+              subtitle: Shimmer(
+                child: Container(
+                  color: Colors.blueGrey[50],
+                  width: double.infinity,
+                  height: 15,
+                ),
+              ),
+              trailing: Icon(Icons.play_arrow),
+            )
+          ],
+        ),
       ),
     );
   }
