@@ -34,7 +34,6 @@ flutter:
   assets:
     - assets/images/
     - assets/
-    - assets/kurals/
 
   fonts:
     - family: NotoSansTamil
