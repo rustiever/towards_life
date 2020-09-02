@@ -139,7 +139,7 @@ class _HomeState extends State<Home> {
 
     await flutterTts.setLanguage(
         await flutterTts.isLanguageAvailable('ta-IN') ? 'ta-IN' : 'en-IN');
-    var f = await flutterTts.getVoices;
+    // var f = await flutterTts.getVoices;
     // flutterTts.
     // f.forEach((e) => print(e));
 
@@ -229,11 +229,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           primary: true,
           leading: FlutterLogo(size: 100),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.elliptical(50, 45),
-            ),
-          ),
+
           title: Text('Towards Life'),
           // centerTitle: true,
           actions: <Widget>[

@@ -13,6 +13,9 @@ dependencies:
   cupertino_icons: ^0.1.3
   flutter_tts:
   cloud_firestore:
+  get:
+  get_storage:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
