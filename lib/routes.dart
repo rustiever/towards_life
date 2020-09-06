@@ -1,15 +1,19 @@
-import 'package:TowardsLife/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-
 import 'Models/Kurals.dart';
+import 'bindings/bindings.dart';
+import 'screens/screens.dart';
 
 const String homeRoute = '/';
 const String thirukKurals = '/kurals';
 
-List<GetPage> routes() {
-  return [];
-}
+final routes = [
+  GetPage(
+    name: homeRoute,
+    page: () => Homew(),
+    binding: HomeBinding(),
+  ),
+];
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

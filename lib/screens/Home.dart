@@ -1,5 +1,6 @@
 import 'package:TowardsLife/Models/Kurals.dart';
 import 'package:TowardsLife/SizeHelper.dart';
+import 'package:TowardsLife/controllers/homeController.dart';
 import 'package:TowardsLife/widgets/ShimmerAnimation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io' show Platform;
@@ -7,6 +8,147 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:get/state_manager.dart';
+
+class Homew extends GetView<HomeController> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: Obx(
+              () => ListView.builder(
+                padding: EdgeInsets.fromLTRB(10, 5, 10, 20),
+                controller: controller.controller,
+                itemCount: controller.kurals.length,
+                itemBuilder: (_, index) {
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: BorderSide(
+                        width: 2,
+                        color: Colors.cyan.withOpacity(0.8),
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: 30,
+                          child: ListView(
+                            padding:
+                                EdgeInsets.only(left: 20, right: 20, top: 10),
+                            physics: BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              Text(
+                                // kural.kurals[index].chapter,
+                                controller.kurals[index].chapter,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.purple),
+                              ),
+                              Container(
+                                // margin: EdgeInsets.only(bottom: 10),
+                                height: 20,
+                                child: VerticalDivider(
+                                  color: Colors.redAccent[400],
+                                  // thickness: 2,
+                                ),
+                              ),
+                              Text(
+                                controller.kurals[index].section,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.purple),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          height: 10,
+                          color: Colors.orange,
+                        ),
+                        ListTile(
+                          // trailing: Padding(
+                          //   padding: const EdgeInsets.only(right: 10.0),
+                          //   child: InkWell(
+                          //       // onDoubleTap: () => _stop,
+                          //       child:
+                          //           controller.kurals[index].isPlaying == false
+                          //               ? Icon(Icons.play_arrow)
+                          //               : Platform.isIOS
+                          //                   ? Icon(Icons.pause)
+                          //                   : Icon(Icons.stop),
+                          //       onTap: isTtsPlaying == false ||
+                          //               kural.kurals[index].isPlaying ==
+                          //                   true
+                          //           ? () {
+                          //               ttsHandler(index);
+                          //               setState(
+                          //                 () {
+                          //                   if (kural.kurals[index]
+                          //                           .isPlaying ==
+                          //                       false) {
+                          //                     _speak(kural
+                          //                         .kurals[index].kural
+                          //                         .join(' '));
+                          //                   } else {
+                          //                     if (Platform.isIOS)
+                          //                       _pause();
+                          //                     _stop();
+                          //                   }
+                          //                   kural.kurals[index]
+                          //                           .isPlaying =
+                          //                       !kural.kurals[index]
+                          //                           .isPlaying;
+                          //                 },
+                          //               );
+                          //             }
+                          //           : null),
+                          // ),
+                          contentPadding: EdgeInsets.only(
+                            bottom: 20,
+                            left: 15,
+                          ),
+                          title: Text(
+                            controller.kurals[index].kural[0],
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.indigoAccent),
+                          ),
+                          subtitle: Text(
+                            controller.kurals[index].kural[1] +
+                                ' [' +
+                                controller.kurals[index].number.toString() +
+                                ']',
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.indigo),
+                          ),
+                        ),
+                        // Row(
+                        //   children: <Widget>[
+                        //     IconButton(
+                        //       icon: Icon(Icons.shuffle),
+                        //       onPressed: () => setState(() => shuffle = true),
+                        //     ),
+                        //   ],
+                        // )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          Obx(() => controller.isLoading.value
+              ? CircularProgressIndicator()
+              : Container()),
+        ],
+      ),
+    );
+  }
+}
 
 class Home extends StatefulWidget {
   @override
@@ -24,7 +166,7 @@ class _HomeState extends State<Home> {
   Kural kural;
   List<Kurals> kurals;
   bool shuffle = false, isLoading = true, isTtsPlaying = false;
-  int limit = 10;
+  int limit = 8;
 
   bool moreAvail = true, isMoreLoading = false;
 
@@ -165,10 +307,11 @@ class _HomeState extends State<Home> {
   void dispose() {
     super.dispose();
     flutterTts.stop();
+    _controller.dispose();
   }
 
   List<DocumentSnapshot> krls = [];
-  DocumentSnapshot last;
+  QueryDocumentSnapshot last;
   fetchKurals() async {
     // await Future.delayed(const Duration(seconds: 2));
     setState(() {
@@ -202,7 +345,7 @@ class _HomeState extends State<Home> {
         .orderBy('number')
         .startAfter([last.data()['number']]).limit(limit);
 
-    print(last.data()['number']);
+    // print(last.data());
 
     QuerySnapshot snapshot = await query.get();
 
