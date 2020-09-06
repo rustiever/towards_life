@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   ScrollController _controller = ScrollController();
   FlutterTts flutterTts;
   final CollectionReference kuralCollection =
-      Firestore.instance.collection('ThirukKural');
+      FirebaseFirestore.instance.collection('ThirukKural');
   Kural kural;
   List<Kurals> kurals;
   bool shuffle = false, isLoading = true, isTtsPlaying = false;
@@ -176,10 +176,10 @@ class _HomeState extends State<Home> {
     });
     Query query = kuralCollection.orderBy('number').limit(limit);
 
-    QuerySnapshot snapshot = await query.getDocuments();
+    QuerySnapshot snapshot = await query.get();
 
-    krls = snapshot.documents;
-    last = snapshot.documents[krls.length - 1];
+    krls = snapshot.docs;
+    last = snapshot.docs[krls.length - 1];
 
     kural = Kural.fromJson(krls);
 
@@ -200,17 +200,17 @@ class _HomeState extends State<Home> {
     });
     Query query = kuralCollection
         .orderBy('number')
-        .startAfter([last.data['number']]).limit(limit);
+        .startAfter([last.data()['number']]).limit(limit);
 
-    print(last.data['number']);
+    print(last.data()['number']);
 
-    QuerySnapshot snapshot = await query.getDocuments();
+    QuerySnapshot snapshot = await query.get();
 
-    krls.addAll(snapshot.documents);
+    krls.addAll(snapshot.docs);
     kural = Kural.fromJson(krls);
 
-    if (snapshot.documents.length >= limit)
-      last = snapshot.documents[snapshot.documents.length - 1];
+    if (snapshot.docs.length >= limit)
+      last = snapshot.docs[snapshot.docs.length - 1];
     else
       moreAvail = false;
 

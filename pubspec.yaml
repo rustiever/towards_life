@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.3
   flutter_tts:
+  firebase_core:
   cloud_firestore:
   get:
   get_storage:
@@ -28,7 +29,7 @@ flutter_launcher_name:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icon/icon.png"
+  image_path: "assets/icon/tl.png"
 
 flutter:
   uses-material-design: true

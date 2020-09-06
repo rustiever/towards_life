@@ -11,7 +11,7 @@ class Kural {
     if (json != null) {
       kurals = new List<Kurals>();
       json.forEach((v) {
-        kurals.add(new Kurals.fromJson(v.data));
+        kurals.add(new Kurals.fromJson(v.data()));
       });
     }
   }
