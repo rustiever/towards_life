@@ -1,6 +1,4 @@
 name: release workflow
-description: 'this workflow is intended to release the both android and ios appbundle'
-author: 'rustiever'
 
 on:
   push:
