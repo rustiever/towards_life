@@ -1,3 +1,4 @@
+![release workflow](https://github.com/rustiever/TowardsLife/workflows/release%20workflow/badge.svg?branch=master)
 ![GitHub repo size](https://img.shields.io/github/repo-size/rustiever/TowardsLife)
 ![issues-raw](https://img.shields.io/github/issues-raw/rustiever/TowardsLife)
 ![license](https://img.shields.io/github/license/rustiever/TowardsLife)
