@@ -22,9 +22,18 @@ jobs:
         channel: 'beta' # optional, default to: 'stable'
     - run: flutter pub get
     # - run: flutter test
-    - run: flutter build apk
-    - run: flutter build appbundle
-    - run: flutter build ios --release --no-codesign
+    - name: Build
+      run: |
+        mkdir $HOME/private
+        gpg --quiet --batch --yes --decrypt --passphrase="$FIREBASE_SECRET" \
+        --output $HOME/private/services.tar services.tar.gpg
+        tar xvf $HOME/private/services.tar
+        flutter build appbundle
+        flutter build apk
+        flutter build ios --release --no-codesign
+      env:
+        FIREBASE_SECRET: ${{ secrets.FIREBASE_SECRET }}
+    # - run: 
 
     - uses: actions/upload-artifact@v2
       with:
