@@ -15,135 +15,123 @@ class Homew extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        primary: true,
+
+        title: Text('Towards Life'),
+        // centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          InkWell(
+            onDoubleTap: () {},
+            child: IconButton(
+              icon: Icon(Icons.shuffle),
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
             child: Obx(
-              () => ListView.builder(
-                padding: EdgeInsets.fromLTRB(10, 5, 10, 20),
-                controller: controller.controller,
-                itemCount: controller.kurals.length,
-                itemBuilder: (_, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      side: BorderSide(
-                        width: 2,
-                        color: Colors.cyan.withOpacity(0.8),
-                        style: BorderStyle.solid,
+              () {
+                // if (controller.isLoading.value) {
+                //   return Center(child: CircularProgressIndicator());
+                // }
+                return ListView.builder(
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 20),
+                  controller: controller.controller,
+                  itemCount: controller.kurals.length,
+                  itemBuilder: (_, index) {
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        side: BorderSide(
+                          width: 2,
+                          color: Colors.cyan.withOpacity(0.8),
+                          style: BorderStyle.solid,
+                        ),
                       ),
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 30,
-                          child: ListView(
-                            padding:
-                                EdgeInsets.only(left: 20, right: 20, top: 10),
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            children: <Widget>[
-                              Text(
-                                // kural.kurals[index].chapter,
-                                controller.kurals[index].chapter,
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.purple),
-                              ),
-                              Container(
-                                // margin: EdgeInsets.only(bottom: 10),
-                                height: 20,
-                                child: VerticalDivider(
-                                  color: Colors.redAccent[400],
-                                  // thickness: 2,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: 30,
+                            child: ListView(
+                              padding:
+                                  EdgeInsets.only(left: 20, right: 20, top: 10),
+                              physics: BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () => controller.controller.jumpTo(
+                                      controller
+                                          .controller.position.minScrollExtent),
+                                  child: Text(
+                                    // kural.kurals[index].chapter,
+                                    controller.kurals[index].chapter,
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                controller.kurals[index].section,
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.purple),
-                              ),
-                            ],
+                                Container(
+                                  height: 20,
+                                  child: VerticalDivider(
+                                    color: Colors.redAccent[400],
+                                    // thickness: 2,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () => controller.controller.jumpTo(
+                                      controller
+                                          .controller.position.maxScrollExtent),
+                                  child: Text(
+                                    controller.kurals[index].section,
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Divider(
-                          height: 10,
-                          color: Colors.orange,
-                        ),
-                        ListTile(
-                          // trailing: Padding(
-                          //   padding: const EdgeInsets.only(right: 10.0),
-                          //   child: InkWell(
-                          //       // onDoubleTap: () => _stop,
-                          //       child:
-                          //           controller.kurals[index].isPlaying == false
-                          //               ? Icon(Icons.play_arrow)
-                          //               : Platform.isIOS
-                          //                   ? Icon(Icons.pause)
-                          //                   : Icon(Icons.stop),
-                          //       onTap: isTtsPlaying == false ||
-                          //               kural.kurals[index].isPlaying ==
-                          //                   true
-                          //           ? () {
-                          //               ttsHandler(index);
-                          //               setState(
-                          //                 () {
-                          //                   if (kural.kurals[index]
-                          //                           .isPlaying ==
-                          //                       false) {
-                          //                     _speak(kural
-                          //                         .kurals[index].kural
-                          //                         .join(' '));
-                          //                   } else {
-                          //                     if (Platform.isIOS)
-                          //                       _pause();
-                          //                     _stop();
-                          //                   }
-                          //                   kural.kurals[index]
-                          //                           .isPlaying =
-                          //                       !kural.kurals[index]
-                          //                           .isPlaying;
-                          //                 },
-                          //               );
-                          //             }
-                          //           : null),
-                          // ),
-                          contentPadding: EdgeInsets.only(
-                            bottom: 20,
-                            left: 15,
+                          Divider(
+                            height: 10,
+                            color: Colors.orange,
                           ),
-                          title: Text(
-                            controller.kurals[index].kural[0],
-                            style: TextStyle(
-                                fontSize: 15, color: Colors.indigoAccent),
+                          ListTile(
+                            contentPadding: EdgeInsets.only(
+                              bottom: 20,
+                              left: 15,
+                            ),
+                            title: Text(
+                              controller.kurals[index].kural[0],
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.indigoAccent),
+                            ),
+                            subtitle: Text(
+                              controller.kurals[index].kural[1] +
+                                  ' [' +
+                                  controller.kurals[index].number.toString() +
+                                  ']',
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.indigo),
+                            ),
                           ),
-                          subtitle: Text(
-                            controller.kurals[index].kural[1] +
-                                ' [' +
-                                controller.kurals[index].number.toString() +
-                                ']',
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.indigo),
-                          ),
-                        ),
-                        // Row(
-                        //   children: <Widget>[
-                        //     IconButton(
-                        //       icon: Icon(Icons.shuffle),
-                        //       onPressed: () => setState(() => shuffle = true),
-                        //     ),
-                        //   ],
-                        // )
-                      ],
-                    ),
-                  );
-                },
-              ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
           Obx(() => controller.isLoading.value
               ? CircularProgressIndicator()
-              : Container()),
+              : SizedBox.shrink()),
         ],
       ),
     );

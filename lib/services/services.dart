@@ -7,7 +7,7 @@ class Service {
   final CollectionReference kuralCollection =
       FirebaseFirestore.instance.collection('ThirukKural');
   QueryDocumentSnapshot last;
-  int limit = 1200;
+  int limit = 20;
   bool moreAvail = true;
 
   Future<Kural> fetch() async {
