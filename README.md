@@ -23,6 +23,6 @@ flutter run
 
 - If you think Towards Life is useful, consider giving it a star.
 - If something is not working, [create an
-  issue](https://github.com/neoclide/TowardsLife/issues/new).
+  issue](https://github.com/rustiever/TowardsLife/issues/new).
 
 ### Created & Maintained By [rustiever](https://github.com/rustiever)
