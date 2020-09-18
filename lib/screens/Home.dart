@@ -146,7 +146,7 @@ class Home extends StatefulWidget {
 enum TtsState { playing, stopped, paused, continued }
 
 class _HomeState extends State<Home> {
-  // TODO for web check flutter-tts implementation
+  // ODO for web check flutter-tts implementation
   ScrollController _controller = ScrollController();
   FlutterTts flutterTts;
   final CollectionReference kuralCollection =
