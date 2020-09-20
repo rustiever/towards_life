@@ -1,24 +1,23 @@
 import 'package:TowardsLife/views/homeView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'Models/Kurals.dart';
 import 'bindings/bindings.dart';
 import 'screens/screens.dart';
 
-const String thirukkural = '/thirukkural';
-const String home = '/';
-const String kuralPage = '/kurals';
-const String athisidi = '/athisudi';
-const String athisudiPage = '/athisudiPage';
+const String Thirukkuralroute = '/thirukkural';
+const String Homeroute = '/';
+const String Kuralroute = '/kurals';
+const String Athichoodiroute = '/athisudi';
+const String AthichoodiQuotes = '/athisudiPage';
 
 final routes = [
   GetPage(
-    name: thirukkural,
+    name: Thirukkuralroute,
     page: () => Homew(),
     binding: HomeBinding(),
   ),
   GetPage(
-    name: home,
+    name: Homeroute,
     page: () => HomeView(),
     // binding: HomeBinding(),
   ),
@@ -26,14 +25,14 @@ final routes = [
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case thirukkural:
+    case Thirukkuralroute:
       return MaterialPageRoute(builder: (_) => Home());
-    case kuralPage:
-      var k = settings.arguments as Kural;
-      return MaterialPageRoute(
-          builder: (_) => Thirukkural(
-                kurals: k,
-              ));
+    // case Kuralroute:
+    //   var k = settings.arguments as Kural;
+    //   return MaterialPageRoute(
+    //       builder: (_) => Thirukkuralroute(
+    //             kurals: k,
+    //           ));
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

@@ -16,21 +16,23 @@ class HomeController extends GetxController {
   void onInit() {
     isLoading.value = true;
     print('in controller');
-    controller = ScrollController();
-    controller.addListener(
-      () {
-        if (controller.position.pixels == controller.position.maxScrollExtent) {
-          print('no');
-          fetch();
-        }
-      },
-    );
+    controller = ScrollController()
+      ..addListener(
+        () {
+          if (controller.position.pixels ==
+              controller.position.maxScrollExtent) {
+            print('no');
+            fetch();
+          }
+        },
+      );
     fetch();
     super.onInit();
   }
 
   @override
   Future<void> onClose() {
+    kurals.clear();
     controller.dispose();
     return super.onClose();
   }

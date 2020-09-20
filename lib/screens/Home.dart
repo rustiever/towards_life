@@ -38,9 +38,9 @@ class Homew extends GetView<HomeController> {
           Expanded(
             child: Obx(
               () {
-                // if (controller.isLoading.value) {
-                //   return Center(child: CircularProgressIndicator());
-                // }
+                if (controller.kurals.length <= 0) {
+                  return Center(child: CircularProgressIndicator());
+                }
                 return ListView.builder(
                   padding: EdgeInsets.fromLTRB(10, 5, 10, 20),
                   controller: controller.controller,
@@ -128,7 +128,7 @@ class Homew extends GetView<HomeController> {
               },
             ),
           ),
-          Obx(() => controller.isLoading.value
+          Obx(() => (controller.isLoading.value && controller.kurals.length > 0)
               ? CircularProgressIndicator()
               : SizedBox.shrink()),
         ],
