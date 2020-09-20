@@ -17,7 +17,6 @@ class Homew extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         primary: true,
-
         title: Text('Towards Life'),
         // centerTitle: true,
         actions: <Widget>[

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: router.thirukkural,
+      initialRoute: router.home,
       getPages: router.routes,
       title: 'Towards Life',
       theme: ThemeData(

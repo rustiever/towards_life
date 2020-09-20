@@ -1,3 +1,4 @@
+import 'package:TowardsLife/views/homeView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'Models/Kurals.dart';
@@ -15,6 +16,11 @@ final routes = [
     name: thirukkural,
     page: () => Homew(),
     binding: HomeBinding(),
+  ),
+  GetPage(
+    name: home,
+    page: () => HomeView(),
+    // binding: HomeBinding(),
   ),
 ];
 
