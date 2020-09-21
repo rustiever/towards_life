@@ -11,9 +11,11 @@ class HomeController extends GetxController {
   ScrollController controller;
   final RxList kurals = [].obs;
   final isLoading = false.obs;
+  bool reset = true;
 
   @override
   void onInit() {
+    reset = true;
     isLoading.value = true;
     print('in controller');
     controller = ScrollController()
@@ -40,7 +42,8 @@ class HomeController extends GetxController {
   fetch() async {
     print('fetch');
     isLoading.value = true;
-    Kural kural = await Service.instance.fetch();
+    Kural kural = await Service.instance.fetch(reset);
+    reset = false;
     if (kural != null) {
       print(kural.kurals.length.toString() + 'c fetch');
       kurals.addAll(kural.kurals);

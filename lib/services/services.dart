@@ -10,7 +10,8 @@ class Service {
   int limit = 20;
   bool moreAvail = true;
 
-  Future<Kural> fetch() async {
+  Future<Kural> fetch(reset) async {
+    if (reset) last = null;
     if (last != null) {
       return await _fetchMoreKurals();
     } else {
