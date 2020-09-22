@@ -25,4 +25,4 @@ flutter run
 - If something is not working, [create an
   issue](https://github.com/rustiever/TowardsLife/issues/new).
 
-### Created & Maintained By [rustiever](https://github.com/rustiever)
+### Created & Maintained By [rustiever](https://github.com/rustiever) and [Sha-Kumar](https://github.com/Sha-Kumar)
