@@ -1,4 +1,5 @@
 import 'package:TowardsLife/Models/models.dart';
+import 'package:TowardsLife/constants/constants.dart';
 import 'package:TowardsLife/services/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -42,7 +43,10 @@ class HomeController extends GetxController {
   fetch() async {
     print('fetch');
     isLoading.value = true;
-    Kural kural = await Service.instance.fetch(reset);
+    Kural kural = await Service.instance.fetch(
+        reset: reset,
+        type: Type.kural,
+        collectionReference: thirukkuralCollection);
     reset = false;
     if (kural != null) {
       print(kural.kurals.length.toString() + 'c fetch');

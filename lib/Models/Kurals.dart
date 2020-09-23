@@ -7,7 +7,7 @@ class Kural {
     this.kurals,
   });
 
-  Kural.fromJson(List<DocumentSnapshot> json) {
+  Kural.fromDocumentSnapshot(List<DocumentSnapshot> json) {
     if (json != null) {
       kurals = new List<Kurals>();
       json.forEach((v) {
