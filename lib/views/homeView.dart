@@ -21,16 +21,16 @@ class HomeView extends StatelessWidget {
             child: Row(children: [
               Container(
                 height: 100,
-                width: 120,
+                width: 100,
                 child: Image.asset('assets/images/thiruvalluvar.png'),
               ),
               Container(
                   margin: EdgeInsets.all(8),
                   height: 100,
-                  width: 225,
+                  width: 200,
                   child: Column(children: [
                     Text(
-                      'Thirukkurals',
+                      'Thirukkural',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: Colors.red,
@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
                     ),
                     Center(
                       child: Text(
-                        'Thirukkurals of Tamil.Totally 1330 Kurals were there.',
+                        'Thirukkural of Tamil.Totally 1330 Kurals were there.',
                         style: TextStyle(
                           color: Colors.grey[800],
                           fontWeight: FontWeight.bold,
@@ -65,17 +65,16 @@ class HomeView extends StatelessWidget {
             child: Row(children: [
               Container(
                 height: 100,
-                width: 120,
+                width: 100,
                 child: Image.asset('assets/images/thiruvalluvar.png'),
-                // child: Image(image:  AssetImage('assets/images/avvaiyar.png'),),
               ),
               Container(
                   margin: EdgeInsets.all(8),
                   height: 100,
-                  width: 225,
+                  width: 200,
                   child: Column(children: [
                     Text(
-                      'Thirukkurals',
+                      'Aathichudi',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: Colors.red,
@@ -110,13 +109,13 @@ class HomeView extends StatelessWidget {
             child: Row(children: [
               Container(
                 height: 100,
-                width: 120,
+                width: 100,
                 child: Image.asset('assets/images/thiruvalluvar.png'),
               ),
               Container(
                   margin: EdgeInsets.all(8),
                   height: 100,
-                  width: 225,
+                  width: 200,
                   child: Column(children: [
                     Text(
                       'Palamuligaz',
