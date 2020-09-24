@@ -34,12 +34,11 @@ class Kurals {
       this.isPlaying});
 
   Kurals.fromJson(Map<String, dynamic> json) {
-    chapter = json['chapter'];
-    kural = json['kural'].cast<String>();
-    number = json['number'];
-    section = json['section'];
-    meaning =
-        json['meaning'] != null ? new Meaning.fromJson(json['meaning']) : null;
+    chapter = json['chapter'] as String;
+    kural = json['kural'].cast<String>() as List<String>;
+    number = json['number'] as int;
+    section = json['section'] as String;
+    meaning = Meaning.fromJson(json['meaning'] as Map<String, dynamic>);
     isPlaying = false;
   }
 }
@@ -52,8 +51,8 @@ class Meaning {
   Meaning({this.taMuVa, this.taSalamon, this.en});
 
   Meaning.fromJson(Map<String, dynamic> json) {
-    taMuVa = json['ta_mu_va'];
-    taSalamon = json['ta_salamon'];
-    en = json['en'];
+    taMuVa = json['ta_mu_va'] as String;
+    taSalamon = json['ta_salamon'] as String;
+    en = json['en'] as String;
   }
 }

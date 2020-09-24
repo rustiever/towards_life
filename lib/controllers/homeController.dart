@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:TowardsLife/Models/models.dart';
 import 'package:TowardsLife/constants/constants.dart';
 import 'package:TowardsLife/services/services.dart';
@@ -34,25 +36,24 @@ class HomeController extends GetxController {
   }
 
   @override
-  Future<void> onClose() {
+  FutureOr onClose() {
     kurals.clear();
     controller.dispose();
     return super.onClose();
   }
 
-  fetch() async {
-    print('fetch');
+  void fetch() async {
+    // print('fetch');
     isLoading.value = true;
-    Kural kural = await Service.instance.fetch(
+    final Kural kural = await Service.instance.fetch(
         reset: reset,
         type: Type.kural,
-        collectionReference: thirukkuralCollection);
+        collectionReference: thirukkuralCollection) as Kural;
     reset = false;
     if (kural != null) {
-      print(kural.kurals.length.toString() + 'c fetch');
       kurals.addAll(kural.kurals);
     } else {
-      print('went wrong');
+      // print('went wrong');
     }
     isLoading.value = false;
   }

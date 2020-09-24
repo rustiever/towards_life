@@ -10,7 +10,8 @@ class Service {
   int limit = 20;
   bool moreAvail = true;
 
-  fetch({reset, Type type, CollectionReference collectionReference}) async {
+  Future<Object> fetch(
+      {bool reset, Type type, CollectionReference collectionReference}) async {
     if (reset) last = null;
     List<QueryDocumentSnapshot> data;
 
@@ -19,7 +20,7 @@ class Service {
     } else {
       data = await _fetchKurals(collectionReference);
     }
-    if (data != null)
+    if (data != null) {
       switch (type) {
         case Type.kural:
           return Kural.fromDocumentSnapshot(data);
@@ -28,21 +29,24 @@ class Service {
         case Type.proverbs:
           return null;
       }
-    else
-      return null;
+    }
+
+    return null;
   }
 
-  Future<List<QueryDocumentSnapshot>> _fetchKurals(collection) async {
-    Query query = collection.orderBy('number').limit(limit);
-    QuerySnapshot snapshot = await query.get();
-    List<QueryDocumentSnapshot> krls = snapshot.docs;
+  Future<List<QueryDocumentSnapshot>> _fetchKurals(
+      CollectionReference collection) async {
+    final Query query = collection.orderBy('number').limit(limit);
+    final QuerySnapshot snapshot = await query.get();
+    final List<QueryDocumentSnapshot> krls = snapshot.docs;
     last = snapshot.docs[krls.length - 1];
     // print(l.fromJson(krls));
     // return Kural.fromJson(krls);
     return krls;
   }
 
-  Future<List<QueryDocumentSnapshot>> _fetchMoreKurals(collection) async {
+  Future<List<QueryDocumentSnapshot>> _fetchMoreKurals(
+      CollectionReference collection) async {
     print('fetch more kural func');
 
     Query query = collection

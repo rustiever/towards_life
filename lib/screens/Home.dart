@@ -16,8 +16,7 @@ class Homew extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        primary: true,
-        title: Text('Towards Life'),
+        title: const Text('Towards Life'),
         // centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -72,7 +71,7 @@ class Homew extends GetView<HomeController> {
                                           .controller.position.minScrollExtent),
                                   child: Text(
                                     // kural.kurals[index].chapter,
-                                    controller.kurals[index].chapter,
+                                    controller.kurals[index].chapter.toString(),
                                     style: TextStyle(
                                         fontSize: 15, color: Colors.purple),
                                   ),
@@ -89,7 +88,7 @@ class Homew extends GetView<HomeController> {
                                       controller
                                           .controller.position.maxScrollExtent),
                                   child: Text(
-                                    controller.kurals[index].section,
+                                    controller.kurals[index].section.toString(),
                                     style: TextStyle(
                                         fontSize: 15, color: Colors.purple),
                                   ),
@@ -107,17 +106,14 @@ class Homew extends GetView<HomeController> {
                               left: 15,
                             ),
                             title: Text(
-                              controller.kurals[index].kural[0],
+                              controller.kurals[index].kural[0].toString(),
                               style: TextStyle(
                                   fontSize: 15, color: Colors.indigoAccent),
                             ),
                             subtitle: Text(
-                              controller.kurals[index].kural[1] +
-                                  ' [' +
-                                  controller.kurals[index].number.toString() +
-                                  ']',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.indigo),
+                              '${controller.kurals[index].kural[1]} [${controller.kurals[index].number}]',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.indigo),
                             ),
                           ),
                         ],
@@ -267,7 +263,9 @@ class _HomeState extends State<Home> {
     }
 
     await flutterTts.setLanguage(
-        await flutterTts.isLanguageAvailable('ta-IN') ? 'ta-IN' : 'en-IN');
+        await flutterTts.isLanguageAvailable('ta-IN') != null
+            ? 'ta-IN'
+            : 'en-IN');
     // var f = await flutterTts.getVoices;
     // flutterTts.
     // f.forEach((e) => print(e));
