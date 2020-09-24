@@ -1,35 +1,51 @@
+import 'package:TowardsLife/Models/athisudiModel.dart';
 import 'package:TowardsLife/Models/models.dart';
+import 'package:TowardsLife/constants/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Service {
   Service._private();
   static final instance = Service._private();
-  final CollectionReference kuralCollection =
-      FirebaseFirestore.instance.collection('ThirukKural');
   QueryDocumentSnapshot last;
   int limit = 20;
   bool moreAvail = true;
 
-  Future<Kural> fetch() async {
+  fetch({reset, Type type, CollectionReference collectionReference}) async {
+    if (reset) last = null;
+    List<QueryDocumentSnapshot> data;
+
     if (last != null) {
-      return await _fetchMoreKurals();
+      data = await _fetchMoreKurals(collectionReference);
     } else {
-      return await _fetchKurals();
+      data = await _fetchKurals(collectionReference);
     }
+    if (data != null)
+      switch (type) {
+        case Type.kural:
+          return Kural.fromDocumentSnapshot(data);
+        case Type.choodi:
+          return AthisudiModel.fromDocumentSnapshot(data);
+        case Type.proverbs:
+          return null;
+      }
+    else
+      return null;
   }
 
-  Future<Kural> _fetchKurals() async {
-    Query query = kuralCollection.orderBy('number').limit(limit);
+  Future<List<QueryDocumentSnapshot>> _fetchKurals(collection) async {
+    Query query = collection.orderBy('number').limit(limit);
     QuerySnapshot snapshot = await query.get();
     List<QueryDocumentSnapshot> krls = snapshot.docs;
     last = snapshot.docs[krls.length - 1];
-    return Kural.fromJson(krls);
+    // print(l.fromJson(krls));
+    // return Kural.fromJson(krls);
+    return krls;
   }
 
-  Future<Kural> _fetchMoreKurals() async {
+  Future<List<QueryDocumentSnapshot>> _fetchMoreKurals(collection) async {
     print('fetch more kural func');
 
-    Query query = kuralCollection
+    Query query = collection
         .orderBy('number')
         .startAfter([last.data()['number']]).limit(limit);
 
@@ -40,8 +56,9 @@ class Service {
         last = snapshot.docs[snapshot.docs.length - 1];
       else
         moreAvail = false;
-      return Kural.fromJson(snapshot.docs);
+      return snapshot.docs;
     }
+    print('nulllll');
     return null;
   }
 }

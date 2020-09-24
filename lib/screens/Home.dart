@@ -311,7 +311,7 @@ class _HomeState extends State<Home> {
     krls = snapshot.docs;
     last = snapshot.docs[krls.length - 1];
 
-    kural = Kural.fromJson(krls);
+    kural = Kural.fromDocumentSnapshot(krls);
 
     setState(() {
       isLoading = false;
@@ -337,7 +337,7 @@ class _HomeState extends State<Home> {
     QuerySnapshot snapshot = await query.get();
 
     krls.addAll(snapshot.docs);
-    kural = Kural.fromJson(krls);
+    kural = Kural.fromDocumentSnapshot(krls);
 
     if (snapshot.docs.length >= limit)
       last = snapshot.docs[snapshot.docs.length - 1];

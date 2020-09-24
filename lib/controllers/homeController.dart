@@ -1,4 +1,5 @@
 import 'package:TowardsLife/Models/models.dart';
+import 'package:TowardsLife/constants/constants.dart';
 import 'package:TowardsLife/services/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -11,9 +12,11 @@ class HomeController extends GetxController {
   ScrollController controller;
   final RxList kurals = [].obs;
   final isLoading = false.obs;
+  bool reset = true;
 
   @override
   void onInit() {
+    reset = true;
     isLoading.value = true;
     print('in controller');
     controller = ScrollController()
@@ -40,7 +43,11 @@ class HomeController extends GetxController {
   fetch() async {
     print('fetch');
     isLoading.value = true;
-    Kural kural = await Service.instance.fetch();
+    Kural kural = await Service.instance.fetch(
+        reset: reset,
+        type: Type.kural,
+        collectionReference: thirukkuralCollection);
+    reset = false;
     if (kural != null) {
       print(kural.kurals.length.toString() + 'c fetch');
       kurals.addAll(kural.kurals);
