@@ -33,11 +33,11 @@ class Athisudi {
   String translation;
 
   factory Athisudi.fromMap(Map<String, dynamic> json) => Athisudi(
-        number: json["number"] == null ? null : json["number"],
-        poem: json["poem"] == null ? null : json["poem"],
-        meaning: json["meaning"] == null ? null : json["meaning"],
-        paraphrase: json["paraphrase"] == null ? null : json["paraphrase"],
-        translation: json["translation"] == null ? null : json["translation"],
+        number: json["number"] as int,
+        poem: json["poem"] as String,
+        meaning: json["meaning"] as String,
+        paraphrase: json["paraphrase"] as String,
+        translation: json["translation"] as String,
       );
 }
 
@@ -55,9 +55,9 @@ class LordCompliment {
   String paraphase;
 
   factory LordCompliment.fromMap(Map<String, dynamic> json) => LordCompliment(
-        line1: json["line1"] == null ? null : json["line1"],
-        line2: json["line2"] == null ? null : json["line2"],
-        meaning: json["meaning"] == null ? null : json["meaning"],
-        paraphase: json["paraphase"] == null ? null : json["paraphase"],
+        line1: json["line1"] as String,
+        line2: json["line2"] as String,
+        meaning: json["meaning"] as String,
+        paraphase: json["paraphase"] as String,
       );
 }
