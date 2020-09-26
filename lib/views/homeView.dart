@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
           ),
           InkWell(
             onTap: () async {
-              Get.toNamed(Thirukkuralroute);
+              Get.toNamed(thirukkuralroute);
             },
             child: Container(
               height: 100,

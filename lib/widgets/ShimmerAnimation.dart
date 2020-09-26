@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Shimmer extends StatefulWidget {
   final Widget child;
 
-  Shimmer({@required this.child, Key key}) : super(key: key);
+  const Shimmer({@required this.child, Key key}) : super(key: key);
 
   @override
   _ShimmerState createState() => _ShimmerState();
@@ -40,7 +40,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
                 return FractionallySizedBox(
                   widthFactor: .2,
                   alignment: AlignmentGeometryTween(
-                    begin: Alignment(-1.0 - .2 * 3, .0),
+                    begin: const Alignment(-1.0 - .2 * 3, .0),
                     end: Alignment(1.0 + .2 * 3, .0),
                   )
                       .chain(
@@ -51,9 +51,9 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
                 );
               },
               child: const DecoratedBox(
-                decoration: const BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: const [
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
                       // Color.fromARGB(0, 255, 255, 255),
                       Colors.blueGrey,
                       Colors.black12,

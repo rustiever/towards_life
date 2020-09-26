@@ -4,20 +4,20 @@ import 'package:get/route_manager.dart';
 import 'bindings/bindings.dart';
 import 'screens/screens.dart';
 
-const String Thirukkuralroute = '/thirukkural';
-const String Homeroute = '/';
-const String Kuralroute = '/kurals';
-const String Athichoodiroute = '/athisudi';
-const String AthichoodiQuotes = '/athisudiPage';
+const String thirukkuralroute = '/thirukkural';
+const String homeroute = '/';
+const String kuralroute = '/kurals';
+const String athichoodiroute = '/athisudi';
+const String athichoodiQuotes = '/athisudiPage';
 
 final routes = [
   GetPage(
-    name: Thirukkuralroute,
-    page: () => Homew(),
+    name: thirukkuralroute,
+    page: () => Thiru(),
     binding: HomeBinding(),
   ),
   GetPage(
-    name: Homeroute,
+    name: homeroute,
     page: () => HomeView(),
     // binding: HomeBinding(),
   ),
@@ -25,7 +25,7 @@ final routes = [
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case Thirukkuralroute:
+    case thirukkuralroute:
       return MaterialPageRoute(builder: (_) => Home());
     // case Kuralroute:
     //   var k = settings.arguments as Kural;
