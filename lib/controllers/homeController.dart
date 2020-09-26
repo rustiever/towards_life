@@ -11,6 +11,11 @@ enum TtsState { playing, stopped, paused, continued }
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
 
+// List<Rx<YourClass>> list = <Rx<YourClass>>[];
+
+// list[0].update((yourClass){
+// yourClass.likes = 35;
+// })
   ScrollController controller;
   final RxList kurals = [].obs;
   final isLoading = false.obs;

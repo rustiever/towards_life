@@ -9,7 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TOWARDSLIFE'),
+        title: const Text('TOWARDS LIFE'),
         titleSpacing: 20,
       ),
       backgroundColor: Colors.blueGrey,
@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
                         child: InkWell(
                           splashColor: Colors.blue[900],
                           onTap: () async {
-                            Get.toNamed(Thirukkuralroute);
+                            Get.toNamed(thirukkuralroute);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +104,7 @@ class HomeView extends StatelessWidget {
                             top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
-                            Get.toNamed(Thirukkuralroute);
+                            Get.toNamed(thirukkuralroute);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,7 +161,7 @@ class HomeView extends StatelessWidget {
                             top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
-                            Get.toNamed(Thirukkuralroute);
+                            Get.toNamed(thirukkuralroute);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,7 +218,7 @@ class HomeView extends StatelessWidget {
                             top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
-                            Get.toNamed(Thirukkuralroute);
+                            Get.toNamed(thirukkuralroute);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,7 +274,7 @@ class HomeView extends StatelessWidget {
                             top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
-                            Get.toNamed(Thirukkuralroute);
+                            Get.toNamed(thirukkuralroute);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
