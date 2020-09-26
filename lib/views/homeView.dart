@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
+  String quote =
+      'This is a Valid Quote with the shuffled standard kurals or aathichudi or proverbs. This is a Valid Quote with the shuffled standard kurals or aathichudi or proverbs. This is a Valid Quote with the shuffled standard kurals or aathichudi or proverbs. This is a Valid Quote with the shuffled standard kurals or aathichudi or proverbs';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,22 +12,9 @@ class HomeView extends StatelessWidget {
         title: const Text('TOWARDSLIFE'),
         titleSpacing: 20,
       ),
+      backgroundColor: Colors.blueGrey,
       body: Column(
         children: [
-          // Container(
-          //   decoration: const BoxDecoration(
-          //     color: Colors.amber,
-          //   ),
-          //   height: 60,
-          //   child: const Padding(
-          //     padding: EdgeInsets.only(
-          //         left: 0.1,right: 0.1, top: 10.0, bottom: 10.0),
-          //     child: Text(
-          //       "Welcome to Towards Life",
-          //       style: TextStyle(color: Colors.red, fontSize: 20.0),
-          //     ),
-          //   ),
-          // ),
           Container(
             decoration: const BoxDecoration(
                 border: Border(
@@ -34,7 +23,7 @@ class HomeView extends StatelessWidget {
                   right: BorderSide(width: 0.5, color: Color(0xF6865566)),
                   bottom: BorderSide(width: 1.5, color: Color(0x25562325)),
                 ),
-                color: Colors.white,
+                color: Colors.deepPurpleAccent,
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey,
@@ -42,7 +31,7 @@ class HomeView extends StatelessWidget {
                       spreadRadius: 0.5,
                       offset: Offset(0, 3))
                 ]),
-            height: 180,
+            height: 183,
             child: InkWell(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,38 +42,57 @@ class HomeView extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 15.00, bottom: 15.00, left: 15, right: 5),
+                            top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           splashColor: Colors.blue[900],
                           onTap: () async {
                             Get.toNamed(Thirukkuralroute);
                           },
-                          // child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const <Widget>[
-                              Image(
-                                image: AssetImage(
-                                    'assets/images/thiruvalluvar.png'),
-                                width: 80.0,
-                                height: 80.0,
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          width: 0.5, color: Color(0xA6865566)),
+                                      left: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      right: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      bottom: BorderSide(
+                                          width: 1.5, color: Color(0x25562325)),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+                                        blurRadius: 2,
+                                        spreadRadius: 0.5,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ]),
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/images/thiruvalluvar.png'),
+                                  width: 80.0,
+                                  height: 80.0,
+                                ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(2.0),
                               ),
-                              Text(
+                              const Text(
                                 "Thirukkural",
                                 style: TextStyle(
-                                  color: Color(0xff202124),
+                                  color: Colors.red,
+                                  fontSize: 15.0,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(2.0),
-                              ),
-                              Text(
+                              const Text(
                                 "Count-1330",
                                 style: TextStyle(
-                                    color: Color(0xff5f6368), fontSize: 12.0),
+                                    color: Color(0xff202124), fontSize: 15.0),
                               ),
                             ],
                           ),
@@ -93,154 +101,227 @@ class HomeView extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 15.00, bottom: 15.00, left: 15, right: 5),
+                            top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
                             Get.toNamed(Thirukkuralroute);
                           },
-                          // child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const <Widget>[
-                              Image(
-                                image: AssetImage('assets/images/avvaiyar.png'),
-                                width: 80.0,
-                                height: 80.0,
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          width: 0.5, color: Color(0xA6865566)),
+                                      left: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      right: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      bottom: BorderSide(
+                                          width: 1.5, color: Color(0x25562325)),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+                                        blurRadius: 2,
+                                        spreadRadius: 0.5,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ]),
+                                child: const Image(
+                                  image:
+                                      AssetImage('assets/images/avvaiyar.png'),
+                                  width: 80.0,
+                                  height: 80.0,
+                                ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(2.0),
                               ),
-                              Text(
+                              const Text(
                                 "Aathichudi",
                                 style: TextStyle(
-                                  color: Color(0xff202124),
+                                  color: Colors.red,
+                                  fontSize: 15.0,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(2.0),
-                              ),
-                              Text(
+                              const Text(
                                 "Count-109",
                                 style: TextStyle(
-                                    color: Color(0xff5f6368), fontSize: 12.0),
+                                    color: Color(0xff202124), fontSize: 15.0),
                               ),
                             ],
                           ),
-                          // ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 15.00, bottom: 15.00, left: 15, right: 5),
+                            top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
                             Get.toNamed(Thirukkuralroute);
                           },
-                          // child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const <Widget>[
-                              Image(
-                                image: AssetImage('assets/images/portrait.jpg'),
-                                width: 80.0,
-                                height: 80.0,
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          width: 0.5, color: Color(0xA6865566)),
+                                      left: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      right: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      bottom: BorderSide(
+                                          width: 1.5, color: Color(0x25562325)),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+                                        blurRadius: 2,
+                                        spreadRadius: 0.5,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ]),
+                                child: const Image(
+                                  image:
+                                      AssetImage('assets/images/portrait.jpg'),
+                                  width: 80.0,
+                                  height: 80.0,
+                                ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(2.0),
                               ),
-                              Text(
+                              const Text(
                                 "Palamuligal",
                                 style: TextStyle(
-                                  color: Color(0xff202124),
+                                  color: Colors.red,
+                                  fontSize: 15.0,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(2.0),
-                              ),
-                              Text(
+                              const Text(
                                 "Count-555",
                                 style: TextStyle(
-                                    color: Color(0xff5f6368), fontSize: 12.0),
+                                    color: Color(0xff202124), fontSize: 15.0),
                               ),
                             ],
                           ),
-                          // ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 15.00, bottom: 15.00, left: 15, right: 5),
+                            top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
                             Get.toNamed(Thirukkuralroute);
                           },
-                          // child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const <Widget>[
-                              Image(
-                                image: AssetImage('assets/images/olai1.png'),
-                                width: 80.0,
-                                height: 80.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(2.0),
-                              ),
-                              Text(
-                                "For you you",
-                                style: TextStyle(
-                                  color: Color(0xff202124),
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          width: 0.5, color: Color(0xA6865566)),
+                                      left: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      right: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      bottom: BorderSide(
+                                          width: 1.5, color: Color(0x25562325)),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+                                        blurRadius: 2,
+                                        spreadRadius: 0.5,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ]),
+                                child: const Image(
+                                  image: AssetImage('assets/images/olai1.png'),
+                                  width: 80.0,
+                                  height: 80.0,
                                 ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(2.0),
                               ),
-                              Text(
-                                "555",
+                              const Text(
+                                "For you",
                                 style: TextStyle(
-                                    color: Color(0xff5f6368), fontSize: 12.0),
+                                  color: Colors.red,
+                                  fontSize: 15.0,
+                                ),
+                              ),
+                              const Text(
+                                "Count-555",
+                                style: TextStyle(
+                                    color: Color(0xff202124), fontSize: 15.0),
                               ),
                             ],
                           ),
-                          // ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 15.00, bottom: 15.00, left: 15, right: 5),
+                            top: 15.00, bottom: 10.00, left: 15, right: 5),
                         child: InkWell(
                           onTap: () async {
                             Get.toNamed(Thirukkuralroute);
                           },
-                          // child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const <Widget>[
-                              Image(
-                                image: AssetImage('assets/images/olai2.png'),
-                                width: 80.0,
-                                height: 80.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(2.0),
-                              ),
-                              Text(
-                                "For you you",
-                                style: TextStyle(
-                                  color: Color(0xff202124),
+                            children: <Widget>[
+                              Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          width: 0.5, color: Color(0xA6865566)),
+                                      left: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      right: BorderSide(
+                                          width: 0.5, color: Color(0xF6865566)),
+                                      bottom: BorderSide(
+                                          width: 1.5, color: Color(0x25562325)),
+                                    ),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+                                        blurRadius: 2,
+                                        spreadRadius: 0.5,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ]),
+                                child: const Image(
+                                  image: AssetImage('assets/images/olai2.png'),
+                                  width: 80.0,
+                                  height: 80.0,
                                 ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.all(2.0),
                               ),
-                              Text(
-                                "555",
+                              const Text(
+                                "For you",
                                 style: TextStyle(
-                                    color: Color(0xff5f6368), fontSize: 12.0),
+                                  color: Colors.red,fontSize: 15.0,
+                                ),
+                              ),
+                              const Text(
+                                "Count-555",
+                                style: TextStyle(
+                                    color: Color(0xff202124), fontSize: 15.0),
                               ),
                             ],
                           ),
-                          // ),
                         ),
                       ),
                     ],
@@ -252,47 +333,127 @@ class HomeView extends StatelessWidget {
           const SizedBox(
             height: 18,
           ),
-          Center(
+          Expanded(
             child: Container(
-              width: 350,
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 1.0),
-              decoration: const BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 0.5, color: Color(0xA6865566)),
-                  left: BorderSide(width: 0.5, color: Color(0xF6865566)),
-                  right: BorderSide(width: 0.5, color: Color(0xF6865566)),
-                  bottom: BorderSide(width: 1.5, color: Color(0x25562325)),
-                ),
-                color: Colors.amber,
-              ),
-              child: const Padding(
-                padding:  EdgeInsets.only(
-                    top: 20.00, bottom: 82.00, left: 75, right: 5),
-                // child: Container(
-                child:  Text('Quotes Will Come Here'),
-                // ),
-              ),
+              height: 80.0,
+              width: 345.0,
+              color: Colors.transparent,
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.red[500],
+                        width: 3,
+                      ),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(18.0))),
+                  child: ListView(
+                    children: [
+                      const Center(
+                        heightFactor: 1,
+                        child: Text(
+                          'Quote',
+                          style: TextStyle(
+                            color: Color(0xFFE65100),
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Container(
+                          height: 1.8,
+                          width: 345.0,
+                          color: Colors.green,
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 8.0,
+                            left: 20,
+                            right: 10,
+                            bottom: 8,
+                          ),
+                          child: Text(
+                            "'$quote'",
+                            style: const TextStyle(
+                              color: Colors.indigo,
+                              fontSize: 15,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 10,
           ),
-          Center(
+          Container(
+            height: 180.0,
+            width: 345.0,
+            color: Colors.transparent,
             child: Container(
-              width: 350,
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 85.0),
-              decoration: const BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 0.5, color: Color(0xA6865566)),
-                  left: BorderSide(width: 0.5, color: Color(0xF6865566)),
-                  right: BorderSide(width: 0.5, color: Color(0xF6865566)),
-                  bottom: BorderSide(width: 1.5, color: Color(0x25562325)),
-                ),
-                color: Colors.amber,
-              ),
-              child: const Text('Recent Things Come Here...'),
-            ),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.cyan,
+                      width: 2,
+                    ),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(18.0))),
+                child: ListView(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        top: 5,
+                        bottom: 1,
+                        left: 15,
+                      ),
+                      child: Text(
+                        'Recents',
+                        style: TextStyle(
+                          color: Color(0xFFE65100),
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        height: 1.8,
+                        width: 345.0,
+                        color: Colors.orange,
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 8.0,
+                          left: 20,
+                          right: 10,
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          "'$quote'",
+                          style: const TextStyle(
+                            color: Colors.indigo,
+                            fontSize: 15,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
           ),
+          const SizedBox(
+            height: 10,
+          )
         ],
       ),
     );
