@@ -49,17 +49,18 @@ class Service {
       CollectionReference collection) async {
     print('fetch more kural func');
 
-    Query query = collection
+    final Query query = collection
         .orderBy('number')
         .startAfter([last.data()['number']]).limit(limit);
 
     if (moreAvail) {
-      QuerySnapshot snapshot = await query.get();
+      final QuerySnapshot snapshot = await query.get();
       // krls.addAll(snapshot.docs);
-      if (snapshot.docs.length >= limit)
+      if (snapshot.docs.length >= limit) {
         last = snapshot.docs[snapshot.docs.length - 1];
-      else
+      } else {
         moreAvail = false;
+      }
       return snapshot.docs;
     }
     print('nulllll');

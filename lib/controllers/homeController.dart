@@ -47,7 +47,7 @@ class HomeController extends GetxController {
     return super.onClose();
   }
 
-  void fetch() async {
+  Future<void> fetch() async {
     // print('fetch');
     isLoading.value = true;
     final Kural kural = await Service.instance.fetch(

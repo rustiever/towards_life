@@ -9,7 +9,8 @@ class AthisudiModel {
 
   AthisudiModel.fromDocumentSnapshot(List<DocumentSnapshot> json) {
     if (json != null) {
-      athisudi = List<Athisudi>();
+      athisudi = <Athisudi>[];
+      // ignore: avoid_function_literals_in_foreach_calls
       json.forEach((element) {
         athisudi.add(Athisudi.fromMap(element.data()));
       });

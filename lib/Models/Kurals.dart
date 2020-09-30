@@ -9,9 +9,10 @@ class Kural {
 
   Kural.fromDocumentSnapshot(List<DocumentSnapshot> json) {
     if (json != null) {
-      kurals = new List<Kurals>();
+      kurals = <Kurals>[];
+      // ignore: avoid_function_literals_in_foreach_calls
       json.forEach((v) {
-        kurals.add(new Kurals.fromJson(v.data()));
+        kurals.add(Kurals.fromJson(v.data()));
       });
     }
   }

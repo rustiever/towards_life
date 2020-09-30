@@ -41,7 +41,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
                   widthFactor: .2,
                   alignment: AlignmentGeometryTween(
                     begin: const Alignment(-1.0 - .2 * 3, .0),
-                    end: Alignment(1.0 + .2 * 3, .0),
+                    end: const Alignment(1.0 + .2 * 3, .0),
                   )
                       .chain(
                         CurveTween(curve: Curves.easeInSine),
