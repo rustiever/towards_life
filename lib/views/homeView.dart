@@ -1,7 +1,7 @@
-// import 'package:TowardsLife/routes.dart';
+import 'package:TowardsLife/routes.dart';
 import 'package:TowardsLife/widgets/homeWidget.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -59,44 +59,213 @@ class HomeView extends StatelessWidget {
                     ])),
                   ),
                 ),
-                // ClipPath(
-                //   clipper: WaveClipper1(),
-                //   child: Container(
-                //     width: double.infinity,
-                //     // height: size.height * 0.3,
-                // decoration: const BoxDecoration(
-                //     gradient: LinearGradient(
-                //         colors: [Color(0x22ff3a5a), Color(0x22fe494d)])),
-                // ),
-                // ),
-                // ClipPath(
-                //   clipper: WaveClipper2(),
-                //   child: Container(
-                //     width: double.infinity,
-                //     // height: size.height * 0.3,
-                //     decoration: const BoxDecoration(
-                //         gradient: LinearGradient(
-                //             colors: [Color(0x22ff3a5a), Color(0x22fe494d)])),
-                //   ),
-                // ),
-                // ClipPath(
-                //   clipper: WaveClipper3(),
-                //   child: Container(
-                //     width: double.infinity,
-                //     // height: size.height * 0.3,
-                //     decoration: const BoxDecoration(
-                //         gradient: LinearGradient(
-                //             colors: [Color(0x22ff3a5a), Color(0x22fe494d)])),
-                //   ),
-                // ),
               ],
             ),
           ),
-          Container(
-            height: 350,
-            child: const Text('Hello'),
+          const Padding(
+            padding: EdgeInsets.only(
+              // left: 0.5,
+              bottom: 1,
+              right: 80,
+            ),
+            child: Text(
+              'Select the Item you WISH',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: 21,
+              ),
+            ),
           ),
-          // Expanded(child: null)
+          Container(
+            height: 315,
+            width: 400,
+            alignment: Alignment.center,
+            child: ListView(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10,bottom: 10,right: 10),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                  width: 0.5, color: Color(0xA6865566)),
+                              left: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              right: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              bottom: BorderSide(
+                                  width: 1.5, color: Color(0x25562325)),
+                            ),
+                            color: Colors.deepPurpleAccent,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 7,
+                                  spreadRadius: 0.5,
+                                  offset: Offset(0, 3))
+                            ]),
+                        width: 140,
+                        height: 128,
+                        child: InkWell(
+                          splashColor: Colors.blue[900],
+                          onTap: () async {
+                            Get.toNamed(thirukkuralroute);
+                          },
+                          child: Column(
+                            children: [
+                              Text('Thirukkural'),
+                              Container(
+                                child: Text('data'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10,bottom: 10,right: 10),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                  width: 0.5, color: Color(0xA6865566)),
+                              left: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              right: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              bottom: BorderSide(
+                                  width: 1.5, color: Color(0x25562325)),
+                            ),
+                            color: Colors.deepPurpleAccent,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 7,
+                                  spreadRadius: 0.5,
+                                  offset: Offset(0, 3))
+                            ]),
+                        width: 140,
+                        height: 128,
+                        child: InkWell(
+                          splashColor: Colors.blue[900],
+                          onTap: () async {
+                            Get.toNamed(thirukkuralroute);
+                          },
+                          child: Column(
+                            children: [
+                              Text('Thirukkural'),
+                              Container(
+                                child: Text('data'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10,bottom: 10,right: 10),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                  width: 0.5, color: Color(0xA6865566)),
+                              left: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              right: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              bottom: BorderSide(
+                                  width: 1.5, color: Color(0x25562325)),
+                            ),
+                            color: Colors.deepPurpleAccent,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 7,
+                                  spreadRadius: 0.5,
+                                  offset: Offset(0, 3))
+                            ]),
+                        width: 140,
+                        height: 128,
+                        child: InkWell(
+                          splashColor: Colors.blue[900],
+                          onTap: () async {
+                            Get.toNamed(thirukkuralroute);
+                          },
+                          child: Column(
+                            children: [
+                              Text('Thirukkural'),
+                              Container(
+                                child: Text('data'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10,bottom: 10,right: 10),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                              top: BorderSide(
+                                  width: 0.5, color: Color(0xA6865566)),
+                              left: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              right: BorderSide(
+                                  width: 0.5, color: Color(0xF6865566)),
+                              bottom: BorderSide(
+                                  width: 1.5, color: Color(0x25562325)),
+                            ),
+                            color: Colors.deepPurpleAccent,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 7,
+                                  spreadRadius: 0.5,
+                                  offset: Offset(0, 3))
+                            ]),
+                        width: 140,
+                        height: 128,
+                        child: InkWell(
+                          splashColor: Colors.blue[900],
+                          onTap: () async {
+                            Get.toNamed(thirukkuralroute);
+                          },
+                          child: Column(
+                            children: [
+                              Text('Thirukkural'),
+                              Container(
+                                child: Text('data'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -106,21 +275,21 @@ class HomeView extends StatelessWidget {
 // Column(
 //   children: [
 //     Container(
-//       decoration: const BoxDecoration(
-//           border: Border(
-//             top: BorderSide(width: 0.5, color: Color(0xA6865566)),
-//             left: BorderSide(width: 0.5, color: Color(0xF6865566)),
-//             right: BorderSide(width: 0.5, color: Color(0xF6865566)),
-//             bottom: BorderSide(width: 1.5, color: Color(0x25562325)),
-//           ),
-//           color: Colors.deepPurpleAccent,
-//           boxShadow: [
-//             BoxShadow(
-//                 color: Colors.grey,
-//                 blurRadius: 7,
-//                 spreadRadius: 0.5,
-//                 offset: Offset(0, 3))
-//           ]),
+// decoration: const BoxDecoration(
+//     border: Border(
+//       top: BorderSide(width: 0.5, color: Color(0xA6865566)),
+//       left: BorderSide(width: 0.5, color: Color(0xF6865566)),
+//       right: BorderSide(width: 0.5, color: Color(0xF6865566)),
+//       bottom: BorderSide(width: 1.5, color: Color(0x25562325)),
+//     ),
+//     color: Colors.deepPurpleAccent,
+//     boxShadow: [
+//       BoxShadow(
+//           color: Colors.grey,
+//           blurRadius: 7,
+//           spreadRadius: 0.5,
+//           offset: Offset(0, 3))
+//     ]),
 //       height: 183,
 //       child: InkWell(
 //           child: Column(
@@ -134,10 +303,10 @@ class HomeView extends StatelessWidget {
 //                   padding: const EdgeInsets.only(
 //                       top: 15.00, bottom: 10.00, left: 15, right: 5),
 //                   child: InkWell(
-//                     splashColor: Colors.blue[900],
-//                     onTap: () async {
-//                       Get.toNamed(thirukkuralroute);
-//                     },
+// splashColor: Colors.blue[900],
+// onTap: () async {
+//   Get.toNamed(thirukkuralroute);
+// },
 //                     child: Column(
 //                       crossAxisAlignment: CrossAxisAlignment.start,
 //                       children: <Widget>[
