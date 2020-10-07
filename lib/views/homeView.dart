@@ -66,8 +66,9 @@ class HomeView extends StatelessWidget {
                     width: double.infinity,
                     decoration: const BoxDecoration(
                         gradient: LinearGradient(colors: [
-                      Color(0xffbbbbbb),
-                      Color(0xffbbbbbb),
+                      Color(0xfff48f60),
+                      Color(0xfff48f80),
+                      Color(0xfff48fd5),
                     ])),
                   ),
                 ),
@@ -79,6 +80,18 @@ class HomeView extends StatelessWidget {
                         gradient: LinearGradient(colors: [
                       Color(0xffffea00),
                       Color(0xffffd600),
+                    ])),
+                  ),
+                ),
+                ClipPath(
+                  clipper: WaveClipperFive(),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      Color(0xffc21851),
+                      Color(0xffad1457),
+                      Color(0xff880e4f),
                     ])),
                   ),
                 ),
@@ -94,6 +107,18 @@ class HomeView extends StatelessWidget {
                       color: Colors.redAccent,
                       fontSize: 18,
                     ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 200,
+                    top: 5,
+                    left: 285,
+                    right: 5,
+                  ),
+                  child: Icon(
+                    Icons.home,
+                    color: Colors.redAccent,
                   ),
                 ),
               ],
