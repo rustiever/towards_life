@@ -36,7 +36,8 @@ class HomeView extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(
-                    top: 52,
+                    top: 45,
+                    left: 2,
                     right: 170,
                   ),
                   child: Text(
@@ -59,211 +60,415 @@ class HomeView extends StatelessWidget {
                     ])),
                   ),
                 ),
+                const Padding(
+                  padding: EdgeInsets.only(
+                    top: 220,
+                    right: 75,
+                    left: 2,
+                  ),
+                  child: Text(
+                    'Select a Item which you wish...',
+                    style: TextStyle(
+                      color: Colors.redAccent,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
               ],
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(
-              // left: 0.5,
-              bottom: 1,
-              right: 80,
-            ),
-            child: Text(
-              'Select the Item you WISH',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 21,
-              ),
             ),
           ),
           Container(
-            height: 315,
-            width: 400,
+            height: 370,
+            width: 350,
             alignment: Alignment.center,
-            child: ListView(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10,bottom: 10,right: 10),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                              top: BorderSide(
-                                  width: 0.5, color: Color(0xA6865566)),
-                              left: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              right: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              bottom: BorderSide(
-                                  width: 1.5, color: Color(0x25562325)),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 5,
+                bottom: 5,
+                left: 5,
+                right: 5,
+              ),
+              child: ListView(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                          bottom: 10,
+                          right: 10,
+                        ),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0)),
+                              color: Color(0xffffcfff),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.redAccent,
+                                  blurRadius: 7.5,
+                                  spreadRadius: 0.05,
+                                  offset: Offset(0, 3),
+                                )
+                              ]),
+                          width: 150,
+                          height: 160,
+                          child: InkWell(
+                            splashColor: Colors.blue[900],
+                            onTap: () async {
+                              Get.toNamed(thirukkuralroute);
+                            },
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: const Image(
+                                    image: AssetImage(
+                                        'assets/images/ppp.png'),
+                                    width: 80.0,
+                                    height: 90.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  child: Container(
+                                    height: 1.0,
+                                    width: 140.0,
+                                    color: Colors.redAccent,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: const Text(
+                                    'Thirukkural',
+                                    style: TextStyle(
+                                      fontSize: 17.5,
+                                      color: Colors.brown,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            color: Colors.deepPurpleAccent,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 7,
-                                  spreadRadius: 0.5,
-                                  offset: Offset(0, 3))
-                            ]),
-                        width: 140,
-                        height: 128,
-                        child: InkWell(
-                          splashColor: Colors.blue[900],
-                          onTap: () async {
-                            Get.toNamed(thirukkuralroute);
-                          },
-                          child: Column(
-                            children: [
-                              Text('Thirukkural'),
-                              Container(
-                                child: Text('data'),
-                              )
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10,bottom: 10,right: 10),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                              top: BorderSide(
-                                  width: 0.5, color: Color(0xA6865566)),
-                              left: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              right: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              bottom: BorderSide(
-                                  width: 1.5, color: Color(0x25562325)),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, bottom: 10, right: 10),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0)),
+                              color: Color(0xffffcfff),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.redAccent,
+                                  blurRadius: 7.5,
+                                  spreadRadius: 0.05,
+                                  offset: Offset(0, 3),
+                                )
+                              ]),
+                          width: 150,
+                          height: 160,
+                          child: InkWell(
+                            splashColor: Colors.blue[900],
+                            onTap: () async {
+                              Get.toNamed(thirukkuralroute);
+                            },
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: const Image(
+                                    image: AssetImage(
+                                        'assets/images/avvaiyar.png'),
+                                    width: 80.0,
+                                    height: 90.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  child: Container(
+                                    height: 1.0,
+                                    width: 140.0,
+                                    color: Colors.redAccent,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: const Text(
+                                    'Aathichudi',
+                                    style: TextStyle(
+                                      fontSize: 17.5,
+                                      color: Colors.brown,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            color: Colors.deepPurpleAccent,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 7,
-                                  spreadRadius: 0.5,
-                                  offset: Offset(0, 3))
-                            ]),
-                        width: 140,
-                        height: 128,
-                        child: InkWell(
-                          splashColor: Colors.blue[900],
-                          onTap: () async {
-                            Get.toNamed(thirukkuralroute);
-                          },
-                          child: Column(
-                            children: [
-                              Text('Thirukkural'),
-                              Container(
-                                child: Text('data'),
-                              )
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10,bottom: 10,right: 10),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                              top: BorderSide(
-                                  width: 0.5, color: Color(0xA6865566)),
-                              left: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              right: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              bottom: BorderSide(
-                                  width: 1.5, color: Color(0x25562325)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10, bottom: 10, right: 10, top: 10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                  color: Color(0xffffcfff),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.redAccent,
+                                      blurRadius: 7.5,
+                                      spreadRadius: 0.05,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              width: 150,
+                              height: 160,
+                              child: InkWell(
+                                splashColor: Colors.blue[900],
+                                onTap: () async {
+                                  Get.toNamed(thirukkuralroute);
+                                },
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: const Image(
+                                        image: AssetImage(
+                                            'assets/images/olai3.png'),
+                                        width: 80.0,
+                                        height: 90.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      child: Container(
+                                        height: 1.0,
+                                        width: 140.0,
+                                        color: Colors.redAccent,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: const Text(
+                                        'Palamuzhigal',
+                                        style: TextStyle(
+                                          fontSize: 17.5,
+                                          color: Colors.brown,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            color: Colors.deepPurpleAccent,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 7,
-                                  spreadRadius: 0.5,
-                                  offset: Offset(0, 3))
-                            ]),
-                        width: 140,
-                        height: 128,
-                        child: InkWell(
-                          splashColor: Colors.blue[900],
-                          onTap: () async {
-                            Get.toNamed(thirukkuralroute);
-                          },
-                          child: Column(
-                            children: [
-                              Text('Thirukkural'),
-                              Container(
-                                child: Text('data'),
-                              )
-                            ],
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10,bottom: 10,right: 10),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                              top: BorderSide(
-                                  width: 0.5, color: Color(0xA6865566)),
-                              left: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              right: BorderSide(
-                                  width: 0.5, color: Color(0xF6865566)),
-                              bottom: BorderSide(
-                                  width: 1.5, color: Color(0x25562325)),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10, bottom: 10, right: 10, top: 10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                  color: Color(0xffffcfff),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.redAccent,
+                                      blurRadius: 7.5,
+                                      spreadRadius: 0.05,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              width: 150,
+                              height: 160,
+                              child: InkWell(
+                                splashColor: Colors.blue[900],
+                                onTap: () async {
+                                  Get.toNamed(thirukkuralroute);
+                                },
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: const Image(
+                                        image: AssetImage(
+                                            'assets/images/portrait.jpg'),
+                                        width: 80.0,
+                                        height: 90.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      child: Container(
+                                        height: 1.0,
+                                        width: 140.0,
+                                        color: Colors.redAccent,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: const Text(
+                                        'Others',
+                                        style: TextStyle(
+                                          fontSize: 17.5,
+                                          color: Colors.brown,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            color: Colors.deepPurpleAccent,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 7,
-                                  spreadRadius: 0.5,
-                                  offset: Offset(0, 3))
-                            ]),
-                        width: 140,
-                        height: 128,
-                        child: InkWell(
-                          splashColor: Colors.blue[900],
-                          onTap: () async {
-                            Get.toNamed(thirukkuralroute);
-                          },
-                          child: Column(
-                            children: [
-                              Text('Thirukkural'),
-                              Container(
-                                child: Text('data'),
-                              )
-                            ],
                           ),
-                        ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10, bottom: 10, right: 10, top: 10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                  color: Color(0xffffcfff),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.redAccent,
+                                      blurRadius: 7.5,
+                                      spreadRadius: 0.05,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              width: 150,
+                              height: 160,
+                              child: InkWell(
+                                splashColor: Colors.blue[900],
+                                onTap: () async {
+                                  Get.toNamed(thirukkuralroute);
+                                },
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: const Image(
+                                        image: AssetImage(
+                                            'assets/images/ppp.png'),
+                                        width: 80.0,
+                                        height: 90.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      child: Container(
+                                        height: 1.0,
+                                        width: 140.0,
+                                        color: Colors.redAccent,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: const Text(
+                                        'Others',
+                                        style: TextStyle(
+                                          fontSize: 17.5,
+                                          color: Colors.brown,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10, bottom: 10, right: 10, top: 10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                  color: Color(0xffffcfff),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.redAccent,
+                                      blurRadius: 7.5,
+                                      spreadRadius: 0.05,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ]),
+                              width: 150,
+                              height: 160,
+                              child: InkWell(
+                                splashColor: Colors.blue[900],
+                                onTap: () async {
+                                  Get.toNamed(thirukkuralroute);
+                                },
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: const Image(
+                                        image: AssetImage(
+                                            'assets/images/ppp.png'),
+                                        width: 80.0,
+                                        height: 90.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0),
+                                      child: Container(
+                                        height: 1.0,
+                                        width: 140.0,
+                                        color: Colors.redAccent,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: const Text(
+                                        'Others',
+                                        style: TextStyle(
+                                          fontSize: 17.5,
+                                          color: Colors.brown,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
