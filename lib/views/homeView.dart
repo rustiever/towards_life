@@ -60,6 +60,28 @@ class HomeView extends StatelessWidget {
                     ])),
                   ),
                 ),
+                ClipPath(
+                  clipper: WaveClipperFour(),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      Color(0xffbbbbbb),
+                      Color(0xffbbbbbb),
+                    ])),
+                  ),
+                ),
+                ClipPath(
+                  clipper: WaveClipperThree(),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      Color(0xffffea00),
+                      Color(0xffffd600),
+                    ])),
+                  ),
+                ),
                 const Padding(
                   padding: EdgeInsets.only(
                     top: 220,
@@ -120,11 +142,10 @@ class HomeView extends StatelessWidget {
                             },
                             child: Column(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: const Image(
-                                    image: AssetImage(
-                                        'assets/images/ppp.png'),
+                                const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage('assets/images/ppp.png'),
                                     width: 80.0,
                                     height: 90.0,
                                     fit: BoxFit.cover,
@@ -139,9 +160,9 @@ class HomeView extends StatelessWidget {
                                     color: Colors.redAccent,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: const Text(
+                                const Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Text(
                                     'Thirukkural',
                                     style: TextStyle(
                                       fontSize: 17.5,
@@ -179,9 +200,9 @@ class HomeView extends StatelessWidget {
                             },
                             child: Column(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: const Image(
+                                const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
                                     image: AssetImage(
                                         'assets/images/avvaiyar.png'),
                                     width: 80.0,
@@ -198,9 +219,9 @@ class HomeView extends StatelessWidget {
                                     color: Colors.redAccent,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: const Text(
+                                const Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Text(
                                     'Aathichudi',
                                     style: TextStyle(
                                       fontSize: 17.5,
@@ -244,9 +265,9 @@ class HomeView extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: const Image(
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Image(
                                         image: AssetImage(
                                             'assets/images/olai3.png'),
                                         width: 80.0,
@@ -263,9 +284,9 @@ class HomeView extends StatelessWidget {
                                         color: Colors.redAccent,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: const Text(
+                                    const Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: Text(
                                         'Palamuzhigal',
                                         style: TextStyle(
                                           fontSize: 17.5,
@@ -303,9 +324,9 @@ class HomeView extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: const Image(
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Image(
                                         image: AssetImage(
                                             'assets/images/portrait.jpg'),
                                         width: 80.0,
@@ -322,9 +343,9 @@ class HomeView extends StatelessWidget {
                                         color: Colors.redAccent,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: const Text(
+                                    const Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: Text(
                                         'Others',
                                         style: TextStyle(
                                           fontSize: 17.5,
@@ -370,11 +391,11 @@ class HomeView extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: const Image(
-                                        image: AssetImage(
-                                            'assets/images/ppp.png'),
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Image(
+                                        image:
+                                            AssetImage('assets/images/ppp.png'),
                                         width: 80.0,
                                         height: 90.0,
                                         fit: BoxFit.cover,
@@ -389,9 +410,9 @@ class HomeView extends StatelessWidget {
                                         color: Colors.redAccent,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: const Text(
+                                    const Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: Text(
                                         'Others',
                                         style: TextStyle(
                                           fontSize: 17.5,
@@ -429,11 +450,11 @@ class HomeView extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: const Image(
-                                        image: AssetImage(
-                                            'assets/images/ppp.png'),
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Image(
+                                        image:
+                                            AssetImage('assets/images/ppp.png'),
                                         width: 80.0,
                                         height: 90.0,
                                         fit: BoxFit.cover,
@@ -448,9 +469,9 @@ class HomeView extends StatelessWidget {
                                         color: Colors.redAccent,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: const Text(
+                                    const Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: Text(
                                         'Others',
                                         style: TextStyle(
                                           fontSize: 17.5,
