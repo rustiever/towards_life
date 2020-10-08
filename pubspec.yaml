@@ -41,7 +41,7 @@ flutter:
   assets:
     - assets/images/
     - assets/
-    - assets/aathicudi.json
+    # - assets/aathicudi.json
 
   fonts:
     - family: NotoSansTamil
