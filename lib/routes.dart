@@ -1,7 +1,7 @@
 import 'package:TowardsLife/views/homeView.dart';
 import 'package:get/route_manager.dart';
 import 'bindings/bindings.dart';
-import 'screens/screens.dart';
+import 'views/views.dart';
 
 const String thirukkuralroute = '/thirukkural';
 const String homeroute = '/';
@@ -12,7 +12,7 @@ const String athichoodiQuotes = '/athisudiPage';
 final routes = [
   GetPage(
     name: thirukkuralroute,
-    page: () => Thiru(),
+    page: () => ThirukuralLists(),
     binding: HomeBinding(),
   ),
   GetPage(

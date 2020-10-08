@@ -13,7 +13,6 @@ class HomeView extends StatelessWidget {
       //   backgroundColor: Colors.white,
       // ),
       backgroundColor: Colors.white,
-      // resizeToAvoidBottomPadding: false,
       body: Column(
         children: [
           Expanded(

@@ -2,7 +2,7 @@ import 'package:TowardsLife/controllers/homeController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-class Thiru extends GetView<HomeController> {
+class ThirukuralLists extends GetView<HomeController> {
   final TextStyle dropdownMenuItem =
       const TextStyle(color: Colors.black, fontSize: 18);
 
@@ -12,178 +12,168 @@ class Thiru extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfff0f0f0),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.only(top: 145),
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: Obx(
-                  () {
-                    if (controller.kurals.isEmpty) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    return ListView.builder(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
-                      controller: controller.controller,
-                      itemCount: controller.kurals.length,
-                      itemBuilder: (_, index) {
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            side: BorderSide(
-                              width: 2,
-                              color: Colors.cyan.withOpacity(0.8),
-                              // style: BorderStyle.solid,
+      body: Stack(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.only(top: 170),
+            width: double.infinity,
+            child: Obx(
+              () {
+                if (controller.kurals.isEmpty) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return ListView.builder(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                  controller: controller.controller,
+                  itemCount: controller.kurals.length,
+                  itemBuilder: (_, index) {
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        side: BorderSide(
+                          width: 2,
+                          color: Colors.cyan.withOpacity(0.8),
+                          // style: BorderStyle.solid,
+                        ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: 30,
+                            child: ListView(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, top: 10),
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () => controller.controller.jumpTo(
+                                      controller
+                                          .controller.position.minScrollExtent),
+                                  child: Text(
+                                    // kural.kurals[index].chapter,
+                                    controller.kurals[index].chapter.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
+                                ),
+                                Container(
+                                  height: 20,
+                                  child: VerticalDivider(
+                                    color: Colors.redAccent[400],
+                                    // thickness: 2,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () => controller.controller.jumpTo(
+                                      controller
+                                          .controller.position.maxScrollExtent),
+                                  child: Text(
+                                    controller.kurals[index].section.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                height: 30,
-                                child: ListView(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20, top: 10),
-                                  physics: const BouncingScrollPhysics(),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  children: <Widget>[
-                                    InkWell(
-                                      onTap: () => controller.controller.jumpTo(
-                                          controller.controller.position
-                                              .minScrollExtent),
-                                      child: Text(
-                                        // kural.kurals[index].chapter,
-                                        controller.kurals[index].chapter
-                                            .toString(),
-                                        style: const TextStyle(
-                                            fontSize: 15, color: Colors.purple),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 20,
-                                      child: VerticalDivider(
-                                        color: Colors.redAccent[400],
-                                        // thickness: 2,
-                                      ),
-                                    ),
-                                    InkWell(
-                                      onTap: () => controller.controller.jumpTo(
-                                          controller.controller.position
-                                              .maxScrollExtent),
-                                      child: Text(
-                                        controller.kurals[index].section
-                                            .toString(),
-                                        style: const TextStyle(
-                                            fontSize: 15, color: Colors.purple),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const Divider(
-                                height: 10,
-                                color: Colors.orange,
-                              ),
-                              ListTile(
-                                contentPadding: const EdgeInsets.only(
-                                  bottom: 20,
-                                  left: 15,
-                                ),
-                                title: Text(
-                                  controller.kurals[index].kural[0].toString(),
-                                  style: const TextStyle(
-                                      fontSize: 15, color: Colors.indigoAccent),
-                                ),
-                                subtitle: Text(
-                                  '${controller.kurals[index].kural[1]} [${controller.kurals[index].number}]',
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.indigo),
-                                ),
-                              ),
-                            ],
+                          const Divider(
+                            height: 10,
+                            color: Colors.orange,
                           ),
-                        );
-                      },
+                          ListTile(
+                            contentPadding: const EdgeInsets.only(
+                              bottom: 20,
+                              left: 15,
+                            ),
+                            title: Text(
+                              controller.kurals[index].kural[0].toString(),
+                              style: const TextStyle(
+                                  fontSize: 15, color: Colors.indigoAccent),
+                            ),
+                            subtitle: Text(
+                              '${controller.kurals[index].kural[1]} [${controller.kurals[index].number}]',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.indigo),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   },
-                ),
-              ),
-              Container(
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      // IconButton(
-                      //   onPressed: () {},
-                      //   icon: const Icon(
-                      //     Icons.menu,
-                      //     color: Colors.white,
-                      //   ),
-                      // ),
-                      const Text(
-                        "Thirukkural",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.filter_list_sharp,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Column(
+                );
+              },
+            ),
+          ),
+          Container(
+            height: 140,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: primary,
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 110,
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: const Icon(
+                  //     Icons.menu,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
+                  const Text(
+                    "Thirukkural",
+                    style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Material(
-                      elevation: 5.0,
-                      borderRadius: const BorderRadius.all(Radius.circular(30)),
-                      child: TextField(
-                        // controller: TextEditingController(text: locations[0]),
-                        cursorColor: Theme.of(context).primaryColor,
-                        style: dropdownMenuItem,
-                        decoration: const InputDecoration(
-                          hintText: "type here to find the kural",
-                          hintStyle:
-                              TextStyle(color: Colors.black38, fontSize: 16),
-                          prefixIcon: Material(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            child: Icon(Icons.search),
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 13),
-                        ),
-                      ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.filter_list_sharp,
+                      color: Colors.white,
                     ),
                   ),
                 ],
-              )
-            ],
+              ),
+            ),
           ),
-        ),
+          Column(
+            children: <Widget>[
+              const SizedBox(
+                height: 110,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Material(
+                  elevation: 5.0,
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  child: TextField(
+                    // controller: TextEditingController(text: locations[0]),
+                    cursorColor: Theme.of(context).primaryColor,
+                    style: dropdownMenuItem,
+                    decoration: const InputDecoration(
+                      hintText: "type here to find the kural",
+                      hintStyle: TextStyle(color: Colors.black38, fontSize: 16),
+                      prefixIcon: Material(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30),
+                        ),
+                        child: Icon(Icons.search),
+                      ),
+                      border: InputBorder.none,
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 13),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

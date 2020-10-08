@@ -21,6 +21,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  device_preview:
   lint:
   test:
   flutter_launcher_icons: "^0.7.5"
@@ -41,7 +42,6 @@ flutter:
   assets:
     - assets/images/
     - assets/
-    # - assets/aathicudi.json
 
   fonts:
     - family: NotoSansTamil

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class WaveClipperOne extends CustomClipper<Path> {
   @override
@@ -114,18 +114,19 @@ class WaveClipperThree extends CustomClipper<Path> {
     return false;
   }
 }
+
 class WaveClipperFive extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
     path.lineTo(0.0, size.height - 219.8);
 
-    final firstEndPoint = Offset(size.width * 2.15/5, size.height - 149);
+    final firstEndPoint = Offset(size.width * 2.15 / 5, size.height - 149);
     final firstControlPoint = Offset(size.width * .24, size.height - 214);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-    final secondEndPoint = Offset(size.width, size.height*.05);
+    final secondEndPoint = Offset(size.width, size.height * .05);
     final secondControlPoint = Offset(size.width * 0.75, size.height - 136);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);

@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:TowardsLife/Models/models.dart';
-import 'package:TowardsLife/constants/constants.dart';
-import 'package:TowardsLife/services/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -32,11 +29,11 @@ class ChudiController extends GetxController {
           if (controller.position.pixels ==
               controller.position.maxScrollExtent) {
             print('no');
-            fetch();
+            // fetch();
           }
         },
       );
-    fetch();
+    // fetch();
     super.onInit();
   }
 
@@ -47,19 +44,19 @@ class ChudiController extends GetxController {
     return super.onClose();
   }
 
-  void fetch() async {
-    // print('fetch');
-    isLoading.value = true;
-    final Kural kural = await Service.instance.fetch(
-        reset: reset,
-        type: Type.kural,
-        collectionReference: thirukkuralCollection) as Kural;
-    reset = false;
-    if (kural != null) {
-      kurals.addAll(kural.kurals);
-    } else {
-      // print('went wrong');
-    }
-    isLoading.value = false;
-  }
+  // void fetch() async {
+  //   // print('fetch');
+  //   isLoading.value = true;
+  //   final Kural kural = await Service.instance.fetch(
+  //       reset: reset,
+  //       type: Type.kural,
+  //       collectionReference: thirukkuralCollection) as Kural;
+  //   reset = false;
+  //   if (kural != null) {
+  //     kurals.addAll(kural.kurals);
+  //   } else {
+  //     // print('went wrong');
+  //   }
+  //   isLoading.value = false;
+  // }
 }

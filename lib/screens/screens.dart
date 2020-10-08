@@ -1,2 +1,2 @@
-export 'Home.dart';
+// export 'Home.dart';
 export 'kuralDetails.dart';
