@@ -15,8 +15,9 @@ class HomeView extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Expanded(
-            flex: 4,
+          Container(
+            height: 205,
+            // flex: 4,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -35,14 +36,14 @@ class HomeView extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(
-                    top: 45,
+                    top: 55,
                     left: 2,
                     right: 170,
                   ),
                   child: Text(
                     'TOWARDSLIFE',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 23,
                     ),
                   ),
@@ -96,14 +97,14 @@ class HomeView extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(
-                    top: 220,
+                    top: 178,
                     right: 75,
                     left: 2,
                   ),
                   child: Text(
                     'Select a Item which you wish...',
                     style: TextStyle(
-                      color: Colors.redAccent,
+                      color: Colors.blueAccent,
                       fontSize: 18,
                     ),
                   ),
@@ -111,408 +112,412 @@ class HomeView extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.only(
                     bottom: 200,
-                    top: 5,
+                    top: 25,
                     left: 285,
                     right: 5,
                   ),
                   child: Icon(
                     Icons.home,
-                    color: Colors.redAccent,
+                    color: Colors.yellowAccent,
                   ),
                 ),
               ],
             ),
           ),
-          Container(
-            height: 370,
-            width: 350,
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 5,
-                bottom: 5,
-                left: 5,
-                right: 5,
-              ),
-              child: ListView(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10,
-                          bottom: 10,
-                          right: 10,
-                        ),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              color: Color(0xffffcfff),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.redAccent,
-                                  blurRadius: 7.5,
-                                  spreadRadius: 0.05,
-                                  offset: Offset(0, 3),
-                                )
-                              ]),
-                          width: 150,
-                          height: 160,
-                          child: InkWell(
-                            splashColor: Colors.blue[900],
-                            onTap: () async {
-                              Get.toNamed(thirukkuralroute);
-                            },
-                            child: Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Image(
-                                    image: AssetImage('assets/images/ppp.png'),
-                                    width: 80.0,
-                                    height: 90.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  child: Container(
-                                    height: 1.0,
-                                    width: 140.0,
-                                    color: Colors.redAccent,
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.all(5.0),
-                                  child: Text(
-                                    'Thirukkural',
-                                    style: TextStyle(
-                                      fontSize: 17.5,
-                                      color: Colors.brown,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+          Expanded(
+            child: Container(
+              // height: 370,
+              width: 350,
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 5,
+                  bottom: 5,
+                  left: 5,
+                  right: 5,
+                ),
+                child: ListView(
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            bottom: 10,
+                            right: 10,
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, bottom: 10, right: 10),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              color: Color(0xffffcfff),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.redAccent,
-                                  blurRadius: 7.5,
-                                  spreadRadius: 0.05,
-                                  offset: Offset(0, 3),
-                                )
-                              ]),
-                          width: 150,
-                          height: 160,
-                          child: InkWell(
-                            splashColor: Colors.blue[900],
-                            onTap: () async {
-                              Get.toNamed(thirukkuralroute);
-                            },
-                            child: Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/avvaiyar.png'),
-                                    width: 80.0,
-                                    height: 90.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  child: Container(
-                                    height: 1.0,
-                                    width: 140.0,
-                                    color: Colors.redAccent,
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.all(5.0),
-                                  child: Text(
-                                    'Aathichudi',
-                                    style: TextStyle(
-                                      fontSize: 17.5,
-                                      color: Colors.brown,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                color: Color(0xffffffff),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blueGrey,
+                                    blurRadius: 7.5,
+                                    spreadRadius: 0.05,
+                                    offset: Offset(0, 3),
+                                  )
+                                ]),
+                            width: 150,
+                            height: 160,
+                            child: InkWell(
+                              splashColor: Colors.blue[900],
+                              onTap: () async {
+                                Get.toNamed(thirukkuralroute);
+                              },
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Image(
+                                      image:
+                                          AssetImage('assets/images/ppp.png'),
+                                      width: 80.0,
+                                      height: 90.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: Container(
+                                      height: 1.0,
+                                      width: 140.0,
+                                      color: Colors.redAccent,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'Thirukkural',
+                                      style: TextStyle(
+                                        fontSize: 17.5,
+                                        color: Colors.brown,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, bottom: 10, right: 10, top: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffcfff),
-                                  boxShadow: [
-                                    BoxShadow(
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, bottom: 10, right: 10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                // color: Color(0xffffffff),
+                                color: Color(0xffffffff),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blueGrey,
+                                    blurRadius: 7.5,
+                                    spreadRadius: 0.05,
+                                    offset: Offset(0, 3),
+                                  )
+                                ]),
+                            width: 150,
+                            height: 160,
+                            child: InkWell(
+                              splashColor: Colors.blue[900],
+                              onTap: () async {
+                                Get.toNamed(thirukkuralroute);
+                              },
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/avvaiyar.png'),
+                                      width: 80.0,
+                                      height: 90.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: Container(
+                                      height: 1.0,
+                                      width: 140.0,
                                       color: Colors.redAccent,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              width: 150,
-                              height: 160,
-                              child: InkWell(
-                                splashColor: Colors.blue[900],
-                                onTap: () async {
-                                  Get.toNamed(thirukkuralroute);
-                                },
-                                child: Column(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/olai3.png'),
-                                        width: 80.0,
-                                        height: 90.0,
-                                        fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'Aathichudi',
+                                      style: TextStyle(
+                                        fontSize: 17.5,
+                                        color: Colors.brown,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      child: Container(
-                                        height: 1.0,
-                                        width: 140.0,
-                                        color: Colors.redAccent,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'Palamuzhigal',
-                                        style: TextStyle(
-                                          fontSize: 17.5,
-                                          color: Colors.brown,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, bottom: 10, right: 10, top: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffcfff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.redAccent,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              width: 150,
-                              height: 160,
-                              child: InkWell(
-                                splashColor: Colors.blue[900],
-                                onTap: () async {
-                                  Get.toNamed(thirukkuralroute);
-                                },
-                                child: Column(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/portrait.jpg'),
-                                        width: 80.0,
-                                        height: 90.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      child: Container(
-                                        height: 1.0,
-                                        width: 140.0,
-                                        color: Colors.redAccent,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'Others',
-                                        style: TextStyle(
-                                          fontSize: 17.5,
-                                          color: Colors.brown,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 10, top: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    color: Color(0xffffffff),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blueGrey,
+                                        blurRadius: 7.5,
+                                        spreadRadius: 0.05,
+                                        offset: Offset(0, 3),
+                                      )
+                                    ]),
+                                width: 150,
+                                height: 160,
+                                child: InkWell(
+                                  splashColor: Colors.blue[900],
+                                  onTap: () async {
+                                    Get.toNamed(thirukkuralroute);
+                                  },
+                                  child: Column(
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/olai3.png'),
+                                          width: 80.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5.0),
+                                        child: Container(
+                                          height: 1.0,
+                                          width: 140.0,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'Palamuzhigal',
+                                          style: TextStyle(
+                                            fontSize: 17.5,
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, bottom: 10, right: 10, top: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffcfff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.redAccent,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              width: 150,
-                              height: 160,
-                              child: InkWell(
-                                splashColor: Colors.blue[900],
-                                onTap: () async {
-                                  Get.toNamed(thirukkuralroute);
-                                },
-                                child: Column(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                        image:
-                                            AssetImage('assets/images/ppp.png'),
-                                        width: 80.0,
-                                        height: 90.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      child: Container(
-                                        height: 1.0,
-                                        width: 140.0,
-                                        color: Colors.redAccent,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'Others',
-                                        style: TextStyle(
-                                          fontSize: 17.5,
-                                          color: Colors.brown,
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 10, top: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    color: Color(0xffffffff),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blueGrey,
+                                        blurRadius: 7.5,
+                                        spreadRadius: 0.05,
+                                        offset: Offset(0, 3),
+                                      )
+                                    ]),
+                                width: 150,
+                                height: 160,
+                                child: InkWell(
+                                  splashColor: Colors.blue[900],
+                                  onTap: () async {
+                                    Get.toNamed(thirukkuralroute);
+                                  },
+                                  child: Column(
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/portrait.jpg'),
+                                          width: 80.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5.0),
+                                        child: Container(
+                                          height: 1.0,
+                                          width: 140.0,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'Others',
+                                          style: TextStyle(
+                                            fontSize: 17.5,
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, bottom: 10, right: 10, top: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffcfff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.redAccent,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ]),
-                              width: 150,
-                              height: 160,
-                              child: InkWell(
-                                splashColor: Colors.blue[900],
-                                onTap: () async {
-                                  Get.toNamed(thirukkuralroute);
-                                },
-                                child: Column(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                        image:
-                                            AssetImage('assets/images/ppp.png'),
-                                        width: 80.0,
-                                        height: 90.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0),
-                                      child: Container(
-                                        height: 1.0,
-                                        width: 140.0,
-                                        color: Colors.redAccent,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'Others',
-                                        style: TextStyle(
-                                          fontSize: 17.5,
-                                          color: Colors.brown,
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 10, top: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    color: Color(0xffffffff),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blueGrey,
+                                        blurRadius: 7.5,
+                                        spreadRadius: 0.05,
+                                        offset: Offset(0, 3),
+                                      )
+                                    ]),
+                                width: 150,
+                                height: 160,
+                                child: InkWell(
+                                  splashColor: Colors.blue[900],
+                                  onTap: () async {
+                                    Get.toNamed(thirukkuralroute);
+                                  },
+                                  child: Column(
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/ppp.png'),
+                                          width: 80.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5.0),
+                                        child: Container(
+                                          height: 1.0,
+                                          width: 140.0,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'Others',
+                                          style: TextStyle(
+                                            fontSize: 17.5,
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 10, top: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    color: Color(0xffffffff),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blueGrey,
+                                        blurRadius: 7.5,
+                                        spreadRadius: 0.05,
+                                        offset: Offset(0, 3),
+                                      )
+                                    ]),
+                                width: 150,
+                                height: 160,
+                                child: InkWell(
+                                  splashColor: Colors.blue[900],
+                                  onTap: () async {
+                                    Get.toNamed(thirukkuralroute);
+                                  },
+                                  child: Column(
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/ppp.png'),
+                                          width: 80.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5.0),
+                                        child: Container(
+                                          height: 1.0,
+                                          width: 140.0,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Text(
+                                          'Others',
+                                          style: TextStyle(
+                                            fontSize: 17.5,
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
