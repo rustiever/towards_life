@@ -20,6 +20,11 @@ final routes = [
     page: () => HomeView(),
     // binding: HomeBinding(),
   ),
+  GetPage(
+    name: athichoodiroute,
+    page: () => AthichudiLists(),
+  binding : ChudiBinding(),
+  ),
 ];
 
 // Route<dynamic> generateRoute(RouteSettings settings) {
