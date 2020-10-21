@@ -224,7 +224,8 @@ class HomeView extends StatelessWidget {
                             child: InkWell(
                               splashColor: Colors.blue[900],
                               onTap: () async {
-                                Get.toNamed(thirukkuralroute);
+                                Get.toNamed(athichoodiroute);
+                                // BUG => 43 chudi is null
                               },
                               child: Column(
                                 children: [
