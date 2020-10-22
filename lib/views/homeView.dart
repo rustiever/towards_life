@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('TOWARDS LIFE'),
@@ -16,8 +19,7 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 205,
-            // flex: 4,
+            height: screenHeight * 0.28,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -34,118 +36,113 @@ class HomeView extends StatelessWidget {
                     ])),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(
-                    top: 55,
-                    left: 2,
-                    right: 170,
+                    top: screenHeight * 0.28 * 0.02,
+                    left: screenWidth * 0.28 * 0.1,
+                    right: screenWidth * 0.28 * 1,
+                    // bottom: screenHeight * 0
                   ),
-                  child: Text(
+                  child:  Text(
                     'TOWARDSLIFE',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 23,
+                      fontSize: screenWidth * 25/360,
                     ),
                   ),
                 ),
-                ClipPath(
-                  clipper: WaveClipperTwo(),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      Color(0xffc21851),
-                      Color(0xffad1457),
-                      Color(0xff880e4f),
-                    ])),
-                  ),
-                ),
-                ClipPath(
-                  clipper: WaveClipperFour(),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      Color(0xfff48f60),
-                      Color(0xfff48f80),
-                      Color(0xfff48fd5),
-                    ])),
-                  ),
-                ),
-                ClipPath(
-                  clipper: WaveClipperThree(),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      Color(0xffffea00),
-                      Color(0xffffd600),
-                    ])),
-                  ),
-                ),
-                ClipPath(
-                  clipper: WaveClipperFive(),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      Color(0xffc21851),
-                      Color(0xffad1457),
-                      Color(0xff880e4f),
-                    ])),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    top: 178,
-                    right: 75,
-                    left: 2,
-                  ),
-                  child: Text(
-                    'Select a Item which you wish...',
-                    style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 200,
-                    top: 25,
-                    left: 285,
-                    right: 5,
-                  ),
-                  child: Icon(
-                    Icons.home,
-                    color: Colors.yellowAccent,
-                  ),
-                ),
+                // ClipPath(
+                //   clipper: WaveClipperTwo(),
+                //   child: Container(
+                //     width: double.infinity,
+                //     decoration: const BoxDecoration(
+                //         gradient: LinearGradient(colors: [
+                //       Color(0xffc21851),
+                //       Color(0xffad1457),
+                //       Color(0xff880e4f),
+                //     ])),
+                //   ),
+                // ),
+                // ClipPath(
+                //   clipper: WaveClipperFour(),
+                //   child: Container(
+                //     width: double.infinity,
+                //     decoration: const BoxDecoration(
+                //         gradient: LinearGradient(colors: [
+                //       Color(0xfff48f60),
+                //       Color(0xfff48f80),
+                //       Color(0xfff48fd5),
+                //     ])),
+                //   ),
+                // ),
+                // ClipPath(
+                //   clipper: WaveClipperThree(),
+                //   child: Container(
+                //     width: double.infinity,
+                //     decoration: const BoxDecoration(
+                //         gradient: LinearGradient(colors: [
+                //       Color(0xffffea00),
+                //       Color(0xffffd600),
+                //     ])),
+                //   ),
+                // ),
+                // ClipPath(
+                //   clipper: WaveClipperFive(),
+                //   child: Container(
+                //     width: double.infinity,
+                //     decoration: const BoxDecoration(
+                //         gradient: LinearGradient(colors: [
+                //       Color(0xffc21851),
+                //       Color(0xffad1457),
+                //       Color(0xff880e4f),
+                //     ])),
+                //   ),
+                // ),
+                // const Padding(
+                //   padding: EdgeInsets.only(
+                //     top: 178,
+                //     right: 75,
+                //     left: 2,
+                //   ),
+                //   child: Text(
+                //     'Select a Item which you wish...',
+                //     style: TextStyle(
+                //       color: Colors.blueAccent,
+                //       fontSize: 18,
+                //     ),
+                //   ),
+                // ),
+                // const Padding(
+                //   padding: EdgeInsets.only(
+                //     bottom: 200,
+                //     top: 25,
+                //     left: 285,
+                //     right: 5,
+                //   ),
+                //   child: Icon(
+                //     Icons.home,
+                //     color: Colors.yellowAccent,
+                //   ),
+                // ),
               ],
             ),
           ),
           Expanded(
             child: Container(
-              // height: 370,
-              width: 350,
               alignment: Alignment.center,
               child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 5,
-                  bottom: 5,
-                  left: 5,
-                  right: 5,
+                padding: EdgeInsets.only(
+                  top: 2,
+                  bottom: 2,
+                  left: screenWidth * 0.025,
+                  right: screenWidth * 0.025,
                 ),
                 child: ListView(
                   children: [
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                            bottom: 10,
-                            right: 10,
-                          ),
+                          padding: EdgeInsets.all(screenWidth * 0.025),
                           child: Container(
                             decoration: const BoxDecoration(
                                 borderRadius:
@@ -159,8 +156,8 @@ class HomeView extends StatelessWidget {
                                     offset: Offset(0, 3),
                                   )
                                 ]),
-                            width: 150,
-                            height: 160,
+                            width: screenWidth * 0.42,
+                            height: screenHeight * 1.8 / 7,
                             child: InkWell(
                               splashColor: Colors.blue[900],
                               onTap: () async {
@@ -168,13 +165,13 @@ class HomeView extends StatelessWidget {
                               },
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Image(
-                                      image:
-                                          AssetImage('assets/images/ppp.png'),
-                                      width: 80.0,
-                                      height: 90.0,
+                                      image: const AssetImage(
+                                          'assets/images/ppp.png'),
+                                      width: screenWidth * 0.35,
+                                      height: screenHeight * 0.14,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -203,8 +200,7 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, bottom: 10, right: 10),
+                          padding: EdgeInsets.all(screenWidth * 0.025),
                           child: Container(
                             decoration: const BoxDecoration(
                                 borderRadius:
@@ -219,22 +215,22 @@ class HomeView extends StatelessWidget {
                                     offset: Offset(0, 3),
                                   )
                                 ]),
-                            width: 150,
-                            height: 160,
+                            width: screenWidth * 0.42,
+                            height: screenHeight * 1.8 / 7,
                             child: InkWell(
                               splashColor: Colors.blue[900],
                               onTap: () async {
-                                Get.toNamed(thirukkuralroute);
+                                Get.toNamed(athichoodiroute);
                               },
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Image(
-                                      image: AssetImage(
+                                      image: const AssetImage(
                                           'assets/images/avvaiyar.png'),
-                                      width: 80.0,
-                                      height: 90.0,
+                                      width: screenWidth * 0.35,
+                                      height: screenHeight * 0.14,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -269,8 +265,7 @@ class HomeView extends StatelessWidget {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, bottom: 10, right: 10, top: 10),
+                              padding: EdgeInsets.all(screenWidth * 0.025),
                               child: Container(
                                 decoration: const BoxDecoration(
                                     borderRadius:
@@ -284,8 +279,8 @@ class HomeView extends StatelessWidget {
                                         offset: Offset(0, 3),
                                       )
                                     ]),
-                                width: 150,
-                                height: 160,
+                                width: screenWidth * 0.42,
+                                height: screenHeight * 1.8 / 7,
                                 child: InkWell(
                                   splashColor: Colors.blue[900],
                                   onTap: () async {
@@ -293,13 +288,13 @@ class HomeView extends StatelessWidget {
                                   },
                                   child: Column(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(10.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
                                         child: Image(
-                                          image: AssetImage(
+                                          image: const AssetImage(
                                               'assets/images/olai3.png'),
-                                          width: 80.0,
-                                          height: 90.0,
+                                          width: screenWidth * 0.35,
+                                          height: screenHeight * 0.14,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -328,8 +323,7 @@ class HomeView extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, bottom: 10, right: 10, top: 10),
+                              padding: EdgeInsets.all(screenWidth * 0.025),
                               child: Container(
                                 decoration: const BoxDecoration(
                                     borderRadius:
@@ -343,8 +337,8 @@ class HomeView extends StatelessWidget {
                                         offset: Offset(0, 3),
                                       )
                                     ]),
-                                width: 150,
-                                height: 160,
+                                width: screenWidth * 0.42,
+                                height: screenHeight * 1.8 / 7,
                                 child: InkWell(
                                   splashColor: Colors.blue[900],
                                   onTap: () async {
@@ -352,13 +346,13 @@ class HomeView extends StatelessWidget {
                                   },
                                   child: Column(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(10.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
                                         child: Image(
-                                          image: AssetImage(
+                                          image: const AssetImage(
                                               'assets/images/portrait.jpg'),
-                                          width: 80.0,
-                                          height: 90.0,
+                                          width: screenWidth * 0.35,
+                                          height: screenHeight * 0.14,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -395,8 +389,7 @@ class HomeView extends StatelessWidget {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, bottom: 10, right: 10, top: 10),
+                              padding: EdgeInsets.all(screenWidth * 0.025),
                               child: Container(
                                 decoration: const BoxDecoration(
                                     borderRadius:
@@ -410,8 +403,8 @@ class HomeView extends StatelessWidget {
                                         offset: Offset(0, 3),
                                       )
                                     ]),
-                                width: 150,
-                                height: 160,
+                                width: screenWidth * 0.42,
+                                height: screenHeight * 1.8 / 7,
                                 child: InkWell(
                                   splashColor: Colors.blue[900],
                                   onTap: () async {
@@ -419,13 +412,13 @@ class HomeView extends StatelessWidget {
                                   },
                                   child: Column(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(10.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
                                         child: Image(
-                                          image: AssetImage(
+                                          image: const AssetImage(
                                               'assets/images/ppp.png'),
-                                          width: 80.0,
-                                          height: 90.0,
+                                          width: screenWidth * 0.35,
+                                          height: screenHeight * 0.14,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -454,8 +447,7 @@ class HomeView extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, bottom: 10, right: 10, top: 10),
+                              padding: EdgeInsets.all(screenWidth * 0.025),
                               child: Container(
                                 decoration: const BoxDecoration(
                                     borderRadius:
@@ -469,8 +461,8 @@ class HomeView extends StatelessWidget {
                                         offset: Offset(0, 3),
                                       )
                                     ]),
-                                width: 150,
-                                height: 160,
+                                width: screenWidth * 0.42,
+                                height: screenHeight * 1.8 / 7,
                                 child: InkWell(
                                   splashColor: Colors.blue[900],
                                   onTap: () async {
@@ -478,13 +470,13 @@ class HomeView extends StatelessWidget {
                                   },
                                   child: Column(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(10.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
                                         child: Image(
-                                          image: AssetImage(
+                                          image: const AssetImage(
                                               'assets/images/ppp.png'),
-                                          width: 80.0,
-                                          height: 90.0,
+                                          width: screenWidth * 0.35,
+                                          height: screenHeight * 0.14,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
