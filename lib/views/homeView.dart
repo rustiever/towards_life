@@ -221,6 +221,7 @@ class HomeView extends StatelessWidget {
                               splashColor: Colors.blue[900],
                               onTap: () async {
                                 Get.toNamed(athichoodiroute);
+                                // BUG => 43 chudi is null
                               },
                               child: Column(
                                 children: [

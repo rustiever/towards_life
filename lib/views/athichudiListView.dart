@@ -72,7 +72,7 @@ class AthichudiLists extends GetView<ChudiController> {
                               left: 15,
                             ),
                             title: Text(
-                              controller.chudis[index].meaning.toString() ,
+                              controller.chudis[index].meaning.toString(),
                               style: const TextStyle(
                                   fontSize: 15, color: Colors.indigoAccent),
                             ),
@@ -92,7 +92,7 @@ class AthichudiLists extends GetView<ChudiController> {
                               left: 15,
                             ),
                             title: Text(
-                              '${controller.chudis[index].translation}.' ,
+                              '${controller.chudis[index].translation}.',
                               style: const TextStyle(
                                   fontSize: 15, color: Colors.indigoAccent),
                             ),
@@ -155,7 +155,7 @@ class AthichudiLists extends GetView<ChudiController> {
                     cursorColor: Theme.of(context).primaryColor,
                     style: dropdownMenuItem,
                     decoration: const InputDecoration(
-                      hintText: "type here to find the kural",
+                      hintText: "type here to find the athichudi's",
                       hintStyle: TextStyle(color: Colors.black38, fontSize: 16),
                       prefixIcon: Material(
                         borderRadius: BorderRadius.all(
