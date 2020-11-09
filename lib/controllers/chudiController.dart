@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:TowardsLife/Models/models.dart';
 import 'package:TowardsLife/constants/constants.dart';
 import 'package:TowardsLife/services/services.dart';

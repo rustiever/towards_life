@@ -1,4 +1,3 @@
-import 'package:TowardsLife/views/homeView.dart';
 import 'package:get/route_manager.dart';
 import 'bindings/bindings.dart';
 import 'views/views.dart';
@@ -23,7 +22,7 @@ final routes = [
   GetPage(
     name: athichoodiroute,
     page: () => AthichudiLists(),
-  binding : ChudiBinding(),
+    binding: ChudiBinding(),
   ),
 ];
 
