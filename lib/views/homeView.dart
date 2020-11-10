@@ -1,7 +1,7 @@
 import 'package:TowardsLife/routes.dart';
+import 'package:TowardsLife/widgets/homeTileWidget.dart';
 import 'package:TowardsLife/widgets/homeWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -11,11 +11,6 @@ class HomeView extends StatelessWidget {
     final double screenRatio = screenWidth / screenHeight;
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('TOWARDS LIFE'),
-      //   titleSpacing: 20,
-      //   backgroundColor: Colors.white,
-      // ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -112,381 +107,58 @@ class HomeView extends StatelessWidget {
                 child: ListView(
                   children: [
                     Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(screenWidth * 0.025),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              color: Color(0xffffffff),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.blueGrey,
-                                  blurRadius: 7.5,
-                                  spreadRadius: 0.05,
-                                  offset: Offset(0, 3),
-                                )
-                              ],
-                            ),
-                            width: screenWidth * 0.42,
-                            height: screenHeight * 1.8 / 7,
-                            child: InkWell(
-                              splashColor: Colors.blue[900],
-                              onTap: () async {
-                                Get.toNamed(thirukkuralroute);
-                              },
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Image(
-                                      image: const AssetImage(
-                                          'assets/images/ppp.png'),
-                                      width: screenWidth * 0.35,
-                                      height: screenHeight * 0.14,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5.0),
-                                    child: Container(
-                                      height: 0.5 + (screenHeight / 640),
-                                      width: screenWidth * 0.4,
-                                      color: Colors.redAccent,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Text(
-                                      'Thirukkural',
-                                      style: TextStyle(
-                                        fontSize: (screenRatio * 16 * 17.5) / 9,
-                                        color: Colors.brown,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                      children: const [
+                        HomeTileWidget(
+                          routeName: thirukkuralroute,
+                          tileName: 'Thirukkural',
+                          assetName: 'assets/images/ppp.png',
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(screenWidth * 0.025),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              color: Color(0xffffffff),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.blueGrey,
-                                  blurRadius: 7.5,
-                                  spreadRadius: 0.05,
-                                  offset: Offset(0, 3),
-                                )
-                              ],
-                            ),
-                            width: screenWidth * 0.42,
-                            height: screenHeight * 1.8 / 7,
-                            child: InkWell(
-                              splashColor: Colors.blue[900],
-                              onTap: () async {
-                                Get.toNamed(athichoodiroute);
-                                // BUG => 43 chudi is null
-                              },
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Image(
-                                      image: const AssetImage(
-                                          'assets/images/avvaiyar.png'),
-                                      width: screenWidth * 0.35,
-                                      height: screenHeight * 0.14,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5.0),
-                                    child: Container(
-                                      height: 0.5 + (screenHeight / 640),
-                                      width: screenWidth * 0.4,
-                                      color: Colors.redAccent,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Text(
-                                      'Aathichudi',
-                                      style: TextStyle(
-                                        fontSize: (screenRatio * 16 * 17.5) / 9,
-                                        color: Colors.brown,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                        HomeTileWidget(
+                          routeName: athichoodiroute,
+                          tileName: 'Aathichudi',
+                          assetName: 'assets/images/avvaiyar.png',
                         ),
                       ],
                     ),
                     Row(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffffff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blueGrey,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ],
-                                ),
-                                width: screenWidth * 0.42,
-                                height: screenHeight * 1.8 / 7,
-                                child: InkWell(
-                                  splashColor: Colors.blue[900],
-                                  onTap: () async {
-                                    Get.toNamed(thirukkuralroute);
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image(
-                                          image: const AssetImage(
-                                              'assets/images/olai3.png'),
-                                          width: screenWidth * 0.35,
-                                          height: screenHeight * 0.14,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                        child: Container(
-                                          height: 0.5 + (screenHeight / 640),
-                                          width: screenWidth * 0.4,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                          'Palamuzhigal',
-                                          style: TextStyle(
-                                            fontSize:
-                                                (screenRatio * 16 * 17.5) / 9,
-                                            color: Colors.brown,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffffff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blueGrey,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ],
-                                ),
-                                width: screenWidth * 0.42,
-                                height: screenHeight * 1.8 / 7,
-                                child: InkWell(
-                                  splashColor: Colors.blue[900],
-                                  onTap: () async {
-                                    Get.toNamed(thirukkuralroute);
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image(
-                                          image: const AssetImage(
-                                              'assets/images/portrait.jpg'),
-                                          width: screenWidth * 0.35,
-                                          height: screenHeight * 0.14,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                        child: Container(
-                                          height: 0.5 + (screenHeight / 640),
-                                          width: screenWidth * 0.4,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                          'Others',
-                                          style: TextStyle(
-                                            fontSize:
-                                                (screenRatio * 16 * 17.5) / 9,
-                                            color: Colors.brown,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                      children: const [
+                        HomeTileWidget(
+                          routeName: thirukkuralroute,
+                          tileName: 'Palamuzhigal',
+                          assetName: 'assets/images/olai3.png',
+                        ),
+                        HomeTileWidget(
+                          routeName: athichoodiroute,
+                          tileName: 'Others',
+                          assetName: 'assets/images/portrait.jpg',
                         ),
                       ],
                     ),
                     Row(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffffff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blueGrey,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ],
-                                ),
-                                width: screenWidth * 0.42,
-                                height: screenHeight * 1.8 / 7,
-                                child: InkWell(
-                                  splashColor: Colors.blue[900],
-                                  onTap: () async {
-                                    Get.toNamed(thirukkuralroute);
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image(
-                                          image: const AssetImage(
-                                              'assets/images/ppp.png'),
-                                          width: screenWidth * 0.35,
-                                          height: screenHeight * 0.14,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                        child: Container(
-                                          height: 0.5 + (screenHeight / 640),
-                                          width: screenWidth * 0.4,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                          'Others',
-                                          style: TextStyle(
-                                            fontSize:
-                                                (screenRatio * 16 * 17.5) / 9,
-                                            color: Colors.brown,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  color: Color(0xffffffff),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blueGrey,
-                                      blurRadius: 7.5,
-                                      spreadRadius: 0.05,
-                                      offset: Offset(0, 3),
-                                    )
-                                  ],
-                                ),
-                                width: screenWidth * 0.42,
-                                height: screenHeight * 1.8 / 7,
-                                child: InkWell(
-                                  splashColor: Colors.blue[900],
-                                  onTap: () async {
-                                    Get.toNamed(thirukkuralroute);
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image(
-                                          image: const AssetImage(
-                                              'assets/images/ppp.png'),
-                                          width: screenWidth * 0.35,
-                                          height: screenHeight * 0.14,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                        child: Container(
-                                          height: 0.5 + (screenHeight / 640),
-                                          width: screenWidth * 0.4,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                          'Others',
-                                          style: TextStyle(
-                                            fontSize:
-                                                (screenRatio * 16 * 17.5) / 9,
-                                            color: Colors.brown,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                      children: const [
+                        HomeTileWidget(
+                          routeName: thirukkuralroute,
+                          tileName: 'Others',
+                          assetName: 'assets/images/ppp.png',
+                        ),
+                        HomeTileWidget(
+                          routeName: athichoodiroute,
+                          tileName: 'Others',
+                          assetName: 'assets/images/ppp.png',
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        HomeTileWidget(
+                          routeName: thirukkuralroute,
+                          tileName: 'Others',
+                          assetName: 'assets/images/ppp.png',
+                        ),
+                        HomeTileWidget(
+                          routeName: athichoodiroute,
+                          tileName: 'Others',
+                          assetName: 'assets/images/ppp.png',
                         ),
                       ],
                     ),
