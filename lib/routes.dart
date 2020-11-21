@@ -1,5 +1,7 @@
+import 'package:TowardsLife/controllers/controllers.dart';
+import 'package:TowardsLife/controllers/thiruController.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
-import 'bindings/bindings.dart';
 import 'views/views.dart';
 
 const String thirukkuralroute = '/thirukkural';
@@ -12,17 +14,17 @@ final routes = [
   GetPage(
     name: thirukkuralroute,
     page: () => ThirukuralLists(),
-    binding: HomeBinding(),
+    binding: BindingsBuilder.put(() => ThiruController()),
   ),
   GetPage(
     name: homeroute,
     page: () => HomeView(),
-    // binding: HomeBinding(),
+    binding: BindingsBuilder.put(() => HomeController()),
   ),
   GetPage(
     name: athichoodiroute,
     page: () => AthichudiLists(),
-    binding: ChudiBinding(),
+    binding: BindingsBuilder.put(() => ChudiController()),
   ),
 ];
 

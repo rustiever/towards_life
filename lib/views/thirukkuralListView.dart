@@ -1,8 +1,8 @@
-import 'package:TowardsLife/controllers/homeController.dart';
+import 'package:TowardsLife/controllers/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-class ThirukuralLists extends GetView<HomeController> {
+class ThirukuralLists extends GetView<ThiruController> {
   final TextStyle dropdownMenuItem =
       const TextStyle(color: Colors.black, fontSize: 18);
 
@@ -38,7 +38,7 @@ class ThirukuralLists extends GetView<HomeController> {
                       ),
                       child: Column(
                         children: <Widget>[
-                          Container(
+                          SizedBox(
                             height: 30,
                             child: ListView(
                               padding: const EdgeInsets.only(
@@ -58,7 +58,7 @@ class ThirukuralLists extends GetView<HomeController> {
                                         fontSize: 15, color: Colors.purple),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   height: 20,
                                   child: VerticalDivider(
                                     color: Colors.redAccent[400],

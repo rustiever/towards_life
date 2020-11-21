@@ -8,16 +8,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  google_fonts: 1.1.1
-  flutter:
-    sdk: flutter
-  cupertino_icons:
-  flutter_neumorphic:
   flutter_tts:
-  firebase_core:
   cloud_firestore:
   get:
   get_storage:
+  firebase_core: 0.5.2
+  flutter:
+    sdk: flutter
+  cupertino_icons:
 
 dev_dependencies:
   flutter_test:

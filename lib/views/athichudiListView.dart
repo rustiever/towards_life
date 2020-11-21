@@ -39,7 +39,7 @@ class AthichudiLists extends GetView<ChudiController> {
                       ),
                       child: Column(
                         children: <Widget>[
-                          Container(
+                          SizedBox(
                             height: 30,
                             child: ListView(
                               padding: const EdgeInsets.only(

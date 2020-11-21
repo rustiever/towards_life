@@ -58,30 +58,47 @@ class HomeView extends StatelessWidget {
               ),
             ],
           ),
-          DraggableScrollableSheet(
-            initialChildSize: 0.3,
-            minChildSize: 0.15,
-            maxChildSize: 0.8,
-            builder: (BuildContext context, myscrollController) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  color: Colors.tealAccent[200],
-                  child: ListView.builder(
-                    controller: myscrollController,
-                    itemCount: 25,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text(
-                          'Dish $index',
-                          style: const TextStyle(color: Colors.black54),
-                        ),
-                      );
-                    },
+          DraggableScrollableActuator(
+            child: DraggableScrollableSheet(
+              initialChildSize: 0.3,
+              minChildSize: 0.15,
+              maxChildSize: 0.8,
+              builder: (BuildContext context, myscrollController) {
+                return Material(
+                  // borderRadius: const BorderRadius.all(Radius.circular(35),),
+                  color: Colors.limeAccent,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      // Radius.elliptical(25, 50),
+                      bottom: Radius.circular(35),
+                      top: Radius.circular(35),
+                    ),
                   ),
-                ),
-              );
-            },
+                  child: Column(
+                    children: [
+                      ExpandIcon(
+                        onPressed: (bool value) {},
+                        isExpanded: true,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          controller: myscrollController,
+                          itemCount: 25,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              title: Text(
+                                'Dish $index',
+                                style: const TextStyle(color: Colors.black54),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
