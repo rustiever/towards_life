@@ -8,23 +8,25 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter_tts:
   cloud_firestore:
-  get:
-  get_storage:
+  cupertino_icons:
   firebase_core: 0.5.2
   flutter:
     sdk: flutter
-  cupertino_icons:
+  flutter_tts:
+  get:
+  get_storage:
+  
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   device_preview:
-  lint:
-  test:
   flutter_launcher_icons: "^0.7.5"
   flutter_launcher_name: "^0.0.1"
+  flutter_test:
+    sdk: flutter
+  lint:
+  test:
+  
 
 flutter_launcher_name:
   name: "Towards Life"
