@@ -8,6 +8,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_hooks: 0.15.0
+  snapping_sheet: 2.0.1
   flutter_tts:
   cloud_firestore:
   get:

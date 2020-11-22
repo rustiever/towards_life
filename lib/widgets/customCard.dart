@@ -11,16 +11,19 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 140,
       child: Card(
         borderOnForeground: false,
-        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 4,
+        ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.elliptical(25, 50),
+            // Radius.elliptical(25, 50),
+            Radius.circular(30),
           ),
         ),
-        elevation: 2.5,
+        elevation: 5.5,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -37,13 +40,11 @@ class CustomCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FittedBox(
-                  // fit: BoxFit.fitWidth,
                   child: Text(topic.name),
                 ),
               ),
             ),
             FittedBox(
-              // fit: BoxFit.fitWidth,
               child: Text(
                 topic.length.toString(),
               ),

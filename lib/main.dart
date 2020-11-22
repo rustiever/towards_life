@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
+
+import 'views/homeView.dart';
 // import 'package:device_preview/device_preview.dart';
 
 // Future<void> main() async {
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: router.homeroute,
+      // home: GoogleMapsClonePage(),
       getPages: router.routes,
       title: 'Towards Life',
       theme: ThemeData(
