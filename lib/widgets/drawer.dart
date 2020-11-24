@@ -62,14 +62,14 @@ class ThirdLayer extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Home Screen",
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(bottom: 20),
                 ),
                 // const Text(
@@ -155,10 +155,10 @@ class SecondLayerState extends State<SecondLayer> {
           .translate(x: xoffSet, y: yoffSet)
           .rotate(angle)
           .matrix4,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Color(0xFF4c41a3),
+        color: const Color(0xFF4c41a3),
       ),
     );
   }

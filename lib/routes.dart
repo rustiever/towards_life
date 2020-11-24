@@ -16,7 +16,7 @@ final routes = [
   ),
   GetPage(
     name: homeroute,
-    page: () => CustomDrawer(),
+    page: () => DrawerStack(),
     binding: BindingsBuilder.put(() => HomeController()),
   ),
   GetPage(
