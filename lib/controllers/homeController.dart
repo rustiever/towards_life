@@ -5,5 +5,10 @@ class HomeController extends GetxController {
   final SnappingSheetController snappingSheetController =
       SnappingSheetController();
 
-  final ll = 09.obs;
+  RxDouble xoffSet = 0.0.obs;
+  RxDouble yoffSet = 0.0.obs;
+  RxDouble angle = 0.0.obs;
+
+  RxBool isOpen = false.obs;
+  RxBool isPlaying = false.obs;
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 
@@ -29,4 +31,19 @@ class Topic {
     @required this.length,
     @required this.name,
   });
+}
+
+Color generateRandomColor2() {
+  final Random random = Random();
+  // Pick a random number in the range [0.0, 1.0)
+  final double randomDouble = random.nextDouble();
+
+  return Color((randomDouble * 0xFFFFFF).toInt()).withOpacity(1.0);
+}
+
+Color generateRandomColor3() {
+  final Random random = Random();
+
+  return Color.fromARGB(
+      255, random.nextInt(256), random.nextInt(256), random.nextInt(256));
 }
