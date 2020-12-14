@@ -3,7 +3,7 @@ import 'controllers/controllers.dart';
 import 'views/views.dart';
 
 const String thirukkuralroute = '/thirukkural';
-const String homeroute = '/';
+const String homeroute = '/home';
 const String kuralroute = '/kurals';
 const String athichoodiroute = '/athisudi';
 const String athichoodiQuotes = '/athisudiPage';
@@ -16,7 +16,7 @@ final routes = [
   ),
   GetPage(
     name: homeroute,
-    page: () => DrawerStack(),
+    page: () => HomeView(),
     binding: BindingsBuilder.put(() => HomeController()),
   ),
   GetPage(
