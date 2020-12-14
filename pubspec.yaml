@@ -9,13 +9,13 @@ environment:
 
 dependencies:
   matrix4_transform: 1.1.6
-  flutter_hooks: 0.15.0
+  flutter_hooks: 
   snapping_sheet: 2.0.1
   flutter_tts:
-  cloud_firestore:
   get:
   get_storage:
-  firebase_core: 0.5.2
+  cloud_firestore: 0.14.4
+  firebase_core: 0.5.3
   flutter:
     sdk: flutter
   cupertino_icons:

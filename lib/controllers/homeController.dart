@@ -21,6 +21,7 @@ class HomeController extends GetxController {
       angle.value = 0;
       isOpen.value = false;
 
+      // ignore: invalid_use_of_protected_member
       secondLayerState.setState(() {
         secondLayerState.xoffSet = 0;
         secondLayerState.yoffSet = 0;
@@ -35,6 +36,7 @@ class HomeController extends GetxController {
     angle.value = -0.2;
     isOpen.value = true;
 
+    // ignore: invalid_use_of_protected_member
     secondLayerState.setState(() {
       secondLayerState.xoffSet = 122;
       secondLayerState.yoffSet = 110;
