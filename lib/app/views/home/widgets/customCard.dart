@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../homeView.dart';
+import 'package:TowardsLife/app/data/model/models.dart';
 
 class CustomCard extends StatelessWidget {
   final Topic topic;

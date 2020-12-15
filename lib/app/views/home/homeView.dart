@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:TowardsLife/app/data/model/models.dart';
 import 'widgets/widgets.dart';
 
 class HomeView extends StatelessWidget {
@@ -87,26 +88,4 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
-}
-
-List<Topic> topicList = [
-  Topic(
-      asset: 'assets/images/thiruvalluvar.png',
-      length: 1330,
-      name: 'Thirukkural'),
-  Topic(asset: 'assets/images/avvaiyar.png', length: 130, name: 'Aathichudi'),
-  Topic(
-      asset: 'assets/images/thiruvalluvar.png',
-      length: 1330,
-      name: 'Thirukkural'),
-];
-
-class Topic {
-  String asset, name;
-  int length;
-  Topic({
-    @required this.asset,
-    @required this.length,
-    @required this.name,
-  });
 }
