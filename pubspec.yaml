@@ -8,9 +8,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  cloud_firestore:
-  cupertino_icons:
-  firebase_core: 0.5.2
+  get: 3.23.0
+  matrix4_transform: 1.1.6
+  flutter_hooks: 
+  snapping_sheet: 2.0.1
+  flutter_tts:
+  get_storage:
+  cloud_firestore: 0.14.4
+  firebase_core: 0.5.3
   flutter:
     sdk: flutter
   flutter_tts:
