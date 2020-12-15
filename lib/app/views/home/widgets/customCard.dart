@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants/constants.dart' show Topic;
+import '../homeView.dart';
 
 class CustomCard extends StatelessWidget {
   final Topic topic;
