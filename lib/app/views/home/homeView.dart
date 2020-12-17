@@ -10,14 +10,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawerEdgeDragWidth: context.widthTransformer(reducedBy: 30),
+      drawerEdgeDragWidth: context.widthTransformer(reducedBy: 20),
       key: _scaffoldKey,
       appBar: AppBar(
         title: const Text('Explore'),
       ),
-      endDrawer: Drawer(
-        child: Column(),
-      ),
+      endDrawer: const CustomDrawer(),
       body: Column(
         children: [
           Expanded(
