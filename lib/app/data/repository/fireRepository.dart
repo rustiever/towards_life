@@ -6,5 +6,5 @@ class FireRepository {
 
   FireRepository({@required this.apiClient}) : assert(apiClient != null);
 
-  void getAll() {}
+  void setAll() => apiClient.setAll();
 }

@@ -1,7 +1,6 @@
 // To parse this JSON data, do
 //
 //     final kural = kuralFromJson(jsonString);
-
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
@@ -26,8 +25,8 @@ class Kural {
   String line1;
   String line2;
   int number;
-  List<Ation> translation;
-  List<Ation> transliteration;
+  List<Translation> translation;
+  List<Transliteration> transliteration;
   List<Explanation> explanation;
 
   factory Kural.fromJson(Map<String, dynamic> json) => Kural(
@@ -37,24 +36,24 @@ class Kural {
         number: json["number"] == null ? null : json["number"] as int,
         translation: json["translation"] == null
             ? null
-            : List<Ation>.from(
+            : List<Translation>.from(
                 json["translation"].map(
-                  (x) => Ation.fromJson(x as Map<String, dynamic>),
-                ) as Iterable<Ation>,
+                  (x) => Translation.fromJson(x as Map<String, dynamic>),
+                ) as Iterable,
               ),
         transliteration: json["transliteration"] == null
             ? null
-            : List<Ation>.from(
+            : List<Transliteration>.from(
                 json["transliteration"].map(
-                  (x) => Ation.fromJson(x as Map<String, dynamic>),
-                ) as Iterable<Ation>,
+                  (x) => Transliteration.fromJson(x as Map<String, dynamic>),
+                ) as Iterable,
               ),
         explanation: json["explanation"] == null
             ? null
             : List<Explanation>.from(
                 json["explanation"].map(
                   (x) => Explanation.fromJson(x as Map<String, dynamic>),
-                ) as Iterable<Explanation>,
+                ) as Iterable,
               ),
       );
 
@@ -65,36 +64,64 @@ class Kural {
         "number": number,
         "translation": translation == null
             ? null
-            : List<dynamic>.from(translation.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                translation.map(
+                  (x) => x.toJson(),
+                ),
+              ),
         "transliteration": transliteration == null
             ? null
-            : List<dynamic>.from(transliteration.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                transliteration.map(
+                  (x) => x.toJson(),
+                ),
+              ),
         "explanation": explanation == null
             ? null
-            : List<dynamic>.from(explanation.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                explanation.map(
+                  (x) => x.toJson(),
+                ),
+              ),
       };
 }
 
 class Explanation {
   Explanation({
-    @required this.language,
+    @required this.languageName,
+    @required this.details,
   });
 
-  Language language;
+  String languageName;
+  List<Detail> details;
 
   factory Explanation.fromJson(Map<String, dynamic> json) => Explanation(
-        language: json["language"] == null
+        languageName: json["languageName"] == null
             ? null
-            : Language.fromJson(json["language"] as Map<String, dynamic>),
+            : json["languageName"] as String,
+        details: json["details"] == null
+            ? null
+            : List<Detail>.from(
+                json["details"].map(
+                  (x) => Detail.fromJson(x as Map<String, dynamic>),
+                ) as Iterable,
+              ),
       );
 
   Map<String, dynamic> toJson() => {
-        "language": language,
+        "languageName": languageName,
+        "details": details == null
+            ? null
+            : List<dynamic>.from(
+                details.map(
+                  (x) => x.toJson(),
+                ),
+              ),
       };
 }
 
-class Language {
-  Language({
+class Detail {
+  Detail({
     @required this.author,
     @required this.content,
   });
@@ -102,7 +129,7 @@ class Language {
   String author;
   String content;
 
-  factory Language.fromJson(Map<String, dynamic> json) => Language(
+  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
         author: json["author"] == null ? null : json["author"] as String,
         content: json["content"] == null ? null : json["content"] as String,
       );
@@ -113,8 +140,8 @@ class Language {
       };
 }
 
-class Ation {
-  Ation({
+class Translation {
+  Translation({
     @required this.language,
     @required this.content,
   });
@@ -122,7 +149,7 @@ class Ation {
   String language;
   String content;
 
-  factory Ation.fromJson(Map<String, dynamic> json) => Ation(
+  factory Translation.fromJson(Map<String, dynamic> json) => Translation(
         language: json["language"] == null ? null : json["language"] as String,
         content: json["content"] == null ? null : json["content"] as String,
       );
@@ -130,5 +157,48 @@ class Ation {
   Map<String, dynamic> toJson() => {
         "language": language,
         "content": content,
+      };
+}
+
+class Transliteration {
+  Transliteration({
+    @required this.language,
+    @required this.content,
+  });
+
+  String language;
+  Content content;
+
+  factory Transliteration.fromJson(Map<String, dynamic> json) =>
+      Transliteration(
+        language: json["language"] == null ? null : json["language"] as String,
+        content: json["content"] == null
+            ? null
+            : Content.fromJson(json["content"] as Map<String, dynamic>),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "language": language,
+        "content": content.toJson(),
+      };
+}
+
+class Content {
+  Content({
+    @required this.line1,
+    @required this.line2,
+  });
+
+  String line1;
+  String line2;
+
+  factory Content.fromJson(Map<String, dynamic> json) => Content(
+        line1: json["line1"] == null ? null : json["line1"] as String,
+        line2: json["line2"] == null ? null : json["line2"] as String,
+      );
+
+  Map<String, dynamic> toJson() => {
+        "line1": line1,
+        "line2": line2,
       };
 }
