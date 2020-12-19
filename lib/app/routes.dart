@@ -9,6 +9,7 @@ import 'views/views.dart';
 class AppPages {
   static const homeRoute = '/home';
   static const adminRoute = '/admin';
+  static const kuralsRoute = '/Thirukkural';
 
   static final pages = [
     GetPage(
@@ -16,6 +17,7 @@ class AppPages {
       name: homeRoute,
       page: () => HomeView(),
     ),
+    GetPage(title: 'Kurals', name: kuralsRoute, page: () => KuralsView()),
     GetPage(
       title: 'Admin',
       name: adminRoute,

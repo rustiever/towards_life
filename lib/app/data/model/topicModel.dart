@@ -1,3 +1,4 @@
+import 'package:TowardsLife/app/routes.dart';
 import 'package:meta/meta.dart';
 
 class Topic {
@@ -14,10 +15,13 @@ List<Topic> topicList = [
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: 'Thirukkural'),
-  Topic(asset: 'assets/images/avvaiyar.png', length: 130, name: 'Aathichudi'),
+      name: AppPages.kuralsRoute),
+  Topic(
+      asset: 'assets/images/avvaiyar.png',
+      length: 130,
+      name: AppPages.kuralsRoute),
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: 'Thirukkural'),
+      name: AppPages.kuralsRoute),
 ];

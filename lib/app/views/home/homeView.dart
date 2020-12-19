@@ -1,22 +1,13 @@
+import 'package:TowardsLife/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'package:TowardsLife/app/data/model/models.dart';
 import 'widgets/widgets.dart';
 
 class HomeView extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawerEdgeDragWidth: context.widthTransformer(reducedBy: 20),
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: const Text('Explore'),
-      ),
-      endDrawer: const CustomDrawer(),
-      body: Column(
+    return CustomScafflod(
+      child: Column(
         children: [
           Expanded(
             flex: 2,
