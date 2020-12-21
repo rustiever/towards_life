@@ -8,6 +8,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  cloud_firestore:
+  firebase_core: 
   flutter_hooks: 
   get: 3.23.0
   get_storage:
