@@ -42,7 +42,7 @@ flutter:
   
   assets:
     - assets/images/
-    - assets/kuralData.json
+    - assets/kn.json
     - assets/
 
   fonts:

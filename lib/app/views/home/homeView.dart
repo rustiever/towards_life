@@ -1,6 +1,5 @@
 import 'package:TowardsLife/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:TowardsLife/app/data/model/models.dart';
 import 'widgets/widgets.dart';
 
 class HomeView extends StatelessWidget {
@@ -42,15 +41,9 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 3,
-                  child: ListView.builder(
-                    itemCount: topicList.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (_, int index) => CustomCard(
-                      topic: topicList[index],
-                    ),
-                  ),
+                  child: FlipList(),
                 ),
               ],
             ),
