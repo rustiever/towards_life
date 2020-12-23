@@ -251,7 +251,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.23.0"
+    version: "3.24.0"
   get_storage:
     dependency: "direct main"
     description:
@@ -266,6 +266,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  hive:
+    dependency: "direct main"
+    description:
+      name: hive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.4+1"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   http:
     dependency: transitive
     description:
@@ -343,13 +357,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.10-nullsafety.1"
-  matrix4_transform:
-    dependency: "direct main"
-    description:
-      name: matrix4_transform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.6"
   meta:
     dependency: transitive
     description:
@@ -593,13 +600,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  snapping_sheet:
-    dependency: "direct main"
-    description:
-      name: snapping_sheet
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   source_map_stack_trace:
     dependency: transitive
     description:

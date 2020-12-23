@@ -8,10 +8,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  get: 3.23.0
-  matrix4_transform: 1.1.6
+  get: 3.24.0
+  hive_flutter: 0.3.1
+  hive: 1.4.4+1
   flutter_hooks: 
-  snapping_sheet: 2.0.1
   get_storage:
   cloud_firestore: 0.14.4
   firebase_core: 0.5.3
