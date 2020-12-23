@@ -42,6 +42,7 @@ flutter:
   
   assets:
     - assets/images/
+    - assets/kn.json
     - assets/
 
   fonts:
