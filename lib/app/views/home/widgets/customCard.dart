@@ -60,28 +60,29 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // onTap: () => Get.toNamed(topic.name),
-      child: SizedBox(
-        width: 140,
-        child: Card(
-          borderOnForeground: false,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 4,
+    return SizedBox(
+      width: 140,
+      child: Card(
+        borderOnForeground: false,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 4,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            // Radius.elliptical(25, 50),
+            Radius.circular(30),
           ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              // Radius.elliptical(25, 50),
-              Radius.circular(30),
-            ),
-          ),
-          elevation: 5.5,
-          child: back
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [CustomTextField(topic: topic)],
-                )
-              : Column(
+        ),
+        elevation: 5.5,
+        child: back
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [CustomTextField(topic: topic)],
+              )
+            : GestureDetector(
+                onTap: () => Get.toNamed(
+                    '${topic.name}?name=${topic.name.substring(1)}'),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
@@ -110,7 +111,7 @@ class CustomCard extends StatelessWidget {
                     ),
                   ],
                 ),
-        ),
+              ),
       ),
     );
   }

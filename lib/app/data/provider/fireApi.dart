@@ -33,4 +33,13 @@ class FireApiClient {
     // printInfo(info: n.toString());
     print(Kural.fromJson(hel[54] as Map<String, dynamic>).couplet);
   }
+
+  Future<QuerySnapshot> fetchContents(String collection, {int last = 0}) async {
+    const limit = 10;
+    final Query query = firestore
+        .collection(collection)
+        .orderBy('number')
+        .startAfter([last]).limit(limit);
+    return query.get();
+  }
 }
