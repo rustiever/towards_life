@@ -1,10 +1,11 @@
-import 'package:TowardsLife/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/controllers.dart';
+import '../../widgets/widgets.dart';
 import 'widgets/widgets.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -77,6 +78,11 @@ class HomeView extends StatelessWidget {
                   color: Colors.greenAccent,
                   height: 40,
                   width: double.infinity,
+                  child: OutlineButton(
+                    onPressed: () {
+                      controller.tryMe();
+                    },
+                  ),
                 ),
               ),
             ),

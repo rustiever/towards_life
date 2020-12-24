@@ -13,10 +13,15 @@ class AppPages {
 
   static final pages = [
     GetPage(
-        title: 'Home',
-        name: homeRoute,
-        page: () => HomeView(),
-        binding: BindingsBuilder.put(() => HomeController())),
+      title: 'Home',
+      name: homeRoute,
+      page: () => HomeView(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut<HomeController>(
+          () => HomeController(),
+        ),
+      ),
+    ),
     GetPage(title: 'Kurals', name: kuralsRoute, page: () => KuralsView()),
     GetPage(
       title: 'Admin',

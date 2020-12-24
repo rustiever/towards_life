@@ -27,21 +27,12 @@ import 'app/routes.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  comp();
+
   runApp(
     GetMaterialApp(
-      title: "Application",
+      title: "Towards Life",
       initialRoute: AppPages.homeRoute,
       getPages: AppPages.pages,
     ),
   );
-}
-
-Future<void> comp() async {
-  final kuralDetail = await compute(loadDetails, kuralDetailsPath);
-  print(kuralDetail.section.detail.length);
-}
-
-Future<KuralDetail> loadDetails(String kuralDetails) async {
-  return kuralDetailFromJson(await rootBundle.loadString(kuralDetails));
 }
