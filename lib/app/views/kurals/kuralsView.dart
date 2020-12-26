@@ -25,14 +25,85 @@ class KuralsView extends GetView<NoNameController> {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: controller.contentList.length,
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                   controller: controller.scrollController,
+                  itemCount: controller.contentList.length,
                   itemBuilder: (_, int index) {
                     final Kural kural = controller.contentList[index] as Kural;
-                    return SizedBox(
-                      height: 300,
-                      child: Center(
-                        child: Text('KuralsView ${kural.number}'),
+                    // final KuralDetail vv = HomeController.to.kuralDetail;
+
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        side: BorderSide(
+                          width: 2,
+                          color: Colors.cyan.withOpacity(0.8),
+                          // style: BorderStyle.solid,
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 30,
+                            child: ListView(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, top: 10),
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () => controller.scrollController
+                                      .jumpTo(controller.scrollController
+                                          .position.minScrollExtent),
+                                  child: Text(
+                                    // kural.kurals[index].chapter,
+                                    kural.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                  child: VerticalDivider(
+                                    color: Colors.redAccent[400],
+                                    // thickness: 2,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () => controller.scrollController
+                                      .jumpTo(controller.scrollController
+                                          .position.minScrollExtent),
+                                  child: Text(
+                                    kural.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, color: Colors.purple),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Divider(
+                            height: 10,
+                            color: Colors.orange,
+                          ),
+                          ListTile(
+                            contentPadding: const EdgeInsets.only(
+                              bottom: 20,
+                              left: 15,
+                            ),
+                            title: Text(
+                              kural.line1,
+                              style: const TextStyle(
+                                  fontSize: 15, color: Colors.indigoAccent),
+                            ),
+                            subtitle: Text(
+                              '${kural.line2} [${kural.number}]',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.indigo),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },

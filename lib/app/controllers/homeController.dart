@@ -5,11 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  static HomeController get to => Get.find();
+
   KuralDetail kuralDetail;
 
   @override
   Future<void> onInit() async {
     // kuralDetail = await loadDetails(kuralDetailsPath);
+    comp(await rootBundle.loadString(kuralDetailsPath));
     super.onInit();
   }
 
@@ -17,14 +20,14 @@ class HomeController extends GetxController {
     comp(await rootBundle.loadString(kuralDetailsPath));
     // kuralDetail = await compute(loadDetails, kuralDetailsPath);
   }
+
+  Future<void> comp(String key) async {
+    kuralDetail = await compute(loadDetails, key);
+    print(kuralDetail.section.detail.length);
+    print(kuralDetail.section.tamil);
+  }
 }
 
-Future<void> comp(String key) async {
-  final kuralDetail = await compute(loadDetails, key);
-  print(kuralDetail.section.detail.length);
-  print(kuralDetail.section.tamil);
-}
-
-Future<KuralDetail> loadDetails(String key) async {
+KuralDetail loadDetails(String key) {
   return kuralDetailFromJson(key);
 }

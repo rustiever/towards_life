@@ -18,8 +18,8 @@ class AppPages {
       name: homeRoute,
       page: () => HomeView(),
       binding: BindingsBuilder(
-        () => Get.lazyPut<HomeController>(
-          () => HomeController(),
+        () => Get.put<HomeController>(
+          HomeController(),
         ),
       ),
     ),
