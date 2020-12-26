@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:TowardsLife/app/data/model/models.dart';
 import 'package:get/get.dart';
+
+import '../../../data/model/models.dart';
 
 class FlipList extends StatelessWidget {
   const FlipList({
@@ -13,6 +14,7 @@ class FlipList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
+      controller: ScrollController(),
       itemCount: topicList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (_, int index) => ValueBuilder(
@@ -39,72 +41,127 @@ class FlipList extends StatelessWidget {
       height: double.infinity,
       width: 140,
       decoration: const BoxDecoration(color: Colors.transparent),
-      child: back
-          ? const SizedBox.shrink()
-          : CustomCard(
-              topic: topicList[index],
-            ),
+      child: CustomCard(
+        back: back,
+        topic: topicList[index],
+      ),
     );
   }
 }
 
 class CustomCard extends StatelessWidget {
   final Topic topic;
+  final bool back;
   const CustomCard({
     Key key,
     @required this.topic,
+    @required this.back,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Get.toNamed(topic.name),
-      child: SizedBox(
-        width: 140,
-        child: Card(
-          borderOnForeground: false,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 4,
+    return SizedBox(
+      width: 140,
+      child: Card(
+        borderOnForeground: false,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 4,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            // Radius.elliptical(25, 50),
+            Radius.circular(30),
           ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              // Radius.elliptical(25, 50),
-              Radius.circular(30),
-            ),
-          ),
-          elevation: 5.5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    topic.asset,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FittedBox(
-                    child: Text(
-                      topic.name.substring(1),
+        ),
+        elevation: 5.5,
+        child: back
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [CustomTextField(topic: topic)],
+              )
+            : GestureDetector(
+                onTap: () => Get.toNamed(
+                    '${topic.name}?name=${topic.name.substring(1)}'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          topic.asset,
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FittedBox(
+                          child: Text(
+                            topic.name.substring(1),
+                          ),
+                        ),
+                      ),
+                    ),
+                    FittedBox(
+                      child: Text(
+                        topic.length.toString(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              FittedBox(
-                child: Text(
-                  topic.length.toString(),
-                ),
-              ),
-            ],
+      ),
+    );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  CustomTextField({
+    Key key,
+    @required this.topic,
+  }) : super(key: key);
+
+  final _formKey = GlobalKey<FormState>();
+  final Topic topic;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: TextFormField(
+          validator: (value) {
+            return value.isEmpty
+                ? "Can't be empty"
+                : !value.isNum
+                    ? 'Not a number'
+                    : !int.tryParse(value).isLowerThan(topic.length)
+                        ? 'Not valid range'
+                        : null;
+          },
+          onSaved: _search,
+          onFieldSubmitted: _search,
+          textInputAction: TextInputAction.search,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            labelText: 'Go To',
+            hintText: 'Go TO',
           ),
         ),
       ),
     );
+  }
+
+  void _search(String value) {
+    if (_formKey.currentState.validate()) {
+      printInfo(info: value);
+    }
   }
 }
 
@@ -125,7 +182,7 @@ class FlippableBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 700),
-      curve: Curves.easeOut,
+      curve: Curves.decelerate,
       tween: Tween(begin: 0.0, end: isFlipped ? 180.0 : 0.0),
       builder: (context, double value, child) {
         final content = value >= 90 ? back : front;
@@ -150,7 +207,7 @@ class AnimatedBackground extends StatelessWidget {
         width: child.constraints.maxWidth,
         height: child.constraints.maxHeight,
         duration: const Duration(milliseconds: 700),
-        curve: Curves.easeOut,
+        curve: Curves.decelerate,
         child: child);
   }
 }

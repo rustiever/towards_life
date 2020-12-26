@@ -8,16 +8,18 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  cloud_firestore:
-  firebase_core: 
-  flutter_hooks: 
-  get: 3.23.0
+  cloud_firestore: 0.14.4
+  cupertino_icons:
+  firebase_core: 0.5.3
+  flutter:
+    sdk: flutter
+  flutter_hooks:
+  get: 3.24.0
   get_storage:
-  matrix4_transform: 1.1.6
-  snapping_sheet: 2.0.1
+  hive: 1.4.4+1
+  hive_flutter: 0.3.1
 
   
-
 dev_dependencies:
   device_preview:
   flutter_launcher_icons: "^0.7.5"
@@ -42,8 +44,7 @@ flutter:
   
   assets:
     - assets/images/
-    - assets/kn.json
-    - assets/
+    - assets/jsons/
 
   fonts:
     - family: NotoSansTamil
