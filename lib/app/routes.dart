@@ -1,4 +1,3 @@
-import 'package:TowardsLife/app/controllers/thirukuralController.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'controllers/controllers.dart';
@@ -24,19 +23,18 @@ class AppPages {
       ),
     ),
     GetPage(
-        title: 'Kurals',
-        name: kuralsRoute,
-        page: () => KuralsView(),
-        binding: BindingsBuilder(
-          () => Get.put<NoNameController>(
-            NoNameController(
-              repository: FireRepository(
-                apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
-              ),
-            ),
+      title: 'Kurals',
+      name: kuralsRoute,
+      page: () => KuralsListView(),
+      binding: BindingsBuilder.put(
+        () => LibraryController(
+          repository: FireRepository(
+            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
           ),
         ),
-        parameter: {"type": "kural"}),
+      ),
+      parameter: {"type": "kural"},
+    ),
     GetPage(
       title: 'Admin',
       name: adminRoute,

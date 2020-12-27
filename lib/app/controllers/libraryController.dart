@@ -6,11 +6,11 @@ import '../constants/constants.dart';
 import '../data/model/kuralModel.dart';
 import '../data/repository/fireRepository.dart';
 
-class NoNameController extends GetxController {
-  static NoNameController get to => Get.find();
+class LibraryController extends GetxController {
+  static LibraryController get to => Get.find();
 
   final FireRepository repository;
-  NoNameController({@required this.repository}) : assert(repository != null);
+  LibraryController({@required this.repository}) : assert(repository != null);
   ScrollController scrollController;
   final RxList contentList = [].obs;
   int last;
@@ -26,7 +26,6 @@ class NoNameController extends GetxController {
         () {
           if (scrollController.position.pixels ==
               scrollController.position.maxScrollExtent) {
-            print('no');
             _fetch();
           }
         },

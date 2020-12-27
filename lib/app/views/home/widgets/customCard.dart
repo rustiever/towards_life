@@ -65,7 +65,7 @@ class CustomCard extends StatelessWidget {
       child: Card(
         borderOnForeground: false,
         margin: const EdgeInsets.symmetric(
-          horizontal: 4,
+          horizontal: 8,
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
