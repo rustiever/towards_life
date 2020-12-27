@@ -18,13 +18,13 @@ class KuralDetail {
   });
 
   String tamil;
-  Section section;
+  Classification section;
 
   factory KuralDetail.fromJson(Map<String, dynamic> json) => KuralDetail(
         tamil: json["tamil"] == null ? null : json["tamil"] as String,
         section: json["section"] == null
             ? null
-            : Section.fromJson(json["section"] as Map<String, dynamic>),
+            : Classification.fromJson(json["section"] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
@@ -33,8 +33,8 @@ class KuralDetail {
       };
 }
 
-class Section {
-  Section({
+class Classification {
+  Classification({
     @required this.tamil,
     @required this.detail,
   });
@@ -42,7 +42,7 @@ class Section {
   String tamil;
   List<SectionDetail> detail;
 
-  factory Section.fromJson(Map<String, dynamic> json) => Section(
+  factory Classification.fromJson(Map<String, dynamic> json) => Classification(
         tamil: json["tamil"] == null ? null : json["tamil"] as String,
         detail: json["detail"] == null
             ? null

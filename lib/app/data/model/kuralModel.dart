@@ -358,7 +358,7 @@ class Explanation {
   });
 
   String languageName;
-  List<Detail> details;
+  List<LanguageDetail> details;
 
   factory Explanation.fromJson(Map<String, dynamic> json) => Explanation(
         languageName: json["languageName"] == null
@@ -366,9 +366,9 @@ class Explanation {
             : json["languageName"] as String,
         details: json["details"] == null
             ? null
-            : List<Detail>.from(
+            : List<LanguageDetail>.from(
                 json["details"].map(
-                  (x) => Detail.fromJson(x as Map<String, dynamic>),
+                  (x) => LanguageDetail.fromJson(x as Map<String, dynamic>),
                 ) as Iterable,
               ),
       );
@@ -381,8 +381,8 @@ class Explanation {
       };
 }
 
-class Detail {
-  Detail({
+class LanguageDetail {
+  LanguageDetail({
     @required this.author,
     @required this.content,
   });
@@ -390,7 +390,7 @@ class Detail {
   String author;
   String content;
 
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+  factory LanguageDetail.fromJson(Map<String, dynamic> json) => LanguageDetail(
         author: json["author"] == null ? null : json["author"] as String,
         content: json["content"] == null ? null : json["content"] as String,
       );

@@ -43,6 +43,7 @@ flutter:
   assets:
     - assets/images/
     - assets/jsons/
+    - assets/jsons/kn.json
 
   fonts:
     - family: NotoSansTamil
