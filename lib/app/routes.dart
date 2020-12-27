@@ -9,22 +9,22 @@ import 'views/views.dart';
 class AppPages {
   static const homeRoute = '/home';
   static const adminRoute = '/admin';
-  static const kuralsRoute = '/Thirukkural';
+  static const kuralsListRoute = '/Thirukkural';
+  static const athichidiListRoute = '/Athichudi';
+  static const searchRoute = '/Search';
 
   static final pages = [
     GetPage(
       title: 'Home',
       name: homeRoute,
       page: () => HomeView(),
-      binding: BindingsBuilder(
-        () => Get.put<HomeController>(
-          HomeController(),
-        ),
+      binding: BindingsBuilder.put(
+        () => HomeController(),
       ),
     ),
     GetPage(
       title: 'Kurals',
-      name: kuralsRoute,
+      name: kuralsListRoute,
       page: () => KuralsListView(),
       binding: BindingsBuilder.put(
         () => LibraryController(

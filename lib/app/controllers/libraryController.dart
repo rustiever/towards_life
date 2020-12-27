@@ -41,15 +41,16 @@ class LibraryController extends GetxController {
   }
 
   Future<void> _fetch() async {
+    const limit = 10;
+    QuerySnapshot snapshots;
+
     if (isLoading.isfalse) {
-      const limit = 10;
       isLoading.value = true;
 
       if (isMoreAvailable.value) {
-        final QuerySnapshot snapshots =
-            await repository.fetchContents(kuralCollection, last: last);
-
         if (Get.parameters['name'] == 'Thirukkural') {
+          snapshots =
+              await repository.fetchContents(kuralCollection, last: last);
           for (final item in snapshots.docs) {
             contentList.add(
               Kural.fromJson(

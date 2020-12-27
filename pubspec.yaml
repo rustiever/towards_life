@@ -8,6 +8,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  auto_animated: 2.1.0
   get: 3.24.0
   hive_flutter: 0.3.1
   hive: 1.4.4+1
