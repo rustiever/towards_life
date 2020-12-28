@@ -1,3 +1,4 @@
+import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,32 @@ import '../../data/model/models.dart';
 import '../../widgets/widgets.dart';
 
 class KuralsListView extends GetView<LibraryController> {
+  Widget aniBuild(
+      BuildContext context,
+      int index,
+      Animation<double> animation,
+      double xOffset,
+      Caard Function(
+    LibraryController controller,
+    Kural kural,
+  )
+          child) {
+    final Kural kural = controller.contentList[index] as Kural;
+    return FadeTransition(
+      opacity: Tween<double>(
+        begin: 0,
+        end: 1,
+      ).animate(animation),
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: Offset(xOffset, 0.1),
+          end: Offset.zero,
+        ).animate(animation),
+        child: child(controller, kural),
+      ),
+    );
+  }
+
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   @override
   Widget build(BuildContext context) {
@@ -24,21 +51,29 @@ class KuralsListView extends GetView<LibraryController> {
             return Column(
               children: [
                 Expanded(
-                  child: ListView.builder(
-                    key: listKey,
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    controller: controller.scrollController,
-                    itemCount: controller.contentList.length,
-                    itemBuilder: (
+                    child: LiveList(
+                  controller: controller.scrollController,
+                  showItemDuration: const Duration(milliseconds: 350),
+                  padding: const EdgeInsets.all(16),
+                  reAnimateOnVisibility: true,
+                  itemCount: controller.contentList.length,
+                  itemBuilder: (_, index, animation) {
+                    return aniBuild(
                       _,
-                      int index,
-                    ) {
-                      final Kural kural =
-                          controller.contentList[index] as Kural;
-                      return Caard(controller: controller, kural: kural);
-                    },
-                  ),
-                ),
+                      index,
+                      animation,
+                      index.isEven ? 0.15 : -0.15,
+                      (controller, kural) =>
+                          Caard(controller: controller, kural: kural),
+                    );
+
+                    // animationItemBuilder(
+                    //   (kural)=>
+                    // Caard(controller: controller ,kural: kural,)
+                    // );
+                    // child: Caard(controller: controller, kural: kural),
+                  },
+                )),
                 if (controller.isLoading.isTrue)
                   const Center(
                     child: CircularProgressIndicator(),
@@ -181,56 +216,4 @@ class CustomClipPath extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true; // TODO change
-}
-
-class AnimatedListItem extends StatefulWidget {
-  final int index;
-  final LibraryController controller;
-  final Kural kural;
-
-  const AnimatedListItem(this.index,
-      {Key key, @required this.controller, @required this.kural})
-      : super(key: key);
-
-  @override
-  _AnimatedListItemState createState() => _AnimatedListItemState();
-}
-
-class _AnimatedListItemState extends State<AnimatedListItem> {
-  bool _animate = false;
-
-  static bool _isStart = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _isStart
-        ? Future.delayed(Duration(milliseconds: widget.index * 100), () {
-            setState(() {
-              _animate = true;
-              _isStart = false;
-            });
-          })
-        : _animate = true;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 1000),
-      opacity: _animate ? 1 : 0,
-      curve: Curves.easeInOutQuart,
-      child: AnimatedPadding(
-          duration: const Duration(milliseconds: 1000),
-          padding: _animate
-              ? const EdgeInsets.all(4.0)
-              : const EdgeInsets.only(top: 10),
-          child: Caard(controller: widget.controller, kural: widget.kural)),
-    );
-  }
 }
