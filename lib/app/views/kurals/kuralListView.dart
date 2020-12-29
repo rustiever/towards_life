@@ -6,40 +6,18 @@ import '../../controllers/controllers.dart';
 import '../../data/model/models.dart';
 import '../../widgets/widgets.dart';
 
-class KuralsListView extends GetView<LibraryController> {
-  Widget aniBuild(
-      BuildContext context,
-      int index,
-      Animation<double> animation,
-      double xOffset,
-      Caard Function(
-    LibraryController controller,
-    Kural kural,
-  )
-          child) {
-    final Kural kural = controller.contentList[index] as Kural;
-    return FadeTransition(
-      opacity: Tween<double>(
-        begin: 0,
-        end: 1,
-      ).animate(animation),
-      child: SlideTransition(
-        position: Tween<Offset>(
-          begin: Offset(xOffset, 0.1),
-          end: Offset.zero,
-        ).animate(animation),
-        child: child(controller, kural),
-      ),
-    );
-  }
-
+class KuralsListView extends GetWidget<LibraryController> {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         drawerEdgeDragWidth: context.widthTransformer(reducedBy: 40),
-        // appBar: AppBar(),
+        appBar: AppBar(
+          title: const FittedBox(
+            child: Text('திருக்குறள்'),
+          ),
+        ),
         endDrawer: const CustomDrawer(),
         body: Obx(
           () {
@@ -51,29 +29,41 @@ class KuralsListView extends GetView<LibraryController> {
             return Column(
               children: [
                 Expanded(
+                  child: Scrollbar(
+                    isAlwaysShown: true,
+                    radius: const Radius.circular(30),
+                    thickness: 30,
+                    controller: controller.scrollController,
                     child: LiveList(
-                  controller: controller.scrollController,
-                  showItemDuration: const Duration(milliseconds: 350),
-                  padding: const EdgeInsets.all(16),
-                  reAnimateOnVisibility: true,
-                  itemCount: controller.contentList.length,
-                  itemBuilder: (_, index, animation) {
-                    return aniBuild(
-                      _,
-                      index,
-                      animation,
-                      index.isEven ? 0.15 : -0.15,
-                      (controller, kural) =>
-                          Caard(controller: controller, kural: kural),
-                    );
-
-                    // animationItemBuilder(
-                    //   (kural)=>
-                    // Caard(controller: controller ,kural: kural,)
-                    // );
-                    // child: Caard(controller: controller, kural: kural),
-                  },
-                )),
+                      controller: controller.scrollController,
+                      physics: const BouncingScrollPhysics(),
+                      showItemDuration: const Duration(milliseconds: 350),
+                      padding: const EdgeInsets.all(16),
+                      reAnimateOnVisibility: true,
+                      itemCount: controller.contentList.length,
+                      itemBuilder: (_, index, animation) {
+                        final Kural kural =
+                            controller.contentList[index] as Kural;
+                        return FadeTransition(
+                          opacity: Tween<double>(
+                            begin: 0,
+                            end: 1,
+                          ).animate(animation),
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: Offset(index.isEven ? 0.15 : -0.15, 0.1),
+                              end: Offset.zero,
+                            ).animate(animation),
+                            child: KuralCard(
+                              controller: controller,
+                              kural: kural,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
                 if (controller.isLoading.isTrue)
                   const Center(
                     child: CircularProgressIndicator(),
@@ -84,13 +74,14 @@ class KuralsListView extends GetView<LibraryController> {
             );
           },
         ),
+        extendBody: true,
       ),
     );
   }
 }
 
-class Caard extends StatelessWidget {
-  const Caard({
+class KuralCard extends StatelessWidget {
+  const KuralCard({
     Key key,
     @required this.controller,
     @required this.kural,
@@ -102,6 +93,8 @@ class Caard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 15,
+      color: Colors.lightBlue[100],
       shadowColor: Colors.grey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25.0),

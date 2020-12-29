@@ -3,9 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../controllers/controllers.dart';
 import '../../../data/model/models.dart';
 
-class FlipList extends StatelessWidget {
+class FlipList extends GetView<HomeController> {
   const FlipList({
     Key key,
   }) : super(key: key);
@@ -13,8 +14,8 @@ class FlipList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      controller: controller.scrollController,
       physics: const BouncingScrollPhysics(),
-      controller: ScrollController(),
       itemCount: topicList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (_, int index) => ValueBuilder(

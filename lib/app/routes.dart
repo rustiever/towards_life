@@ -26,10 +26,12 @@ class AppPages {
       title: 'Aathichudi',
       name: aathichidiListRoute,
       page: () => AathichudiListView(),
-      binding: BindingsBuilder.put(
-        () => LibraryController(
-          repository: FireRepository(
-            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+      binding: BindingsBuilder(
+        () => Get.create(
+          () => LibraryController(
+            repository: FireRepository(
+              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+            ),
           ),
         ),
       ),
@@ -39,10 +41,12 @@ class AppPages {
       title: 'Kurals',
       name: kuralsListRoute,
       page: () => KuralsListView(),
-      binding: BindingsBuilder.put(
-        () => LibraryController(
-          repository: FireRepository(
-            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+      binding: BindingsBuilder(
+        () => Get.create(
+          () => LibraryController(
+            repository: FireRepository(
+              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+            ),
           ),
         ),
       ),

@@ -14,22 +14,22 @@ String kuralDetailToJson(KuralDetail data) => json.encode(data.toJson());
 class KuralDetail {
   KuralDetail({
     @required this.tamil,
-    @required this.section,
+    @required this.classification,
   });
 
   String tamil;
-  Classification section;
+  Classification classification;
 
   factory KuralDetail.fromJson(Map<String, dynamic> json) => KuralDetail(
         tamil: json["tamil"] == null ? null : json["tamil"] as String,
-        section: json["section"] == null
+        classification: json["section"] == null
             ? null
             : Classification.fromJson(json["section"] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
         "tamil": tamil,
-        "section": section ?? section.toJson(),
+        "section": classification ?? classification.toJson(),
       };
 }
 
