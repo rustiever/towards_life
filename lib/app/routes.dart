@@ -10,7 +10,7 @@ class AppPages {
   static const homeRoute = '/home';
   static const adminRoute = '/admin';
   static const kuralsListRoute = '/Thirukkural';
-  static const athichidiListRoute = '/Athichudi';
+  static const aathichidiListRoute = '/Athichudi';
   static const searchRoute = '/Search';
 
   static final pages = [
@@ -21,6 +21,19 @@ class AppPages {
       binding: BindingsBuilder.put(
         () => HomeController(),
       ),
+    ),
+    GetPage(
+      title: 'Aathichudi',
+      name: aathichidiListRoute,
+      page: () => AathichudiListView(),
+      binding: BindingsBuilder.put(
+        () => LibraryController(
+          repository: FireRepository(
+            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+          ),
+        ),
+      ),
+      parameter: {"type": "kural"},
     ),
     GetPage(
       title: 'Kurals',

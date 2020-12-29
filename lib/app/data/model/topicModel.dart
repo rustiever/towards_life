@@ -19,7 +19,7 @@ List<Topic> topicList = [
   Topic(
       asset: 'assets/images/avvaiyar.png',
       length: 130,
-      name: AppPages.athichidiListRoute),
+      name: AppPages.aathichidiListRoute),
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
