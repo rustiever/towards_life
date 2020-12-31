@@ -15,13 +15,13 @@ List<Topic> topicList = [
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: AppPages.kuralsRoute),
+      name: AppPages.kuralsListRoute),
   Topic(
       asset: 'assets/images/avvaiyar.png',
       length: 130,
-      name: AppPages.kuralsRoute),
+      name: AppPages.aathichidiListRoute),
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: AppPages.kuralsRoute),
+      name: AppPages.kuralsListRoute),
 ];

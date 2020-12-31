@@ -13,7 +13,7 @@ class FireApiClient {
 
   Future<void> tryAll() async {
     final hel = json.decode(
-      await rootBundle.loadString('assets/kn.json'),
+      await rootBundle.loadString('assets/jsons/kn.json'),
     );
     final int n = hel.length as int;
     print(n);

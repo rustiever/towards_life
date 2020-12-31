@@ -16,7 +16,6 @@ class HomeView extends GetView<HomeController> {
           title: const Text('Explore'),
           actions: const [SizedBox.shrink()],
         ),
-
         drawerEdgeDragWidth: context.widthTransformer(reducedBy: 85),
         key: _scaffoldKey,
         endDrawer: const CustomDrawer(),

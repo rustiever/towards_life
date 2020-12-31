@@ -1,4 +1,3 @@
-import 'package:TowardsLife/app/controllers/thirukuralController.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'controllers/controllers.dart';
@@ -10,33 +9,49 @@ import 'views/views.dart';
 class AppPages {
   static const homeRoute = '/home';
   static const adminRoute = '/admin';
-  static const kuralsRoute = '/Thirukkural';
+  static const kuralsListRoute = '/Thirukkural';
+  static const aathichidiListRoute = '/Athichudi';
+  static const searchRoute = '/Search';
 
   static final pages = [
     GetPage(
       title: 'Home',
       name: homeRoute,
       page: () => HomeView(),
-      binding: BindingsBuilder(
-        () => Get.lazyPut<HomeController>(
-          () => HomeController(),
-        ),
+      binding: BindingsBuilder.put(
+        () => HomeController(),
       ),
     ),
     GetPage(
-        title: 'Kurals',
-        name: kuralsRoute,
-        page: () => KuralsView(),
-        binding: BindingsBuilder(
-          () => Get.put<NoNameController>(
-            NoNameController(
-              repository: FireRepository(
-                apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
-              ),
+      title: 'Aathichudi',
+      name: aathichidiListRoute,
+      page: () => AathichudiListView(),
+      binding: BindingsBuilder(
+        () => Get.create(
+          () => LibraryController(
+            repository: FireRepository(
+              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
             ),
           ),
         ),
-        parameter: {"type": "kural"}),
+      ),
+      parameter: {"type": "kural"},
+    ),
+    GetPage(
+      title: 'Kurals',
+      name: kuralsListRoute,
+      page: () => KuralsListView(),
+      binding: BindingsBuilder(
+        () => Get.create(
+          () => LibraryController(
+            repository: FireRepository(
+              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+            ),
+          ),
+        ),
+      ),
+      parameter: {"type": "kural"},
+    ),
     GetPage(
       title: 'Admin',
       name: adminRoute,

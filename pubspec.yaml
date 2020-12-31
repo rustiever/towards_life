@@ -8,6 +8,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  auto_animated: 2.1.0
   cloud_firestore: 0.14.4
   cupertino_icons:
   firebase_core: 0.5.3
@@ -45,6 +46,7 @@ flutter:
   assets:
     - assets/images/
     - assets/jsons/
+    - assets/jsons/kn.json
 
   fonts:
     - family: NotoSansTamil

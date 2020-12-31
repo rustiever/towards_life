@@ -36,6 +36,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0-nullsafety.3"
+
+  auto_animated:
+    dependency: "direct main"
+    description:
+      name: auto_animated
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
+
   boolean_selector:
     dependency: transitive
     description:
@@ -684,6 +693,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.5"
+
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
+
   vm_service:
     dependency: transitive
     description:
