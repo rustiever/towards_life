@@ -9,25 +9,27 @@ environment:
 
 dependencies:
   auto_animated: 2.1.0
-  get: 3.24.0
-  hive_flutter: 0.3.1
-  hive: 1.4.4+1
-  flutter_hooks: 
-  get_storage:
   cloud_firestore: 0.14.4
+  cupertino_icons:
   firebase_core: 0.5.3
   flutter:
     sdk: flutter
-  cupertino_icons:
+  flutter_hooks:
+  get: 3.24.0
+  get_storage:
+  hive: 1.4.4+1
+  hive_flutter: 0.3.1
 
+  
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   device_preview:
-  lint:
-  test:
   flutter_launcher_icons: "^0.7.5"
   flutter_launcher_name: "^0.0.1"
+  flutter_test:
+    sdk: flutter
+  lint:
+  test:
+  
 
 flutter_launcher_name:
   name: "Towards Life"
