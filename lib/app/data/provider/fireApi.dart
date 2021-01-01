@@ -13,25 +13,24 @@ class FireApiClient {
 
   Future<void> tryAll() async {
     final hel = json.decode(
-      await rootBundle.loadString('assets/jsons/kn.json'),
+      await rootBundle.loadString('assets/jsons/kk.json'),
     );
     final int n = hel.length as int;
     print(n);
+    print(hel[0]);
     for (var i = 0; i < (hel.length as int); i++) {
       await firestore
-          .collection(kuralCollection)
+          .collection(aathichudiCollection)
           .doc((i + 1).toString())
           .set(hel[i] as Map<String, dynamic>);
 
-      final Kural v = Kural.fromJson((await firestore
-              .collection(kuralCollection)
+      final v = Aathichudi.fromJson((await firestore
+              .collection(aathichudiCollection)
               .doc((i + 1).toString())
               .get())
           .data());
       print(v.number);
     }
-    // printInfo(info: n.toString());
-    print(Kural.fromJson(hel[54] as Map<String, dynamic>).couplet);
   }
 
   Future<QuerySnapshot> fetchContents(String collection, {int last = 0}) async {

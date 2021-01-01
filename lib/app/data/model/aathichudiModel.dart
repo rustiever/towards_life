@@ -15,31 +15,6 @@ String aathichudiToJson(Aathichudi data) => json.encode(data.toJson());
 
 class Aathichudi {
   Aathichudi({
-    @required this.lordCompliment,
-    @required this.athisudi,
-  });
-
-  final LordCompliment lordCompliment;
-  final List<Athisudi> athisudi;
-
-  factory Aathichudi.fromJson(Map<String, dynamic> json) => Aathichudi(
-        lordCompliment: LordCompliment.fromJson(
-            json["lord_compliment"] as Map<String, dynamic>),
-        athisudi: List<Athisudi>.from(
-          json["athisudi"].map(
-            (x) => Athisudi.fromJson(x as Map<String, dynamic>),
-          ) as Iterable,
-        ),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "lord_compliment": lordCompliment.toJson(),
-        "athisudi": List<dynamic>.from(athisudi.map((x) => x.toJson())),
-      };
-}
-
-class Athisudi {
-  Athisudi({
     @required this.number,
     @required this.poem,
     @required this.meaning,
@@ -53,7 +28,7 @@ class Athisudi {
   final String paraphrase;
   final List<Translation> translations;
 
-  factory Athisudi.fromJson(Map<String, dynamic> json) => Athisudi(
+  factory Aathichudi.fromJson(Map<String, dynamic> json) => Aathichudi(
         number: json["number"] as int,
         poem: json["poem"] as String,
         meaning: json["meaning"] as String,

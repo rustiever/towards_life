@@ -9,7 +9,7 @@ class HomeController extends GetxController {
   ScrollController scrollController;
 
   KuralDetail kuralDetail;
-  RxString selectedLanguage = Get.locale.languageCode.obs;
+  RxString selectedLanguage = Get.deviceLocale.languageCode.obs;
 
   set changeLanguage(String lang) {
     final Locale locale = Locale(lang);

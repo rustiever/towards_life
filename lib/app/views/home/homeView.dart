@@ -1,9 +1,9 @@
-import 'package:TowardsLife/app/translation/languages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/controllers.dart';
-import '../../widgets/widgets.dart';
+import '../../globalWidgets/widgets.dart';
+import '../../translation/languages.dart';
 import 'widgets/widgets.dart';
 
 class HomeView extends GetView<HomeController> {

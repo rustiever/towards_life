@@ -27,6 +27,7 @@ Future<void> main() async {
 
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Towards Life",
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
