@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/routes.dart';
+import 'app/translation/translation.dart';
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,9 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       title: "Towards Life",
+      locale: Get.deviceLocale,
+      fallbackLocale: const Locale('en', 'US'),
+      translationsKeys: AppTranslation.translationsKeys,
       initialRoute: AppPages.homeRoute,
       getPages: AppPages.pages,
     ),

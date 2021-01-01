@@ -9,9 +9,17 @@ class HomeController extends GetxController {
   ScrollController scrollController;
 
   KuralDetail kuralDetail;
+  RxString selectedLanguage = Get.locale.languageCode.obs;
+
+  set changeLanguage(String lang) {
+    final Locale locale = Locale(lang);
+    Get.updateLocale(locale);
+    selectedLanguage.value = lang;
+  }
 
   @override
   Future<void> onInit() async {
+    print(selectedLanguage.value);
     scrollController = ScrollController();
     // kuralDetail = await loadDetails(kuralDetailsPath);
     comp(await rootBundle.loadString(kuralDetailsPath));
