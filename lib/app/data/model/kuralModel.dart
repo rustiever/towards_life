@@ -124,20 +124,21 @@ class Section {
 
 class Translation {
   Translation({
-    @required this.language,
+    @required this.languageName,
     @required this.content,
   });
 
-  String language;
+  String languageName;
   String content;
 
   factory Translation.fromJson(Map<String, dynamic> json) => Translation(
-        language: json["language"] == null ? null : json["language"] as String,
+        languageName:
+            json["language"] == null ? null : json["language"] as String,
         content: json["content"] == null ? null : json["content"] as String,
       );
 
   Map<String, dynamic> toJson() => {
-        "language": language,
+        "language": languageName,
         "content": content,
       };
 }

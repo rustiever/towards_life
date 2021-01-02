@@ -6,6 +6,8 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
+import 'models.dart';
+
 KuralDetail kuralDetailFromJson(String str) =>
     KuralDetail.fromJson(json.decode(str) as Map<String, dynamic>);
 
@@ -229,5 +231,50 @@ class ChaptersDetail {
         "number": number,
         "start": start,
         "end": end,
+      };
+}
+
+Paal paalFromJson(String str) =>
+    Paal.fromJson(json.decode(str) as Map<String, dynamic>);
+
+String paalToJson(Paal data) => json.encode(data.toJson());
+
+class Paal {
+  Paal({
+    @required this.name,
+    @required this.translation,
+    @required this.transliteration,
+  });
+
+  final String name;
+  final List<Translation> translation;
+  final List<Translation> transliteration;
+
+  factory Paal.fromJson(Map<String, dynamic> json) => Paal(
+        name: json["name"] == null ? null : json["name"] as String,
+        translation: json["translation"] == null
+            ? null
+            : List<Translation>.from(
+                json["translation"].map(
+                  (x) => Translation.fromJson(x as Map<String, dynamic>),
+                ) as Iterable,
+              ),
+        transliteration: json["transliteration"] == null
+            ? null
+            : List<Translation>.from(
+                json["transliteration"].map(
+                  (x) => Translation.fromJson(x as Map<String, dynamic>),
+                ) as Iterable,
+              ),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name ?? name,
+        "translation": translation == null
+            ? null
+            : List<dynamic>.from(translation.map((x) => x.toJson())),
+        "transliteration": transliteration == null
+            ? null
+            : List<dynamic>.from(transliteration.map((x) => x.toJson())),
       };
 }

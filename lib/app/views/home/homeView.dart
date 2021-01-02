@@ -95,9 +95,7 @@ class HomeView extends GetView<HomeController> {
                   height: 40,
                   width: double.infinity,
                   child: OutlineButton(
-                    onPressed: () {
-                      controller.tryMe();
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ),

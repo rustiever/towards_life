@@ -41,15 +41,22 @@ class AppPages {
       title: 'Kurals',
       name: kuralsListRoute,
       page: () => KuralsListView(),
-      binding: BindingsBuilder(
-        () => Get.create(
+      bindings: [
+        BindingsBuilder.put(
           () => LibraryController(
             repository: FireRepository(
               apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
             ),
           ),
         ),
-      ),
+        BindingsBuilder.put(
+          () => KuralController(
+              // repository: FireRepository(
+              //   apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+              // ),
+              ),
+        ),
+      ],
       parameter: {"type": "kural"},
     ),
     GetPage(
