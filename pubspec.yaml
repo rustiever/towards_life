@@ -1,6 +1,5 @@
 name: TowardsLife
-description: A new Flutter project.
-
+description: An Open Source Thirukkural app built using Flutter and Firebase 
 
 version: 1.0.0+1
 
@@ -8,25 +7,25 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  auto_animated: 2.1.0
-  cloud_firestore: 0.14.4
-  cupertino_icons:
-  firebase_core: 0.5.3
   flutter:
     sdk: flutter
+  auto_animated: 
   flutter_hooks:
-  get: 3.24.0
+  get: 
   get_storage:
-  hive: 1.4.4+1
-  hive_flutter: 0.3.1
+  hive:
+  hive_flutter:
+  firebase_core: 0.5.3
+  cloud_firestore: 0.14.4
+  cupertino_icons:
 
   
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   device_preview:
   flutter_launcher_icons: "^0.7.5"
   flutter_launcher_name: "^0.0.1"
-  flutter_test:
-    sdk: flutter
   lint:
   test:
   
