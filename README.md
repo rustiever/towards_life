@@ -6,7 +6,7 @@
 
 # Towards Life
 
-Towards Life app gives you right path to lead your life which leads to inner peace in your mind. 
+An Open Source Thirukkural app built using Flutter and Firebase.
 
 Installation
 
@@ -19,10 +19,19 @@ Usage
 flutter run
 ```
 
+Contribute
+----------
+You can contribute to TowardsLife by testing, translating, or submitting code. 
+<!-- See the [contribution wiki page](https://github.com/) for more info. -->
+soon contribution details will be updated
+
 ## Feedback
 
 - If you think Towards Life is useful, consider giving it a star.
-- If something is not working, [create an
-  issue](https://github.com/rustiever/TowardsLife/issues/new).
+- If something is not working or want to discuss, [open a issue](https://github.com/rustiever/TowardsLife/issues/new).
 
-### Created & Maintained By [rustiever](https://github.com/rustiever) and [Sha-Kumar](https://github.com/Sha-Kumar)
+License
+-------
+[CC0 1.0 Universal](https://github.com/rustiever/TowardsLife/blob/master/LICENSE.md)
+
+### Created & Maintained By [rustiever](https://github.com/rustiever) and [Sha-Kumar](https://github.com/Sha-Kumar)  with  :heart:
