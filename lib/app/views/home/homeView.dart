@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../controllers/controllers.dart';
 import '../../globalWidgets/widgets.dart';
-import '../../translation/languages.dart';
 import 'widgets/widgets.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -15,23 +14,6 @@ class HomeView extends GetView<HomeController> {
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           title: Text('greeting'.tr),
-          actions: [
-            DropdownButton<String>(
-              hint: const Text('Please choose a location'),
-              onChanged: (symbol) {
-                controller.changeLanguage = symbol;
-              },
-              items: languages.map(
-                (LanguageModel _language) {
-                  print(_language.symbol);
-                  return DropdownMenuItem<String>(
-                    value: _language.symbol,
-                    child: Text(_language.language),
-                  );
-                },
-              ).toList(),
-            )
-          ],
         ),
         drawerEdgeDragWidth: context.widthTransformer(reducedBy: 85),
         key: _scaffoldKey,

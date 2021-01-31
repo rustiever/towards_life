@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final kuralDetail = kuralDetailFromJson(jsonString);
-
 import 'dart:convert';
 
 import 'package:meta/meta.dart';

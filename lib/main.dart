@@ -2,6 +2,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'app/routes.dart';
 import 'app/translation/translation.dart';
@@ -24,6 +26,8 @@ import 'app/translation/translation.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Hive.initFlutter();
+  await Hive.openBox('Get');
 
   runApp(
     GetMaterialApp(
@@ -34,6 +38,30 @@ Future<void> main() async {
       translationsKeys: AppTranslation.translationsKeys,
       initialRoute: AppPages.homeRoute,
       getPages: AppPages.pages,
+      // home: Home(),
     ),
   );
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const Text('data'),
+            RaisedButton(
+              onPressed: () async {
+                final hh = Hive.box('Get');
+                await hh.put("String", "hello");
+
+                print(hh.get('String'));
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }

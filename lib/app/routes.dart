@@ -12,8 +12,19 @@ class AppPages {
   static const kuralsListRoute = '/Thirukkural';
   static const aathichidiListRoute = '/Athichudi';
   static const searchRoute = '/Search';
+  static const settingsRoute = '/settings';
+  static const languageListRoute = '/languageList';
 
   static final pages = [
+    GetPage(
+      title: 'Settings',
+      name: settingsRoute,
+      page: () => SettingsView(),
+      binding: BindingsBuilder.put(
+        () => SettingsController(),
+      ),
+    ),
+    GetPage(name: languageListRoute, page: () => LanguageListView()),
     GetPage(
       title: 'Home',
       name: homeRoute,

@@ -45,7 +45,7 @@ class CustomDrawer extends StatelessWidget {
           _DrawerContent(
             title: 'Settings',
             iconData: Icons.settings_outlined,
-            route: AppPages.homeRoute,
+            route: AppPages.settingsRoute,
           ),
           _DrawerContent(
             title: 'Admin',
