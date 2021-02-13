@@ -1,6 +1,5 @@
 import 'package:TowardsLife/app/controllers/controllers.dart';
 import 'package:TowardsLife/app/routes.dart';
-import 'package:TowardsLife/app/translation/languages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

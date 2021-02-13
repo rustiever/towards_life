@@ -12,20 +12,20 @@ class FireApiClient {
   FireApiClient({@required this.firestore});
 
   Future<void> tryAll() async {
-    final hel = json.decode(
-      await rootBundle.loadString('assets/jsons/kk.json'),
+    final data = json.decode(
+      await rootBundle.loadString('assets/jsons/detail.json'),
     );
-    final int n = hel.length as int;
+    final int n = data.length as int;
     print(n);
-    print(hel[0]);
-    for (var i = 0; i < (hel.length as int); i++) {
+    print(data);
+    for (var i = 0; i < (data.length as int); i++) {
       await firestore
-          .collection(aathichudiCollection)
+          .collection(kuralDetailCollection)
           .doc((i + 1).toString())
-          .set(hel[i] as Map<String, dynamic>);
+          .set(data[i] as Map<String, dynamic>);
 
-      final v = Aathichudi.fromJson((await firestore
-              .collection(aathichudiCollection)
+      final v = KuralDetail.fromJson((await firestore
+              .collection(kuralDetailCollection)
               .doc((i + 1).toString())
               .get())
           .data());

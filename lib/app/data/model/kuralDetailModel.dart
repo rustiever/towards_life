@@ -1,66 +1,21 @@
-import 'dart:convert';
+// To parse this JSON data, do
+//
+//     final kuralDetail = kuralDetailFromJson(jsonString);
 
+import 'dart:convert';
 import 'package:meta/meta.dart';
 
-import 'models.dart';
+List<KuralDetail> kuralDetailFromJson(String str) => List<KuralDetail>.from(
+      json.decode(str).map(
+            (x) => KuralDetail.fromJson(x as Map<String, dynamic>),
+          ) as Iterable,
+    );
 
-KuralDetail kuralDetailFromJson(String str) =>
-    KuralDetail.fromJson(json.decode(str) as Map<String, dynamic>);
-
-String kuralDetailToJson(KuralDetail data) => json.encode(data.toJson());
+String kuralDetailToJson(List<KuralDetail> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class KuralDetail {
   KuralDetail({
-    @required this.tamil,
-    @required this.classification,
-  });
-
-  String tamil;
-  Classification classification;
-
-  factory KuralDetail.fromJson(Map<String, dynamic> json) => KuralDetail(
-        tamil: json["tamil"] == null ? null : json["tamil"] as String,
-        classification: json["section"] == null
-            ? null
-            : Classification.fromJson(json["section"] as Map<String, dynamic>),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "tamil": tamil,
-        "section": classification ?? classification.toJson(),
-      };
-}
-
-class Classification {
-  Classification({
-    @required this.tamil,
-    @required this.detail,
-  });
-
-  String tamil;
-  List<SectionDetail> detail;
-
-  factory Classification.fromJson(Map<String, dynamic> json) => Classification(
-        tamil: json["tamil"] == null ? null : json["tamil"] as String,
-        detail: json["detail"] == null
-            ? null
-            : List<SectionDetail>.from(
-                json["detail"].map(
-                  (x) => SectionDetail.fromJson(x as Map<String, dynamic>),
-                ) as Iterable,
-              ),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "tamil": tamil,
-        "detail": detail == null
-            ? null
-            : List<dynamic>.from(detail.map((x) => x.toJson())),
-      };
-}
-
-class SectionDetail {
-  SectionDetail({
     @required this.name,
     @required this.transliteration,
     @required this.translation,
@@ -68,13 +23,13 @@ class SectionDetail {
     @required this.chapterGroup,
   });
 
-  String name;
-  String transliteration;
-  String translation;
-  int number;
-  ChapterGroup chapterGroup;
+  final String name;
+  final String transliteration;
+  final String translation;
+  final int number;
+  final ChapterGroup chapterGroup;
 
-  factory SectionDetail.fromJson(Map<String, dynamic> json) => SectionDetail(
+  factory KuralDetail.fromJson(Map<String, dynamic> json) => KuralDetail(
         name: json["name"] == null ? null : json["name"] as String,
         transliteration: json["transliteration"] == null
             ? null
@@ -103,8 +58,8 @@ class ChapterGroup {
     @required this.detail,
   });
 
-  String tamil;
-  List<ChapterGroupDetail> detail;
+  final String tamil;
+  final List<ChapterGroupDetail> detail;
 
   factory ChapterGroup.fromJson(Map<String, dynamic> json) => ChapterGroup(
         tamil: json["tamil"] == null ? null : json["tamil"] as String,
@@ -121,7 +76,11 @@ class ChapterGroup {
         "tamil": tamil,
         "detail": detail == null
             ? null
-            : List<dynamic>.from(detail.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                detail.map(
+                  (x) => x.toJson(),
+                ),
+              ),
       };
 }
 
@@ -134,11 +93,11 @@ class ChapterGroupDetail {
     @required this.chapters,
   });
 
-  String name;
-  String transliteration;
-  String translation;
-  int number;
-  Chapters chapters;
+  final String name;
+  final String transliteration;
+  final String translation;
+  final int number;
+  final Chapters chapters;
 
   factory ChapterGroupDetail.fromJson(Map<String, dynamic> json) =>
       ChapterGroupDetail(
@@ -169,8 +128,8 @@ class Chapters {
     @required this.detail,
   });
 
-  String tamil;
-  List<ChaptersDetail> detail;
+  final String tamil;
+  final List<ChaptersDetail> detail;
 
   factory Chapters.fromJson(Map<String, dynamic> json) => Chapters(
         tamil: json["tamil"] == null ? null : json["tamil"] as String,
@@ -187,7 +146,11 @@ class Chapters {
         "tamil": tamil,
         "detail": detail == null
             ? null
-            : List<dynamic>.from(detail.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                detail.map(
+                  (x) => x.toJson(),
+                ),
+              ),
       };
 }
 
@@ -201,12 +164,12 @@ class ChaptersDetail {
     @required this.end,
   });
 
-  String name;
-  String translation;
-  String transliteration;
-  int number;
-  int start;
-  int end;
+  final String name;
+  final String translation;
+  final String transliteration;
+  final int number;
+  final int start;
+  final int end;
 
   factory ChaptersDetail.fromJson(Map<String, dynamic> json) => ChaptersDetail(
         name: json["name"] == null ? null : json["name"] as String,
@@ -227,50 +190,5 @@ class ChaptersDetail {
         "number": number,
         "start": start,
         "end": end,
-      };
-}
-
-Paal paalFromJson(String str) =>
-    Paal.fromJson(json.decode(str) as Map<String, dynamic>);
-
-String paalToJson(Paal data) => json.encode(data.toJson());
-
-class Paal {
-  Paal({
-    @required this.name,
-    @required this.translation,
-    @required this.transliteration,
-  });
-
-  final String name;
-  final List<Translation> translation;
-  final List<Translation> transliteration;
-
-  factory Paal.fromJson(Map<String, dynamic> json) => Paal(
-        name: json["name"] == null ? null : json["name"] as String,
-        translation: json["translation"] == null
-            ? null
-            : List<Translation>.from(
-                json["translation"].map(
-                  (x) => Translation.fromJson(x as Map<String, dynamic>),
-                ) as Iterable,
-              ),
-        transliteration: json["transliteration"] == null
-            ? null
-            : List<Translation>.from(
-                json["transliteration"].map(
-                  (x) => Translation.fromJson(x as Map<String, dynamic>),
-                ) as Iterable,
-              ),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name ?? name,
-        "translation": translation == null
-            ? null
-            : List<dynamic>.from(translation.map((x) => x.toJson())),
-        "transliteration": transliteration == null
-            ? null
-            : List<dynamic>.from(transliteration.map((x) => x.toJson())),
       };
 }

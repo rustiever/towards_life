@@ -1,8 +1,4 @@
-{
-    "tamil": "திருக்குறள்",
-    "section": {
-        "tamil": "பால்",
-        "detail": [
+[
             {
                 "name": "அறத்துப்பால்",
                 "transliteration": "Araththuppaal",
@@ -1244,5 +1240,3 @@
                 }
             }
         ]
-    }
-}

@@ -7,11 +7,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  get: 3.25.3
   flutter:
     sdk: flutter
   auto_animated: 
   flutter_hooks:
-  get: 
   get_storage:
   hive: ^1.4.4+1
   hive_flutter:

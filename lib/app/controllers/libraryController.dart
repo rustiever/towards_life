@@ -44,7 +44,7 @@ class LibraryController extends GetxController {
     const limit = 10;
     QuerySnapshot snapshots;
 
-    if (isLoading.isfalse) {
+    if (isLoading.isFalse) {
       isLoading.value = true;
 
       if (isMoreAvailable.value) {
