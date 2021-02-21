@@ -8,12 +8,12 @@ class AdminView extends GetView<AdminController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
-          color: Colors.blue,
+        child: ElevatedButton(
+          style: const ButtonStyle(),
+          // splashColor: Colors.blueGrey,
           onPressed: () {
             controller.setAll();
           },
-          splashColor: Colors.blueGrey,
           child: const Text(
             'Upload',
             style: TextStyle(

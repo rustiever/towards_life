@@ -51,13 +51,14 @@ class Home extends StatelessWidget {
         body: Column(
           children: [
             const Text('data'),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
-                final hh = Hive.box('Get');
-                await hh.put("String", "hello");
+                // final hh = Hive.box('Get');
+                // await hh.put("String", "hello");
 
-                print(hh.get('String'));
+                // print(hh.get('String'));
               },
+              child: null,
             )
           ],
         ),

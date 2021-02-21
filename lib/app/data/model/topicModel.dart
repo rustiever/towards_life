@@ -1,4 +1,4 @@
-import 'package:TowardsLife/app/routes.dart';
+import 'package:towardslife/app/routes.dart';
 import 'package:meta/meta.dart';
 
 class Topic {

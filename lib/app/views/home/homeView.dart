@@ -11,7 +11,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        // resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           title: Text('greeting'.tr),
         ),
@@ -76,8 +76,9 @@ class HomeView extends GetView<HomeController> {
                   color: Colors.greenAccent,
                   height: 40,
                   width: double.infinity,
-                  child: OutlineButton(
+                  child: OutlinedButton(
                     onPressed: () {},
+                    child: null,
                   ),
                 ),
               ),

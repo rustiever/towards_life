@@ -1,4 +1,4 @@
-import 'package:TowardsLife/app/data/model/models.dart';
+import 'package:towardslife/app/data/model/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

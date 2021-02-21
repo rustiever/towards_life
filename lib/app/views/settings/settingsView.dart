@@ -1,5 +1,5 @@
-import 'package:TowardsLife/app/controllers/controllers.dart';
-import 'package:TowardsLife/app/routes.dart';
+import 'package:towardslife/app/controllers/controllers.dart';
+import 'package:towardslife/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-import 'package:TowardsLife/app/data/repository/fireRepository.dart';
+import 'package:towardslife/app/data/repository/fireRepository.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 

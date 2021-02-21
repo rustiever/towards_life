@@ -24,11 +24,15 @@ class FireApiClient {
           .doc((i + 1).toString())
           .set(data[i] as Map<String, dynamic>);
 
-      final v = KuralDetail.fromJson((await firestore
-              .collection(kuralDetailCollection)
-              .doc((i + 1).toString())
-              .get())
-          .data());
+      final v = KuralDetail.fromJson(
+        (await firestore
+                .collection(kuralDetailCollection)
+                .doc(
+                  (i + 1).toString(),
+                )
+                .get())
+            .data(),
+      );
       print(v.number);
     }
   }
