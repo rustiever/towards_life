@@ -1,6 +1,6 @@
-import 'package:towardslife/app/data/provider/fireApi.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:towards_life/app/data/provider/fireApi.dart';
 
 class FireRepository {
   final FireApiClient apiClient;

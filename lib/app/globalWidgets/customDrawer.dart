@@ -1,6 +1,7 @@
-import 'package:towardslife/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../routes.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({

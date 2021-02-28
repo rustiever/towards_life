@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../constants/constants.dart';
 import '../data/model/kuralModel.dart';
 import '../data/repository/fireRepository.dart';

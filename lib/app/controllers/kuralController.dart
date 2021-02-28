@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:towardslife/app/constants/constants.dart';
-import 'package:towardslife/app/data/model/models.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:towards_life/app/constants/constants.dart';
+import 'package:towards_life/app/data/model/models.dart';
 
 class KuralController extends GetxController {
   static KuralController get to => Get.find();

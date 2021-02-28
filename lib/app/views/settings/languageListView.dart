@@ -1,6 +1,6 @@
-import 'package:towardslife/app/translation/languages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:towards_life/app/translation/languages.dart';
 
 class LanguageListView extends StatelessWidget {
   @override

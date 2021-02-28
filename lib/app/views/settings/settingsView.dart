@@ -1,7 +1,8 @@
-import 'package:towardslife/app/controllers/controllers.dart';
-import 'package:towardslife/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:towards_life/app/controllers/controllers.dart';
+
+import '../../routes.dart';
 
 class SettingsView extends GetView<SettingsController> {
   @override

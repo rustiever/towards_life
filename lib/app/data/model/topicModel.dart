@@ -1,5 +1,6 @@
-import 'package:towardslife/app/routes.dart';
 import 'package:meta/meta.dart';
+
+import '../../routes.dart';
 
 class Topic {
   String asset, name;

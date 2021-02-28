@@ -1,6 +1,6 @@
-import 'package:towardslife/app/data/model/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:towards_life/app/data/model/models.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
