@@ -2,27 +2,29 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:towards_life/app/constants/constants.dart';
-import 'package:towards_life/app/data/model/models.dart';
+
+import '../constants/constants.dart';
+import '../data/model/models.dart';
 
 class KuralController extends GetxController {
   static KuralController get to => Get.find();
-  List<KuralDetail> kuralDetail;
+  List<KuralDetail> kuralDetail = [];
+  List<ChapterGroupDetail> iyalList = [];
+  List<ChaptersDetail> adhikaramList = [];
   @override
   Future<void> onInit() async {
-    final data = await rootBundle.loadString(kuralDetailsPath);
-    final jsonData = json.decode(data);
-    print(jsonData.runtimeType);
-    final n = jsonData.length as int;
-    print(n);
-    for (int i = 0; i < n; i++) {
-      final item = jsonData[i];
-      print(item);
-      kuralDetail.add(
-        KuralDetail.fromJson(item as Map<String, dynamic>),
-      );
+    final data = json.decode(
+      await rootBundle.loadString(kuralDetailsPath),
+    );
+    for (var i = 0; i < (data.length as int); i++) {
+      final list = KuralDetail.fromJson(data[i] as Map<String, dynamic>);
+      kuralDetail.add(list);
+      final iyalDetail = list.chapterGroup.detail;
+      for (final ChapterGroupDetail item in iyalDetail) {
+        adhikaramList.addAll(item.chapters.detail);
+      }
+      iyalList.addAll(iyalDetail);
     }
     super.onInit();
-    // print(kuralDetail.last.name);
   }
 }

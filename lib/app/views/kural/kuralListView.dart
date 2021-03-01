@@ -35,26 +35,24 @@ class KuralsListView extends GetWidget<LibraryController> {
             ),
           ),
           endDrawer: const CustomDrawer(),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              // Container(
-              //   child: ListView.builder(),
-              // ) ,
-              FittedBox(
-                child: Tab(
-                  text: 'Adhikaram',
-                ),
-              ),
-              FittedBox(
-                child: Tab(
-                  text: 'Adhikaram',
-                ),
-              ),
-              FittedBox(
-                child: Tab(
-                  text: 'Adhikaram',
-                ),
-              ),
+              ListView.builder(
+                  itemCount: kuralController.iyalList.length,
+                  itemBuilder: (_, index) {
+                    return Text(kuralController.iyalList[index].name);
+                  }),
+              ListView.builder(
+                  itemCount: kuralController.kuralDetail.length,
+                  itemBuilder: (_, index) {
+                    return Text(kuralController.kuralDetail[index].name);
+                  }),
+              ListView.builder(
+                  itemCount: kuralController.adhikaramList.length,
+                  itemBuilder: (_, index) {
+                    return Text(kuralController.adhikaramList[index].name);
+                  }),
+
               // Obx(
               //   () {
               //     if (controller.contentList.isEmpty &&
