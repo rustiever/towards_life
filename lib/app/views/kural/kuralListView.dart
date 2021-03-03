@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +14,7 @@ class KuralsListView extends GetWidget<LibraryController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
+        initialIndex: 1,
         length: 3,
         child: Scaffold(
           drawerEdgeDragWidth: context.widthTransformer(reducedBy: 80),
@@ -37,21 +40,128 @@ class KuralsListView extends GetWidget<LibraryController> {
           endDrawer: const CustomDrawer(),
           body: TabBarView(
             children: [
+              ListView.separated(
+                itemCount: kuralController.iyalList.length,
+                itemBuilder: (_, index) {
+                  return Card(
+                    child: Column(
+                      children: [
+                        Text(kuralController.iyalList[index].name),
+                        Text(kuralController.iyalList[index].translation),
+                        Text(kuralController.iyalList[index].transliteration),
+                        Text(kuralController
+                            .iyalList[index].chapters.detail.length
+                            .toString()),
+                      ],
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  if (index == 0) {
+                    return Text('one');
+                  } else if (index >= 5) {
+                    return Text('two');
+                  }
+                  return const Divider();
+                },
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)])),
+                child: Column(
+                  children: List.generate(
+                    kuralController.kuralDetail.length,
+                    (index) {
+                      final kd = kuralController.kuralDetail[index];
+                      final Color color = index == 0
+                          ? Colors.lightBlueAccent.shade100
+                          : index == 1
+                              ? Colors.green.shade300
+                              : Colors.orange.shade600;
+                      return Expanded(
+                        flex: 4,
+                        child: SizedBox(
+                          width: double.maxFinite,
+                          child: Card(
+                            color: color,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 8),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
+                            ),
+                            elevation: 8,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      kuralController.kuralDetail[index].name,
+                                      style: TextStyle(
+                                          letterSpacing: 1,
+                                          color: Colors.grey.shade800,
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: "NotoSansTamil"),
+                                    ),
+                                  ),
+                                  PaalStat(
+                                    s1: "Translation",
+                                    s2: kd.translation,
+                                  ),
+                                  PaalStat(
+                                    s1: "Transliteration",
+                                    s2: kd.transliteration,
+                                  ),
+                                  PaalStat(
+                                    s1: "Iyals",
+                                    s2: index == 0
+                                        ? "4"
+                                        : index == 1
+                                            ? "7"
+                                            : "2",
+                                  ),
+                                  PaalStat(
+                                    s1: "Adhikarams",
+                                    s2: index == 0
+                                        ? "38"
+                                        : index == 1
+                                            ? "70"
+                                            : "25",
+                                  ),
+                                  PaalStat(
+                                    s1: "Kurals",
+                                    s2: index == 0
+                                        ? "380"
+                                        : index == 1
+                                            ? "700"
+                                            : "250",
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                    ..add(
+                      const Spacer(
+                        flex: 2,
+                      ),
+                    )
+                    ..insert(0, const Spacer()),
+                ),
+              ),
               ListView.builder(
-                  itemCount: kuralController.iyalList.length,
-                  itemBuilder: (_, index) {
-                    return Text(kuralController.iyalList[index].name);
-                  }),
-              ListView.builder(
-                  itemCount: kuralController.kuralDetail.length,
-                  itemBuilder: (_, index) {
-                    return Text(kuralController.kuralDetail[index].name);
-                  }),
-              ListView.builder(
-                  itemCount: kuralController.adhikaramList.length,
-                  itemBuilder: (_, index) {
-                    return Text(kuralController.adhikaramList[index].name);
-                  }),
+                itemCount: kuralController.adhikaramList.length,
+                itemBuilder: (_, index) {
+                  return Text(kuralController.adhikaramList[index].name);
+                },
+              ),
 
               // Obx(
               //   () {
@@ -112,6 +222,46 @@ class KuralsListView extends GetWidget<LibraryController> {
           ),
           extendBody: true,
         ),
+      ),
+    );
+  }
+}
+
+class PaalStat extends StatelessWidget {
+  const PaalStat({
+    Key key,
+    this.s1,
+    this.s2,
+    this.s3,
+  }) : super(key: key);
+
+  final String s1;
+  final String s2;
+  final String s3;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: '$s1: ',
+            style: const TextStyle(
+              color: Colors.deepPurple,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+              // fontWeight: FontWeight.bold,
+            ),
+          ),
+          TextSpan(
+            text: s2,
+            style: const TextStyle(
+              color: Colors.deepPurpleAccent,
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
+            ),
+          )
+        ],
       ),
     );
   }

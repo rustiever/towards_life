@@ -34,6 +34,7 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       title: "Towards Life",
       locale: Get.deviceLocale,
+      theme: ThemeData(fontFamily: "NotoSansTamil"),
       fallbackLocale: const Locale('en', 'US'),
       translationsKeys: AppTranslation.translationsKeys,
       initialRoute: AppPages.homeRoute,
