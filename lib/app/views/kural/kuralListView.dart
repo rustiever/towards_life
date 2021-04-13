@@ -40,128 +40,9 @@ class KuralsListView extends GetWidget<LibraryController> {
           endDrawer: const CustomDrawer(),
           body: TabBarView(
             children: [
-              ListView.separated(
-                itemCount: kuralController.iyalList.length,
-                itemBuilder: (_, index) {
-                  return Card(
-                    child: Column(
-                      children: [
-                        Text(kuralController.iyalList[index].name),
-                        Text(kuralController.iyalList[index].translation),
-                        Text(kuralController.iyalList[index].transliteration),
-                        Text(kuralController
-                            .iyalList[index].chapters.detail.length
-                            .toString()),
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  if (index == 0) {
-                    return Text('one');
-                  } else if (index >= 5) {
-                    return Text('two');
-                  }
-                  return const Divider();
-                },
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)])),
-                child: Column(
-                  children: List.generate(
-                    kuralController.kuralDetail.length,
-                    (index) {
-                      final kd = kuralController.kuralDetail[index];
-                      final Color color = index == 0
-                          ? Colors.lightBlueAccent.shade100
-                          : index == 1
-                              ? Colors.green.shade300
-                              : Colors.orange.shade600;
-                      return Expanded(
-                        flex: 4,
-                        child: SizedBox(
-                          width: double.maxFinite,
-                          child: Card(
-                            color: color,
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(35.0),
-                            ),
-                            elevation: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      kuralController.kuralDetail[index].name,
-                                      style: TextStyle(
-                                          letterSpacing: 1,
-                                          color: Colors.grey.shade800,
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: "NotoSansTamil"),
-                                    ),
-                                  ),
-                                  PaalStat(
-                                    s1: "Translation",
-                                    s2: kd.translation,
-                                  ),
-                                  PaalStat(
-                                    s1: "Transliteration",
-                                    s2: kd.transliteration,
-                                  ),
-                                  PaalStat(
-                                    s1: "Iyals",
-                                    s2: index == 0
-                                        ? "4"
-                                        : index == 1
-                                            ? "7"
-                                            : "2",
-                                  ),
-                                  PaalStat(
-                                    s1: "Adhikarams",
-                                    s2: index == 0
-                                        ? "38"
-                                        : index == 1
-                                            ? "70"
-                                            : "25",
-                                  ),
-                                  PaalStat(
-                                    s1: "Kurals",
-                                    s2: index == 0
-                                        ? "380"
-                                        : index == 1
-                                            ? "700"
-                                            : "250",
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                    ..add(
-                      const Spacer(
-                        flex: 2,
-                      ),
-                    )
-                    ..insert(0, const Spacer()),
-                ),
-              ),
-              ListView.builder(
-                itemCount: kuralController.adhikaramList.length,
-                itemBuilder: (_, index) {
-                  return Text(kuralController.adhikaramList[index].name);
-                },
-              ),
+              IyalTabPage(kuralController: kuralController),
+              MuppalTabPage(kuralController: kuralController),
+              AdhikaramTabPage(kuralController: kuralController),
 
               // Obx(
               //   () {
@@ -220,15 +101,254 @@ class KuralsListView extends GetWidget<LibraryController> {
               // ),
             ],
           ),
-          extendBody: true,
         ),
       ),
     );
   }
 }
 
-class PaalStat extends StatelessWidget {
-  const PaalStat({
+class IyalTabPage extends StatelessWidget {
+  const IyalTabPage({
+    Key key,
+    @required this.kuralController,
+  }) : super(key: key);
+
+  final KuralController kuralController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xffa1c4fd),
+            Color(0xffc2e9fb),
+          ],
+        ),
+      ),
+      child: ListView.builder(
+        itemCount: kuralController.iyalList.length,
+        itemBuilder: (_, index) {
+          switch (index) {
+            case 0:
+              return _IyalColumn(kuralController: kuralController, index: 0);
+
+            case 4:
+              return _IyalColumn(kuralController: kuralController, index: 1);
+            case 11:
+              return _IyalColumn(kuralController: kuralController, index: 2);
+            default:
+              return _IyalCard(
+                kuralController: kuralController,
+                index: index,
+              );
+          }
+        },
+      ),
+    );
+  }
+}
+
+class _IyalColumn extends StatelessWidget {
+  const _IyalColumn({
+    Key key,
+    @required this.kuralController,
+    @required this.index,
+  }) : super(key: key);
+
+  final KuralController kuralController;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(kuralController.kuralDetail[index].name),
+        SizedBox(
+          width: double.maxFinite,
+          child: _IyalCard(
+            kuralController: kuralController,
+            index: index,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _IyalCard extends StatelessWidget {
+  const _IyalCard(
+      {Key key, @required this.kuralController, @required this.index})
+      : super(key: key);
+
+  final KuralController kuralController;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(27.0),
+      ),
+      elevation: 5,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            kuralController.iyalList[index].name,
+          ),
+          Text(kuralController.iyalList[index].translation),
+          Text(kuralController.iyalList[index].transliteration),
+          Text(kuralController.iyalList[index].chapters.detail.length
+              .toString()),
+          Text((kuralController.iyalList[index].chapters.detail.length * 10)
+              .toString()),
+        ],
+      ),
+    );
+  }
+}
+
+class AdhikaramTabPage extends StatelessWidget {
+  const AdhikaramTabPage({
+    Key key,
+    @required this.kuralController,
+  }) : super(key: key);
+
+  final KuralController kuralController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xffa1c4fd),
+            Color(0xffc2e9fb),
+          ],
+        ),
+      ),
+      child: ListView.builder(
+        itemCount: kuralController.adhikaramList.length,
+        itemBuilder: (_, index) {
+          return Text(kuralController.adhikaramList[index].name);
+        },
+      ),
+    );
+  }
+}
+
+class MuppalTabPage extends StatelessWidget {
+  const MuppalTabPage({
+    Key key,
+    @required this.kuralController,
+  }) : super(key: key);
+
+  final KuralController kuralController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xffa1c4fd),
+            Color(0xffc2e9fb),
+          ],
+        ),
+      ),
+      child: Column(
+        children: List.generate(
+          kuralController.kuralDetail.length,
+          (index) {
+            final kd = kuralController.kuralDetail[index];
+            final Color color = index == 0
+                ? Colors.lightBlueAccent.shade100
+                : index == 1
+                    ? Colors.green.shade300
+                    : Colors.orange.shade600;
+            return Expanded(
+              flex: 4,
+              child: SizedBox(
+                width: double.maxFinite,
+                child: Card(
+                  color: color,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35.0),
+                  ),
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Text(
+                            kuralController.kuralDetail[index].name,
+                            style: TextStyle(
+                                letterSpacing: 1,
+                                color: Colors.grey.shade800,
+                                fontSize: 28,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: "NotoSansTamil"),
+                          ),
+                        ),
+                        MuppaalStat(
+                          s1: "Translation",
+                          s2: kd.translation,
+                        ),
+                        MuppaalStat(
+                          s1: "Transliteration",
+                          s2: kd.transliteration,
+                        ),
+                        MuppaalStat(
+                          s1: "Iyals",
+                          s2: index == 0
+                              ? "4"
+                              : index == 1
+                                  ? "7"
+                                  : "2",
+                        ),
+                        MuppaalStat(
+                          s1: "Adhikarams",
+                          s2: index == 0
+                              ? "38"
+                              : index == 1
+                                  ? "70"
+                                  : "25",
+                        ),
+                        MuppaalStat(
+                          s1: "Kurals",
+                          s2: index == 0
+                              ? "380"
+                              : index == 1
+                                  ? "700"
+                                  : "250",
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        )
+          ..add(
+            const Spacer(
+              flex: 2,
+            ),
+          )
+          ..insert(0, const Spacer()),
+      ),
+    );
+  }
+}
+
+class MuppaalStat extends StatelessWidget {
+  const MuppaalStat({
     Key key,
     this.s1,
     this.s2,
@@ -382,18 +502,4 @@ class KuralCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class CustomClipPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final Path path = Path();
-    path.lineTo(0.0, size.height);
-    path.lineTo(size.width, 0.0);
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => true; // TODO change
 }

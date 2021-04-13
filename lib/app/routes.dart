@@ -37,14 +37,12 @@ class AppPages {
       title: 'Aathichudi',
       name: aathichidiListRoute,
       page: () => AathichudiListView(),
-      binding: BindingsBuilder(
-        () => Get.create(
-          () => LibraryController(
+      binding: BindingsBuilder.put(()=>
+        LibraryController(
             repository: FireRepository(
               apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
             ),
           ),
-        ),
       ),
       parameter: {"type": "kural"},
     ),

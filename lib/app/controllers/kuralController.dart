@@ -16,10 +16,12 @@ class KuralController extends GetxController {
     final data = json.decode(
       await rootBundle.loadString(kuralDetailsPath),
     );
+
     for (var i = 0; i < (data.length as int); i++) {
       final list = KuralDetail.fromJson(data[i] as Map<String, dynamic>);
       kuralDetail.add(list);
       final iyalDetail = list.chapterGroup.detail;
+
       for (final ChapterGroupDetail item in iyalDetail) {
         adhikaramList.addAll(item.chapters.detail);
       }
