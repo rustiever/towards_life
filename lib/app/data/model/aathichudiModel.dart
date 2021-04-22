@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 import 'models.dart';
 
 Aathichudi aathichudiFromJson(String str) =>
@@ -15,11 +13,11 @@ String aathichudiToJson(Aathichudi data) => json.encode(data.toJson());
 
 class Aathichudi {
   Aathichudi({
-    @required this.number,
-    @required this.poem,
-    @required this.meaning,
-    @required this.paraphrase,
-    @required this.translations,
+    required this.number,
+    required this.poem,
+    required this.meaning,
+    required this.paraphrase,
+    required this.translations,
   });
 
   final int number;
@@ -51,10 +49,10 @@ class Aathichudi {
 
 class LordCompliment {
   LordCompliment({
-    @required this.line1,
-    @required this.line2,
-    @required this.meaning,
-    @required this.paraphase,
+    required this.line1,
+    required this.line2,
+    required this.meaning,
+    required this.paraphase,
   });
 
   final String line1;

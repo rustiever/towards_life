@@ -3,3 +3,6 @@ linter:
   rules:
     avoid_print: false
     file_names: false
+analyzer:
+  enable-experiment:
+    - non-nullable

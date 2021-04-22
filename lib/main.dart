@@ -39,7 +39,7 @@ Future<void> main() async {
       translationsKeys: AppTranslation.translationsKeys,
       initialRoute: AppPages.homeRoute,
       getPages: AppPages.pages,
-      // home: Home(),
+      home: Home(),
     ),
   );
 }

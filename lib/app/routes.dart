@@ -25,48 +25,44 @@ class AppPages {
       ),
     ),
     GetPage(name: languageListRoute, page: () => LanguageListView()),
-    GetPage(
-      title: 'Home',
-      name: homeRoute,
-      page: () => HomeView(),
-      binding: BindingsBuilder.put(
+    GetPage(title: 'Home', name: homeRoute, page: () => HomeView(), bindings: [
+      BindingsBuilder.put(
         () => HomeController(),
       ),
-    ),
+      BindingsBuilder.put(
+        () => LibraryController(
+          repository: FireRepository(
+            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+          ),
+        ),
+      ),
+      BindingsBuilder.put(
+        () => KuralController(
+            // repository: FireRepository(
+            //   apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
+            // ),
+            ),
+      ),
+    ]),
     GetPage(
       title: 'Aathichudi',
       name: aathichidiListRoute,
       page: () => AathichudiListView(),
-      binding: BindingsBuilder.put(()=>
-        LibraryController(
-            repository: FireRepository(
-              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
-            ),
+      binding: BindingsBuilder.put(
+        () => LibraryController(
+          repository: FireRepository(
+            apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
           ),
+        ),
       ),
-      parameter: {"type": "kural"},
+      parameter: const {"type": "kural"},
     ),
     GetPage(
       title: 'Kurals',
       name: kuralsListRoute,
       page: () => KuralsListView(),
-      bindings: [
-        BindingsBuilder.put(
-          () => LibraryController(
-            repository: FireRepository(
-              apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
-            ),
-          ),
-        ),
-        BindingsBuilder.put(
-          () => KuralController(
-              // repository: FireRepository(
-              //   apiClient: FireApiClient(firestore: FirebaseFirestore.instance),
-              // ),
-              ),
-        ),
-      ],
-      parameter: {"type": "kural"},
+      // bindings: [],
+      parameter: const {"type": "kural"},
     ),
     GetPage(
       title: 'Admin',

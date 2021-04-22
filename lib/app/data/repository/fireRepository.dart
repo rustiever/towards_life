@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
 import 'package:towards_life/app/data/provider/fireApi.dart';
 
 class FireRepository {
   final FireApiClient apiClient;
 
-  FireRepository({@required this.apiClient}) : assert(apiClient != null);
+  FireRepository({required this.apiClient});
 
   void setAll() => apiClient.tryAll();
 

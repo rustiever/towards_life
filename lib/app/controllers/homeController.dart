@@ -4,9 +4,9 @@ import 'package:towards_life/app/data/model/models.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
-  ScrollController scrollController;
+  late ScrollController scrollController;
 
-  KuralDetail kuralDetail;
+  late KuralDetail kuralDetail;
 
   @override
   Future<void> onInit() async {
