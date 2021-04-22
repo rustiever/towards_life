@@ -2,14 +2,13 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 
 import '../../constants/constants.dart';
 import '../model/models.dart';
 
 class FireApiClient {
   final FirebaseFirestore firestore;
-  FireApiClient({@required this.firestore});
+  FireApiClient({required this.firestore});
 
   Future<void> tryAll() async {
     final data = json.decode(
@@ -31,7 +30,7 @@ class FireApiClient {
                   (i + 1).toString(),
                 )
                 .get())
-            .data(),
+            .data()!,
       );
       print(v.number);
     }

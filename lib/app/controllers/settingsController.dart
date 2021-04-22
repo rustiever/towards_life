@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
   static SettingsController get to => Get.find();
-  RxString selectedLanguage = Get.deviceLocale.languageCode.obs;
+  RxString selectedLanguage = Get.deviceLocale!.languageCode.obs;
 
   String get selLanguage => selectedLanguage.value;
 

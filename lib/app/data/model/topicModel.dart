@@ -1,14 +1,12 @@
-import 'package:meta/meta.dart';
-
 import '../../routes.dart';
 
 class Topic {
   String asset, name;
   int length;
   Topic({
-    @required this.asset,
-    @required this.length,
-    @required this.name,
+    required this.asset,
+    required this.length,
+    required this.name,
   });
 }
 

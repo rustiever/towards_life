@@ -9,7 +9,9 @@ import '../../globalWidgets/widgets.dart';
 
 class KuralsListView extends GetWidget<LibraryController> {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  final lk = Get.put(KuralController());
   final KuralController kuralController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -109,8 +111,8 @@ class KuralsListView extends GetWidget<LibraryController> {
 
 class IyalTabPage extends StatelessWidget {
   const IyalTabPage({
-    Key key,
-    @required this.kuralController,
+    Key? key,
+    required this.kuralController,
   }) : super(key: key);
 
   final KuralController kuralController;
@@ -151,9 +153,9 @@ class IyalTabPage extends StatelessWidget {
 
 class _IyalColumn extends StatelessWidget {
   const _IyalColumn({
-    Key key,
-    @required this.kuralController,
-    @required this.index,
+    Key? key,
+    required this.kuralController,
+    required this.index,
   }) : super(key: key);
 
   final KuralController kuralController;
@@ -178,7 +180,7 @@ class _IyalColumn extends StatelessWidget {
 
 class _IyalCard extends StatelessWidget {
   const _IyalCard(
-      {Key key, @required this.kuralController, @required this.index})
+      {Key? key, required this.kuralController, required this.index})
       : super(key: key);
 
   final KuralController kuralController;
@@ -211,8 +213,8 @@ class _IyalCard extends StatelessWidget {
 
 class AdhikaramTabPage extends StatelessWidget {
   const AdhikaramTabPage({
-    Key key,
-    @required this.kuralController,
+    Key? key,
+    required this.kuralController,
   }) : super(key: key);
 
   final KuralController kuralController;
@@ -240,8 +242,8 @@ class AdhikaramTabPage extends StatelessWidget {
 
 class MuppalTabPage extends StatelessWidget {
   const MuppalTabPage({
-    Key key,
-    @required this.kuralController,
+    Key? key,
+    required this.kuralController,
   }) : super(key: key);
 
   final KuralController kuralController;
@@ -299,10 +301,12 @@ class MuppalTabPage extends StatelessWidget {
                         MuppaalStat(
                           s1: "Translation",
                           s2: kd.translation,
+                          s3: '',
                         ),
                         MuppaalStat(
                           s1: "Transliteration",
                           s2: kd.transliteration,
+                          s3: '',
                         ),
                         MuppaalStat(
                           s1: "Iyals",
@@ -311,6 +315,7 @@ class MuppalTabPage extends StatelessWidget {
                               : index == 1
                                   ? "7"
                                   : "2",
+                          s3: '',
                         ),
                         MuppaalStat(
                           s1: "Adhikarams",
@@ -319,6 +324,7 @@ class MuppalTabPage extends StatelessWidget {
                               : index == 1
                                   ? "70"
                                   : "25",
+                          s3: '',
                         ),
                         MuppaalStat(
                           s1: "Kurals",
@@ -327,6 +333,7 @@ class MuppalTabPage extends StatelessWidget {
                               : index == 1
                                   ? "700"
                                   : "250",
+                          s3: '',
                         ),
                       ],
                     ),
@@ -349,10 +356,10 @@ class MuppalTabPage extends StatelessWidget {
 
 class MuppaalStat extends StatelessWidget {
   const MuppaalStat({
-    Key key,
-    this.s1,
-    this.s2,
-    this.s3,
+    Key? key,
+    required this.s1,
+    required this.s2,
+    required this.s3,
   }) : super(key: key);
 
   final String s1;
@@ -389,9 +396,9 @@ class MuppaalStat extends StatelessWidget {
 
 class KuralCard extends StatelessWidget {
   const KuralCard({
-    Key key,
-    @required this.controller,
-    @required this.kural,
+    Key? key,
+    required this.controller,
+    required this.kural,
   }) : super(key: key);
 
   final LibraryController controller;
