@@ -1,12 +1,13 @@
-import '../../routes.dart';
+import 'package:flutter/material.dart';
+import 'package:towards_life/app/routes.dart';
 
 class Topic {
   String asset, name;
   int length;
   Topic({
-    required this.asset,
-    required this.length,
-    required this.name,
+    @required this.asset,
+    @required this.length,
+    @required this.name,
   });
 }
 
@@ -14,13 +15,13 @@ List<Topic> topicList = [
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: AppPages.kuralsListRoute),
+      name: Pages.kuralListRoute),
   Topic(
       asset: 'assets/images/avvaiyar.png',
       length: 130,
-      name: AppPages.aathichidiListRoute),
+      name: Pages.kuralListRoute),
   Topic(
       asset: 'assets/images/thiruvalluvar.png',
       length: 1330,
-      name: AppPages.kuralsListRoute),
+      name: Pages.kuralListRoute),
 ];

@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 List<KuralDetail> kuralDetailFromJson(String str) => List<KuralDetail>.from(
       json.decode(str).map(
             (x) => KuralDetail.fromJson(x as Map<String, dynamic>),
@@ -15,11 +17,11 @@ String kuralDetailToJson(List<KuralDetail> data) =>
 
 class KuralDetail {
   KuralDetail({
-    required this.name,
-    required this.transliteration,
-    required this.translation,
-    required this.number,
-    required this.chapterGroup,
+    @required this.name,
+    @required this.transliteration,
+    @required this.translation,
+    @required this.number,
+    @required this.chapterGroup,
   });
 
   final String name;
@@ -48,8 +50,8 @@ class KuralDetail {
 
 class ChapterGroup {
   ChapterGroup({
-    required this.tamil,
-    required this.detail,
+    @required this.tamil,
+    @required this.detail,
   });
 
   final String tamil;
@@ -76,11 +78,11 @@ class ChapterGroup {
 
 class ChapterGroupDetail {
   ChapterGroupDetail({
-    required this.name,
-    required this.transliteration,
-    required this.translation,
-    required this.number,
-    required this.chapters,
+    @required this.name,
+    @required this.transliteration,
+    @required this.translation,
+    @required this.number,
+    @required this.chapters,
   });
 
   final String name;
@@ -109,8 +111,8 @@ class ChapterGroupDetail {
 
 class Chapters {
   Chapters({
-    required this.tamil,
-    required this.detail,
+    @required this.tamil,
+    @required this.detail,
   });
 
   final String tamil;
@@ -137,12 +139,12 @@ class Chapters {
 
 class ChaptersDetail {
   ChaptersDetail({
-    required this.name,
-    required this.translation,
-    required this.transliteration,
-    required this.number,
-    required this.start,
-    required this.end,
+    @required this.name,
+    @required this.translation,
+    @required this.transliteration,
+    @required this.number,
+    @required this.start,
+    @required this.end,
   });
 
   final String name;

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../constants/constants.dart';
+import '../constants.dart';
 import '../data/model/models.dart';
 
 class KuralController extends GetxController {
@@ -11,8 +11,9 @@ class KuralController extends GetxController {
   List<KuralDetail> kuralDetail = [];
   List<ChapterGroupDetail> iyalList = [];
   List<ChaptersDetail> adhikaramList = [];
-  @override
-  Future<void> onInit() async {
+  RxBool isLoading = false.obs;
+
+  Future<void> _initialize() async {
     final data = json.decode(
       await rootBundle.loadString(kuralDetailsPath),
     );
@@ -27,6 +28,12 @@ class KuralController extends GetxController {
       }
       iyalList.addAll(iyalDetail);
     }
+    isLoading.toggle(); // updating to true
+  }
+
+  @override
+  void onInit() {
+    _initialize();
     super.onInit();
   }
 }

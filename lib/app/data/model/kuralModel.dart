@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 Kural kuralFromJson(String str) =>
     Kural.fromJson(json.decode(str) as Map<String, dynamic>);
 
@@ -7,16 +9,16 @@ String kuralToJson(Kural data) => json.encode(data.toJson());
 
 class Kural {
   Kural({
-    required this.number,
-    required this.line1,
-    required this.line2,
-    required this.couplet,
-    required this.translation,
-    required this.transliteration,
-    required this.explanation,
-    required this.paal,
-    required this.iyal,
-    required this.adikaram,
+    @required this.number,
+    @required this.line1,
+    @required this.line2,
+    @required this.couplet,
+    @required this.translation,
+    @required this.transliteration,
+    @required this.explanation,
+    @required this.paal,
+    @required this.iyal,
+    @required this.adikaram,
   });
 
   int number;
@@ -66,9 +68,9 @@ class Kural {
 
 class Section {
   Section({
-    required this.name,
-    required this.transliteration,
-    required this.translation,
+    @required this.name,
+    @required this.transliteration,
+    @required this.translation,
   });
 
   String name;
@@ -99,8 +101,8 @@ class Section {
 
 class Translation {
   Translation({
-    required this.languageName,
-    required this.content,
+    @required this.languageName,
+    @required this.content,
   });
 
   String languageName;
@@ -119,8 +121,8 @@ class Translation {
 
 class Explanation {
   Explanation({
-    required this.languageName,
-    required this.details,
+    @required this.languageName,
+    @required this.details,
   });
 
   String languageName;
@@ -143,8 +145,8 @@ class Explanation {
 
 class LanguageDetail {
   LanguageDetail({
-    required this.author,
-    required this.content,
+    @required this.author,
+    @required this.content,
   });
 
   String author;
@@ -163,8 +165,8 @@ class LanguageDetail {
 
 class Transliteration {
   Transliteration({
-    required this.language,
-    required this.content,
+    @required this.language,
+    @required this.content,
   });
 
   String language;
@@ -184,8 +186,8 @@ class Transliteration {
 
 class Content {
   Content({
-    required this.line1,
-    required this.line2,
+    @required this.line1,
+    @required this.line2,
   });
 
   String line1;
