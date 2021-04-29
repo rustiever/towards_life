@@ -5,7 +5,7 @@ import '../routes.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -69,7 +69,7 @@ class CustomDrawer extends StatelessWidget {
 
 class _DrawerDivider extends StatelessWidget {
   const _DrawerDivider({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -83,10 +83,10 @@ class _DrawerContent extends StatelessWidget {
   final IconData iconData;
 
   const _DrawerContent({
-    Key? key,
-    required this.title,
-    required this.iconData,
-    required this.route,
+    Key key,
+    @required this.title,
+    @required this.iconData,
+    @required this.route,
   }) : super(key: key);
 
   @override

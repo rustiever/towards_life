@@ -9,18 +9,17 @@ class LibraryController extends GetxController {
   static LibraryController get to => Get.find();
 
   final FireRepository repository;
-  LibraryController({required this.repository});
-
-  late ScrollController scrollController;
+  LibraryController({@required this.repository}) : assert(repository != null);
+  ScrollController scrollController;
   final RxList contentList = [].obs;
-  int last = 0;
+  int last;
   final isLoading = false.obs;
   final isMoreAvailable = true.obs;
 
   @override
   void onInit() {
     print(Get.parameters.length);
-    // last = 0;
+    last = 0;
     scrollController = ScrollController()
       ..addListener(
         () {
@@ -42,7 +41,7 @@ class LibraryController extends GetxController {
 
   Future<void> _fetch() async {
     const limit = 10;
-    late QuerySnapshot snapshots;
+    QuerySnapshot snapshots;
 
     if (isLoading.isFalse) {
       isLoading.value = true;

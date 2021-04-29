@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:towards_life/app/data/provider/fireApi.dart';
 
 class FireRepository {
   final FireApiClient apiClient;
 
-  FireRepository({required this.apiClient});
+  FireRepository({@required this.apiClient});
 
   void setAll() => apiClient.tryAll();
 

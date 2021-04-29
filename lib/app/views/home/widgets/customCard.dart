@@ -8,7 +8,7 @@ import '../../../data/model/models.dart';
 
 class FlipList extends GetView<HomeController> {
   const FlipList({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -54,9 +54,9 @@ class CustomCard extends StatelessWidget {
   final Topic topic;
   final bool back;
   const CustomCard({
-    Key? key,
-    required this.topic,
-    required this.back,
+    Key key,
+    @required this.topic,
+    @required this.back,
   }) : super(key: key);
 
   @override
@@ -120,8 +120,8 @@ class CustomCard extends StatelessWidget {
 
 class CustomTextField extends StatelessWidget {
   CustomTextField({
-    Key? key,
-    required this.topic,
+    Key key,
+    @required this.topic,
   }) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
@@ -135,11 +135,11 @@ class CustomTextField extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: TextFormField(
           validator: (value) {
-            return value!.isEmpty
+            return value.isEmpty
                 ? "Can't be empty"
                 : !value.isNum
                     ? 'Not a number'
-                    : !int.tryParse(value)!.isLowerThan(topic.length)
+                    : !int.tryParse(value).isLowerThan(topic.length)
                         ? 'Not valid range'
                         : null;
           },
@@ -160,7 +160,7 @@ class CustomTextField extends StatelessWidget {
   }
 
   void _search(String value) {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState.validate()) {
       printInfo(info: value);
     }
   }
@@ -173,10 +173,10 @@ class FlippableBox extends StatelessWidget {
   final bool isFlipped;
 
   const FlippableBox({
-    Key? key,
+    Key key,
     this.isFlipped = false,
-    required this.front,
-    required this.back,
+    @required this.front,
+    @required this.back,
   }) : super(key: key);
 
   @override
@@ -201,12 +201,12 @@ class FlippableBox extends StatelessWidget {
 
 class AnimatedBackground extends StatelessWidget {
   final Container child;
-  const AnimatedBackground({Key? key, required this.child}) : super(key: key);
+  const AnimatedBackground({Key key, @required this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-        width: child.constraints!.maxWidth,
-        height: child.constraints!.maxHeight,
+        width: child.constraints.maxWidth,
+        height: child.constraints.maxHeight,
         duration: const Duration(milliseconds: 700),
         curve: Curves.decelerate,
         child: child);
@@ -220,7 +220,7 @@ class RotationY extends StatelessWidget {
   final Widget child;
   final double rotationY;
 
-  const RotationY({Key? key, required this.child, this.rotationY = 0})
+  const RotationY({Key key, @required this.child, this.rotationY = 0})
       : super(key: key);
 
   @override
