@@ -19,16 +19,16 @@ class LibraryController extends GetxController {
   @override
   void onInit() {
     print(Get.parameters.length);
-    // last = 0;
-    // scrollController = ScrollController()
-    //   ..addListener(
-    //     () {
-    //       if (scrollController.position.pixels ==
-    //           scrollController.position.maxScrollExtent) {
-    //         _fetch();
-    //       }
-    //     },
-    //   );
+    last = 0;
+    scrollController = ScrollController()
+      ..addListener(
+        () {
+          if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent) {
+            // _fetch();
+          }
+        },
+      );
     // _fetch();
     super.onInit();
   }
