@@ -56,7 +56,7 @@ tasks:
 
       flutter devices
     
-      flutter run --web-port 8080
+      # flutter run --web-port 8080
 
 
 ports:
