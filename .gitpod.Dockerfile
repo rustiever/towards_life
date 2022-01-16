@@ -2,7 +2,7 @@ FROM gitpod/workspace-full-vnc
 SHELL ["/bin/bash", "-c"]
 
 ENV ANDROID_HOME=/home/gitpod/androidsdk \
-    FLUTTER_VERSION=2.2.3-stable
+    FLUTTER_VERSION=2.8.1-stable
 
 # Install dart
 USER root
