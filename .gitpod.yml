@@ -1,3 +1,4 @@
-image: cirrusci/flutter:stable
+image: 
+  file: .gitpod.Dockerfile
 tasks:
 - command: flutter doctor
