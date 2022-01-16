@@ -21,7 +21,7 @@ environment:
 dependencies:
   cloud_firestore:
   cupertino_icons: 
-  firebase_core:
+  firebase_core: ^1.11.0
   flutter:
     sdk: flutter
   get:
@@ -31,6 +31,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   lint:
+  test:
 
 
 flutter:
